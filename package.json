@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~8.2.4",
     "@angular/platform-browser-dynamic": "~8.2.4",
     "@angular/router": "~8.2.4",
+    "@delon/auth": "^8.4.0",
+    "@delon/theme": "^8.4.0",
     "ng-zorro-antd": "^8.1.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",

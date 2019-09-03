@@ -4,7 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full' },
-  { path: 'index', loadChildren: () => import('./index/index.module').then(m => m.IndexModule) }
+  { path: 'index', loadChildren: () => import('./routes/index/index.module').then(m => m.IndexModule) },
+  { path: 'job', loadChildren: () => import('./routes/job/job.module').then(m => m.JobModule) },
+  { path: 'recruit', loadChildren: () => import('./routes/recruit/recruit.module').then(m => m.RecruitModule) }
 ];
 
 @NgModule({

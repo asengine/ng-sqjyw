@@ -5,7 +5,6 @@ import { IndexRoutingModule } from './index.routing.module';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 
-
 @NgModule({
   declarations: [IndexComponent],
   imports: [
