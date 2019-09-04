@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.less', '../../app.component.less']
+  styleUrls: ['./index.component.less', '../routes.component.less']
 })
 export class IndexComponent implements OnInit {
 

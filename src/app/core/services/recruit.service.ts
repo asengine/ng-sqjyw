@@ -1,7 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PageList } from '../models/pagelist';
-import { BASE_URL } from '../config/service.config';
+import { JYW_URL } from '../config/service.config';
 import { ResponseResult } from '../models/reponseresult';
 import { SettingsService } from '@delon/theme';
 
@@ -13,7 +13,7 @@ export class RecruitService {
   constructor(
     private http: HttpClient,
     public settings: SettingsService,
-    @Inject(BASE_URL) private baseUrl: string
+    @Inject(JYW_URL) private baseUrl: string
   ) {
 
   }

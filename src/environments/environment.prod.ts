@@ -1,5 +1,6 @@
 export const environment = {
   SERVER_URL: `./`,
   production: true,
-  BASE_URL: 'https://localhost:44318/'
+  JYW_URL: 'http://localhost:8017/',
+  RSJ_URL: 'http://localhost:8016/'
 };

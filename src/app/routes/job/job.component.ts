@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-job',
   templateUrl: './job.component.html',
-  styleUrls: ['./job.component.less', '../../app.component.less']
+  styleUrls: ['./job.component.less', '../routes.component.less']
 })
 export class JobComponent implements OnInit {
   /// 分页参数

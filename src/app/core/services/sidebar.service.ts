@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BASE_URL } from '../config/service.config';
+import { JYW_URL } from '../config/service.config';
 import { Menu } from '@delon/theme';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class SidebarService {
 
   constructor(
     private http: HttpClient,
-    @Inject(BASE_URL) private baseUrl: string
+    @Inject(JYW_URL) private baseUrl: string
   ) {
     // this.httpOptions = {
     //  headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'bearer ' + this.tokenService.get().token })

@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenObj } from '../models/token';
-import { BASE_URL } from '../config/service.config';
+import { JYW_URL } from '../config/service.config';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +13,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    @Inject(BASE_URL) private authUrl: string
+    @Inject(JYW_URL) private authUrl: string
   ) {}
 
   loginWithCredentials(

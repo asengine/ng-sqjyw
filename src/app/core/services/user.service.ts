@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserProfile } from '../models/userprofile';
 import { PageList } from '../models/pagelist';
-import { BASE_URL } from '../config/service.config';
+import { JYW_URL } from '../config/service.config';
 import { ResponseResult } from '../models/reponseresult';
 
 @Injectable()
@@ -11,7 +11,7 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    @Inject(BASE_URL) private baseUrl: string
+    @Inject(JYW_URL) private baseUrl: string
   ) { }
 
   public getUserList(

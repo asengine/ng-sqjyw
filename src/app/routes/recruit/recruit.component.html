@@ -1,6 +1,18 @@
-<div class="header">宿迁市人力资源和社会保障局</div>
 <div class="container">
-    <nz-page-header (nzBack)="onBack()" nzBackIcon nzTitle="岗位查询" nzSubtitle=""> </nz-page-header>
+    <!-- <nz-page-header (nzBack)="onBack()" nzBackIcon nzTitle="岗位查询" nzSubtitle=""></nz-page-header> -->
+    <form nz-form #formRef="ngForm" (ngSubmit)="!loading&&searchData(true)">
+        <nz-form-item>
+            <nz-form-control>
+                <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+                    <input nz-input #KeyRef="ngModel" [(ngModel)]="key" name="key" placeholder="请输入关键字" />
+                </nz-input-group>
+                <ng-template #suffixButton>
+                    <button nz-button type="submit" nzType="primary" nzSize="large"
+                        [disabled]="formRef.invalid||loading" nzSearch>搜索</button>
+                </ng-template>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
     <nz-table #ajaxTable nzShowSizeChanger [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
         [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzPageIndexChange)="searchData()"
         (nzPageSizeChange)="searchData(true)" nzBordered="true" [nzShowTotal]="totalTemplate">

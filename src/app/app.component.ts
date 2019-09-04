@@ -1,10 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
 })
-export class AppComponent {
-  title = 'ng-sqjyw';
+export class AppComponent implements OnInit {
+  title = '宿迁就业网';
+
+  constructor(public router: Router) {
+
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  goIndex() {
+    this.router.navigateByUrl('/index');
+  }
+
+  back() {
+    history.back();
+  }
 }

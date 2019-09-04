@@ -1,0 +1,19 @@
+<div class="container">
+    <!-- <nz-page-header (nzBack)="onBack()" nzBackIcon nzTitle="就业服务查询" nzSubtitle=""></nz-page-header> -->
+    <table cellpadding="0" cellspacing="10">
+        <tbody>
+            <tr>
+                <td rowspan="1" colspan="2" style="width: 40%"><a routerLink="/readcard"
+                        [queryParams]="{url:'/loan/personal'}">个人创业贷款</a></td>
+                <td rowspan="1" colspan="3" style="width: 60%"><a routerLink="/readcard"
+                        [queryParams]="{url:'/loan/enterprise'}">企业小额担保贷款</a></td>
+            </tr>
+            <tr>
+                <td rowspan="1" colspan="3" style="width: 60%"><a routerLink="/readcard"
+                        [queryParams]="{url:'/subsidy/bs'}">初次创业补贴</a></td>
+                <td rowspan="1" colspan="2" style="width: 40%"><a routerLink="/readcard"
+                        [queryParams]="{url:'/subsidy/rt'}">创业租金补贴</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
