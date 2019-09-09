@@ -1,20 +1,30 @@
-<!-- <nz-descriptions nzBordered nzColon [nzColumn]="2">
-    <nz-descriptions-item nzTitle="岗位名称">{{data.ACA112}}</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="地址">{{data.ACB305}}</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="发布日期">
-        {{data.AAE036}}
-    </nz-descriptions-item>
-    <nz-descriptions-item nzTitle="截止日期">
-        {{data.AAE030}}
-    </nz-descriptions-item>
-    <nz-descriptions-item nzTitle="薪资待遇" [nzSpan]="2">
-        {{data.ACB304}}
-    </nz-descriptions-item>
-    <nz-descriptions-item nzTitle="岗位职责" [nzSpan]="2">
-        {{data.ACB224}}
-    </nz-descriptions-item>
-    <nz-descriptions-item nzTitle="发布单位" [nzSpan]="2">
-        {{data.AAEA20}}
-    </nz-descriptions-item>
-</nz-descriptions> -->
-bs
+<div class="container">
+    <!-- <nz-page-header (nzBack)="onBack()" nzBackIcon nzTitle="岗位查询" nzSubtitle=""></nz-page-header> -->
+    <nz-table #ajaxTable nzShowSizeChanger [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
+        [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzPageIndexChange)="searchData()"
+        (nzPageSizeChange)="searchData(true)" nzBordered="true" [nzShowTotal]="totalTemplate">
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+            <tr>
+                <th nzShowSort nzSortKey="ACA112">岗位名称</th>
+                <th nzShowSort nzSortKey="ACB21A">岗位类型</th>
+                <th nzShowSort nzSortKey="AAEA20">发布单位</th>
+                <th nzShowSort nzSortKey="AAE030">截止日期</th>
+                <!-- <th>Action</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of ajaxTable.data">
+                <td><a (click)="onClick(data.ACB210)">{{data.ACA112}}</a></td>
+                <td>{{data.ACB21A}}</td>
+                <td>{{data.AAEA20}}</td>
+                <td>{{data.AAE030}}</td>
+                <!-- <td>
+                <a>Action 一 {{ data.name }}</a>
+                <nz-divider nzType="vertical"></nz-divider>
+                <a>Delete</a>
+            </td> -->
+            </tr>
+        </tbody>
+    </nz-table>
+    <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template>
+</div>

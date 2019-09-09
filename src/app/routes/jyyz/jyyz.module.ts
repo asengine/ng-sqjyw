@@ -7,22 +7,26 @@ import { CybtComponent } from './cybt/cybt.component';
 import { CyzjComponent } from './cyzj/cyzj.component';
 import { SubsidyService } from 'src/app/core/services/subsidy.service';
 import { LoanService } from 'src/app/core/services/loan.service';
+import { RecruitService } from 'src/app/core/services/recruit.service';
+import { DetailsComponent } from './cybt/details/details.component';
 
 
 
 @NgModule({
-  declarations: [JyyzComponent, CybtComponent, CyzjComponent],
+  declarations: [JyyzComponent, CybtComponent, CyzjComponent, DetailsComponent],
   imports: [
     SharedModule,
     JyyzRoutingModule
   ],
   entryComponents: [
     CybtComponent,
-    CyzjComponent
+    CyzjComponent,
+    DetailsComponent
   ],
   providers: [
     SubsidyService,
-    LoanService
+    LoanService,
+    RecruitService
   ]
 })
 export class JyyzModule { }

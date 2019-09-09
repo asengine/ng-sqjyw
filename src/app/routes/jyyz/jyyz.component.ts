@@ -19,12 +19,11 @@ export class JyyzComponent implements OnInit {
     'grdk': '',//个人贷款
     'qydk': ''//企业贷款
   };
+  title: string;
   cmp: string;
 
   constructor(
     public router: Router,
-    private subSvc: SubsidyService,
-    private loanSvc: LoanService,
     private modalSvc: NzModalService,
     private msgSvc: NzMessageService
   ) { }
@@ -33,8 +32,9 @@ export class JyyzComponent implements OnInit {
 
   }
 
-  showModal(cmp: string): void {
+  showModal(cmp: string, title: string): void {
     this.cmp = cmp;
+    this.title = title;
     this.isVisible = true;
   }
 
@@ -51,46 +51,34 @@ export class JyyzComponent implements OnInit {
   //读身份证
   readidcard() {
     const idcard = '321321198801087813';
-    this.subSvc.getBsByIdcard(idcard).subscribe(res => {
-      if (res === null) {
-        this.msgSvc.info('没有记录');
-        return;
-      }
-      const modal = this.modalSvc.create({
-        nzTitle: '读卡',
-        nzContent: this.cmpMap[this.cmp],
-        nzWidth: '70%',
-        nzComponentParams: {
-          data: res
-        },
-        nzFooter: null
-      });
-      modal.afterClose.subscribe(() => {
-        // this.loadData();
-      });
+    const modal = this.modalSvc.create({
+      nzTitle: this.title,
+      nzContent: this.cmpMap[this.cmp],
+      nzWidth: '70%',
+      nzComponentParams: {
+        idcard: idcard
+      },
+      nzFooter: null
+    });
+    modal.afterClose.subscribe(() => {
+      // this.loadData();
     });
   }
 
   //读社保卡
   readsicard() {
-    const idcard = '321321198801087813';
-    this.subSvc.getBsBySicard(idcard).subscribe(res => {
-      if (res === null) {
-        this.msgSvc.info('没有记录');
-        return;
-      }
-      const modal = this.modalSvc.create({
-        nzTitle: '读卡',
-        nzContent: this.cmpMap[this.cmp],
-        nzWidth: '70%',
-        nzComponentParams: {
-          data: res
-        },
-        nzFooter: null
-      });
-      modal.afterClose.subscribe(() => {
-        // this.loadData();
-      });
+    const sicard = '321321198801087813';
+    const modal = this.modalSvc.create({
+      nzTitle: this.title,
+      nzContent: this.cmpMap[this.cmp],
+      nzWidth: '70%',
+      nzComponentParams: {
+        sicard: sicard
+      },
+      nzFooter: null
+    });
+    modal.afterClose.subscribe(() => {
+      // this.loadData();
     });
   }
 }

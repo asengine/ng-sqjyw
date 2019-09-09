@@ -9,13 +9,13 @@
                         [queryParams]="{url:'/loan/enterprise'}">企业小额担保贷款</a></td>
             </tr>
             <tr>
-                <td rowspan="1" colspan="3" style="width: 60%"><a (click)="showModal('')">初次创业补贴</a></td>
-                <td rowspan="1" colspan="2" style="width: 40%"><a (click)="showModal('subsidy/rt')">创业租金补贴</a></td>
+                <td rowspan="1" colspan="3" style="width: 60%"><a (click)="showModal('cybt','初次创业补贴')">初次创业补贴</a></td>
+                <td rowspan="1" colspan="2" style="width: 40%"><a (click)="showModal('cyzj','创业租金补贴')">创业租金补贴</a></td>
             </tr>
         </tbody>
     </table>
 </div>
-<nz-modal [(nzVisible)]="isVisible" nzTitle="读卡" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="title" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
     <table class="read-card" cellspacing="10">
         <tbody>
             <tr>
