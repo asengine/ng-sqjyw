@@ -10,7 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { AuthGuard } from './shared/guard';
-import { JYW_URL, RSJ_URL, RDC_URL } from './core/config/service.config';
+import { JYW_URL, RSJ_URL, RDC_URL, AUTH_URL } from './core/config/service.config';
 import { environment } from 'src/environments/environment';
 
 registerLocaleData(zh);
@@ -39,6 +39,7 @@ const INTERCEPTOR_PROVIDES = [
     { provide: NZ_I18N, useValue: zh_CN },
     ...INTERCEPTOR_PROVIDES,
     AuthGuard,
+    { provide: AUTH_URL, useValue: environment.AUTH_URL },
     { provide: JYW_URL, useValue: environment.JYW_URL },
     { provide: RSJ_URL, useValue: environment.RSJ_URL },
     { provide: RDC_URL, useValue: environment.RDC_URL }

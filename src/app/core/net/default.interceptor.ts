@@ -10,12 +10,14 @@ import {
   HttpHeaders,
   HttpClient,
 } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of, throwError, Subject } from 'rxjs';
 import { mergeMap, catchError } from 'rxjs/operators';
 import { NzMessageService, NzNotificationService } from 'ng-zorro-antd';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
 import { environment } from 'src/environments/environment';
 import { _HttpClient } from '@delon/theme';
+import { AuthService } from '../services/auth.service';
+import { MacService } from '../services/mac.service';
 
 const CODEMESSAGE = {
   200: '服务器成功返回请求的数据。',
@@ -60,7 +62,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     this.notification.error(`请求错误 ${ev.status}: ${ev.url}`, errortext);
   }
 
-  private handleData(ev: HttpResponseBase): Observable<any> {
+  private handleData(ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     // 可能会因为 `throw` 导出无法执行 `_HttpClient` 的 `end()` 操作
     if (ev.status > 0) {
       this.injector.get(_HttpClient).end();
@@ -90,9 +92,29 @@ export class DefaultInterceptor implements HttpInterceptor {
         // }
         break;
       case 401:
-        this.notification.error(`未登录或登录已过期，请重新登录。`, ``);
+        console.warn(`未登录或登录已过期，需要重新获取授权。`, ``);
         // 清空 token 信息
         (this.injector.get(DA_SERVICE_TOKEN) as ITokenService).clear();
+        this.injector.get(MacService).getLocalMac().subscribe(res => {
+          console.log(res);
+          // 向服务端申请授权
+          this.injector.get(AuthService).loginWithCredentials(res).subscribe(token => {
+            console.log(token);
+            if (token.success) {// 身份验证成功
+              // 设置Token信息
+              this.tokenService.set({
+                token: token.access_token, // '123456789',
+                userId: token.id,
+                name: token.userName,
+                time: +new Date()
+              });
+              console.info('提示', '身份认证成功，即将重新加载数据。');
+            } else {
+              this.notification.error('设备访问未授权', ``);
+              return;
+            }
+          });
+        });
         //this.goTo('/passport/login');
         break;
       case 403:
@@ -128,11 +150,11 @@ export class DefaultInterceptor implements HttpInterceptor {
     return next.handle(newReq).pipe(
       mergeMap((event: any) => {
         // 允许统一对请求错误处理
-        if (event instanceof HttpResponseBase) return this.handleData(event);
+        if (event instanceof HttpResponseBase) return this.handleData(event, req, next);
         // 若一切都正常，则后续操作
         return of(event);
       }),
-      catchError((err: HttpErrorResponse) => this.handleData(err)),
+      catchError((err: HttpErrorResponse) => this.handleData(err, req, next)),
     );
   }
 }

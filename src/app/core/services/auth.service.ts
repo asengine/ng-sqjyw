@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenObj } from '../models/token';
-import { JYW_URL } from '../config/service.config';
+import { AUTH_URL } from '../config/service.config';
 
 @Injectable({
   providedIn: 'root',
@@ -13,19 +13,12 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    @Inject(JYW_URL) private authUrl: string
-  ) {}
+    @Inject(AUTH_URL) private authUrl: string
+  ) { }
 
-  loginWithCredentials(
-    username: string,
-    password: string,
-  ): Observable<TokenObj> {
+  loginWithCredentials(mac: string[]): Observable<TokenObj> {
     const url = `${this.authUrl}${this.apiUrl}`;
     console.log(url);
-
-    return this.http.post<TokenObj>(url, {
-      username,
-      password,
-    });
+    return this.http.post<TokenObj>(url, { 'mac': mac });
   }
 }
