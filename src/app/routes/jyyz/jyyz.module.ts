@@ -13,15 +13,14 @@ import { DetailsComponent } from './cybt/details/details.component';
 
 
 @NgModule({
-  declarations: [JyyzComponent, CybtComponent, CyzjComponent, DetailsComponent],
+  declarations: [JyyzComponent, CybtComponent, CyzjComponent],
   imports: [
     SharedModule,
     JyyzRoutingModule
   ],
   entryComponents: [
     CybtComponent,
-    CyzjComponent,
-    DetailsComponent
+    CyzjComponent
   ],
   providers: [
     SubsidyService,
