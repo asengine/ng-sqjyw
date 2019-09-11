@@ -52,6 +52,7 @@ export class RecruitComponent implements OnInit {
     this.svc
       .getList(this.sortKey, this.sortValue, this.pageIndex, this.pageSize, this.key)
       .subscribe(res => {
+        console.log(res);
         this.loading = false;
         this.total = res.Total;
         this.listOfData = res.Data;

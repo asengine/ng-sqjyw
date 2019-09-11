@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { CybtComponent } from './cybt/cybt.component';
+import { CyzjComponent } from './cyzj/cyzj.component';
 import { Router } from '@angular/router';
 import { NzModalService, NzMessageService } from 'ng-zorro-antd';
-import { JyknComponent } from './jykn/jykn.component';
-import { SbbtComponent } from './sbbt/sbbt.component';
+import { GrdkComponent } from './grdk/grdk.component';
+import { QydkComponent } from './qydk/qydk.component';
 
 @Component({
-  selector: 'app-jyyz',
-  templateUrl: './jyyz.component.html',
-  styleUrls: ['./jyyz.component.less', '../routes.component.less']
+  selector: 'app-cyfw',
+  templateUrl: './cyfw.component.html',
+  styleUrls: ['./cyfw.component.less', '../routes.component.less']
 })
-export class JyyzComponent implements OnInit {
+export class CyfwComponent implements OnInit {
   isVisible = false;
   cmpMap = {
-    'jykn': JyknComponent,//就业困难人员信息查询
-    'sbbt': SbbtComponent
+    'cybt': CybtComponent,//创业补贴
+    'cyzj': CyzjComponent,//创业租金
+    'grdk': GrdkComponent,//个人贷款
+    'qydk': QydkComponent//企业贷款
   };
   title: string;
   cmp: string;
@@ -27,7 +31,6 @@ export class JyyzComponent implements OnInit {
   ngOnInit() {
 
   }
-
 
   showModal(cmp: string, title: string): void {
     this.cmp = cmp;

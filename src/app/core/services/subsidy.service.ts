@@ -18,15 +18,28 @@ export class SubsidyService {
 
     }
 
-    public getList(
+    //根据身份证查询个人社保补贴列表
+    public getSsListById(
+        id: string,
         sort: string,
         order: string,
         pageNumber: number,
-        pageSize: number,
-        key: string
+        pageSize: number
     ) {
-        const url = `${this.baseUrl}${this.apiUrl}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}&key=${key}`;
+        const url = `${this.baseUrl}${this.apiUrl}/ss/id/${id}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}`;
         const result = this.http.get<PageList<any>>(url);
+        return result;
+    }
+
+    public getSsListBySi(
+        si: string,
+        sort: string,
+        order: string,
+        pageNumber: number,
+        pageSize: number
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/ss/si/${si}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}`;
+        const result = this.http.get<any>(url);
         return result;
     }
 
@@ -51,6 +64,31 @@ export class SubsidyService {
         pageSize: number
     ) {
         const url = `${this.baseUrl}${this.apiUrl}/bs/si/${si}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}`;
+        const result = this.http.get<any>(url);
+        return result;
+    }
+
+    //根据身份证查询创业租金Rental
+    public getRtListById(
+        id: string,
+        sort: string,
+        order: string,
+        pageNumber: number,
+        pageSize: number
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/rt/id/${id}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}`;
+        const result = this.http.get<PageList<any>>(url);
+        return result;
+    }
+
+    public getRtListBySi(
+        si: string,
+        sort: string,
+        order: string,
+        pageNumber: number,
+        pageSize: number
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/rt/si/${si}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}`;
         const result = this.http.get<any>(url);
         return result;
     }

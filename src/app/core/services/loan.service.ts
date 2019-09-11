@@ -18,38 +18,46 @@ export class LoanService {
 
     }
 
-    public getList(
+    public getEnterpriseById(
+        id: string,
         sort: string,
         order: string,
         pageNumber: number,
-        pageSize: number,
-        key: string,
-    ) {
-        const url = `${this.baseUrl}${this.apiUrl}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}&key=${key}`;
-        const result = this.http.get<PageList<any>>(url);
-        return result;
-    }
-
-    public getEnterpriseByIdcard(id: string) {
-        const url = `${this.baseUrl}${this.apiUrl}/enterprise/id/${id}`;
+        pageSize: number) {
+        const url = `${this.baseUrl}${this.apiUrl}/enterprise/id/${id}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}`;
         const result = this.http.get<any>(url);
         return result;
     }
 
-    public getEnterpriseBySicard(id: string) {
-        const url = `${this.baseUrl}${this.apiUrl}/enterprise/si/${id}`;
+    public getEnterpriseBySi(
+        id: string,
+        sort: string,
+        order: string,
+        pageNumber: number,
+        pageSize: number) {
+        const url = `${this.baseUrl}${this.apiUrl}/enterprise/si/${id}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}`;
         const result = this.http.get<any>(url);
         return result;
     }
 
-    public getPersonalByIdcard(id: string) {
-        const url = `${this.baseUrl}${this.apiUrl}/personal/id/${id}`;
+    public getPersonalById(
+        id: string,
+        sort: string,
+        order: string,
+        pageNumber: number,
+        pageSize: number) {
+        const url = `${this.baseUrl}${this.apiUrl}/personal/id/${id}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}`;
         const result = this.http.get<any>(url);
         return result;
     }
 
-    public getPersonalBySicard(id: string) {
-        const url = `${this.baseUrl}${this.apiUrl}/personal/si/${id}`;
+    public getPersonalBySi(
+        id: string,
+        sort: string,
+        order: string,
+        pageNumber: number,
+        pageSize: number) {
+        const url = `${this.baseUrl}${this.apiUrl}/personal/si/${id}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}`;
         const result = this.http.get<any>(url);
         return result;
     }

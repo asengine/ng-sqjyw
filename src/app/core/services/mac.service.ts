@@ -9,7 +9,6 @@ import { RDC_URL } from '../config/service.config';
 })
 export class MacService {
     private apiUrl = 'api/mac';
-    private httpOptions = {};
 
     constructor(
         private http: HttpClient,
@@ -20,5 +19,11 @@ export class MacService {
         const url = `${this.baseUrl}${this.apiUrl}`;
         console.log(url);
         return this.http.get<string[]>(url);
+    }
+
+    getValues(){
+        const url = `${this.baseUrl}api/values`;
+        console.log(url);
+        return this.http.get<string>(url);
     }
 }

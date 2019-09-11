@@ -9,7 +9,6 @@ import { AUTH_URL } from '../config/service.config';
 })
 export class AuthService {
   private apiUrl = 'api/token';
-  private httpOptions = {};
 
   constructor(
     private http: HttpClient,
@@ -18,14 +17,13 @@ export class AuthService {
 
   loginWithCredentials(mac: string[]): Observable<TokenObj> {
     const url = `${this.authUrl}${this.apiUrl}`;
-    console.log(url);
     return this.http.post<TokenObj>(url, { 'mac': mac });
   }
 
   // 验证是否登录
   authCheck() {
     const url = `${this.authUrl}api/authcheck`;
-    console.log(url);
-    return this.http.get<string>(url);
+    const result = this.http.get<any>(url);
+    return result;
   }
 }

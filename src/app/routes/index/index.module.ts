@@ -4,13 +4,14 @@ import { IndexRoutingModule } from './index.routing.module';
 import { SharedModule } from 'src/app/shared';
 import { AuthService } from 'src/app/core/services/auth.service';
 
-
 @NgModule({
   declarations: [IndexComponent],
   imports: [
     SharedModule,
     IndexRoutingModule
   ],
-  providers: [AuthService]
+  providers: [
+    AuthService
+  ]
 })
 export class IndexModule { }

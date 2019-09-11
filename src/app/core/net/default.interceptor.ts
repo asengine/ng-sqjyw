@@ -98,6 +98,7 @@ export class DefaultInterceptor implements HttpInterceptor {
         this.injector.get(MacService).getLocalMac().subscribe(res => {
           // 向服务端申请授权
           this.injector.get(AuthService).loginWithCredentials(res).subscribe(token => {
+            console.log(token);
             if (token.success) {// 身份验证成功
               // 设置Token信息
               this.tokenService.set({
