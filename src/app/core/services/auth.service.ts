@@ -21,4 +21,11 @@ export class AuthService {
     console.log(url);
     return this.http.post<TokenObj>(url, { 'mac': mac });
   }
+
+  // 验证是否登录
+  authCheck() {
+    const url = `${this.authUrl}api/authcheck`;
+    console.log(url);
+    return this.http.get<string>(url);
+  }
 }

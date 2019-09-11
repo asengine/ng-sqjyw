@@ -62,7 +62,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     this.notification.error(`请求错误 ${ev.status}: ${ev.url}`, errortext);
   }
 
-  private handleData(ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
+  private handleData(ev: HttpResponseBase): Observable<any> {
     // 可能会因为 `throw` 导出无法执行 `_HttpClient` 的 `end()` 操作
     if (ev.status > 0) {
       this.injector.get(_HttpClient).end();
@@ -96,10 +96,8 @@ export class DefaultInterceptor implements HttpInterceptor {
         // 清空 token 信息
         (this.injector.get(DA_SERVICE_TOKEN) as ITokenService).clear();
         this.injector.get(MacService).getLocalMac().subscribe(res => {
-          console.log(res);
           // 向服务端申请授权
           this.injector.get(AuthService).loginWithCredentials(res).subscribe(token => {
-            console.log(token);
             if (token.success) {// 身份验证成功
               // 设置Token信息
               this.tokenService.set({
@@ -150,11 +148,11 @@ export class DefaultInterceptor implements HttpInterceptor {
     return next.handle(newReq).pipe(
       mergeMap((event: any) => {
         // 允许统一对请求错误处理
-        if (event instanceof HttpResponseBase) return this.handleData(event, req, next);
+        if (event instanceof HttpResponseBase) return this.handleData(event);
         // 若一切都正常，则后续操作
         return of(event);
       }),
-      catchError((err: HttpErrorResponse) => this.handleData(err, req, next)),
+      catchError((err: HttpErrorResponse) => this.handleData(err)),
     );
   }
 }
