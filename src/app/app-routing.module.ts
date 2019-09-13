@@ -8,7 +8,9 @@ const routes: Routes = [
   { path: 'job', loadChildren: () => import('./routes/job/job.module').then(m => m.JobModule) },
   { path: 'recruit', loadChildren: () => import('./routes/recruit/recruit.module').then(m => m.RecruitModule) },
   { path: 'jyyz', loadChildren: () => import('./routes/jyyz/jyyz.module').then(m => m.JyyzModule) },
-  { path: 'cyfw', loadChildren: () => import('./routes/cyfw/cyfw.module').then(m => m.CyfwModule) }
+  { path: 'cyfw', loadChildren: () => import('./routes/cyfw/cyfw.module').then(m => m.CyfwModule) },
+  { path: 'grxx', loadChildren: () => import('./routes/grxx/grxx.module').then(m => m.GrxxModule) },
+  { path: 'employer', loadChildren: () => import('./routes/employer/employer.module').then(m => m.EmployerModule) }
 ];
 
 @NgModule({

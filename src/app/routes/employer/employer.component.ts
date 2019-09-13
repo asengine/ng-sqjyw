@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { JobService } from 'src/app/core/services/job.service';
-import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { DetailsComponent } from './details/details.component';
+import { EmployerService } from 'src/app/core/services/employer.service';
 import { Router } from '@angular/router';
+import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 
 @Component({
-  selector: 'app-job',
-  templateUrl: './job.component.html',
-  styleUrls: ['./job.component.less', '../routes.component.less']
+  selector: 'app-employer',
+  templateUrl: './employer.component.html',
+  styleUrls: ['./employer.component.less', '../routes.component.less']
 })
-export class JobComponent implements OnInit {
+export class EmployerComponent implements OnInit {
   /// 分页参数
   pageIndex = 1;
   pageSize = 10;
@@ -23,7 +23,7 @@ export class JobComponent implements OnInit {
 
   constructor(
     public router: Router,
-    private svc: JobService,
+    private svc: EmployerService,
     private modalSvc: NzModalService,
   ) {
 

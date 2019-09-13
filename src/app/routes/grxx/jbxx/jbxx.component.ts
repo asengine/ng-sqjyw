@@ -1,15 +1,18 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { JbxxdetailsComponent } from './jbxxdetails/jbxxdetails.component';
 import { SubsidyService } from 'src/app/core/services/subsidy.service';
 import { RecruitService } from 'src/app/core/services/recruit.service';
-import { CybtdetailsComponent } from './cybtdetails/cybtdetails.component';
 import { NzModalService } from 'ng-zorro-antd';
+import { EmploymentService } from 'src/app/core/services/employment.service';
 
 @Component({
-  selector: 'app-cybt',
-  templateUrl: './cybt.component.html',
-  styleUrls: ['./cybt.component.less']
+  selector: 'app-jbxx',
+  templateUrl: './jbxx.component.html',
+  styleUrls: ['./jbxx.component.less']
 })
-export class CybtComponent implements OnInit {
+export class JbxxComponent implements OnInit {
+
+
   @Input() idcard: string;//身份证号
   @Input() sicard: string;//社保卡号
 
@@ -24,7 +27,7 @@ export class CybtComponent implements OnInit {
   loading = false;
 
   constructor(
-    private subSvc: SubsidyService,
+    private empSvc: EmploymentService,
     private recSvc: RecruitService,
     private modalSvc: NzModalService
   ) { }
@@ -50,8 +53,8 @@ export class CybtComponent implements OnInit {
       this.pageIndex = 1;
     }
     if (this.idcard) {
-      this.subSvc
-        .getBsListById(this.idcard, this.sortKey, this.sortValue, this.pageIndex, this.pageSize)
+      this.empSvc
+        .getListById(this.idcard, this.sortKey, this.sortValue, this.pageIndex, this.pageSize)
         .subscribe(res => {
           console.log(res);
           this.loading = false;
@@ -68,8 +71,8 @@ export class CybtComponent implements OnInit {
       //   });
     }
     else {
-      this.subSvc
-        .getBsListBySi(this.sicard, this.sortKey, this.sortValue, this.pageIndex, this.pageSize)
+      this.empSvc
+        .getListBySi(this.sicard, this.sortKey, this.sortValue, this.pageIndex, this.pageSize)
         .subscribe(res => {
           console.log(res);
           this.loading = false;
@@ -80,19 +83,19 @@ export class CybtComponent implements OnInit {
   }
 
   onClick(id: number) {
-    // this.subSvc.getSsSingle(id).subscribe((res) => {
-    //   const modal = this.modalSvc.create({
-    //     nzTitle: '创业补贴信息',
-    //     nzContent: CybtdetailsComponent,
-    //     nzWidth: '70%',
-    //     nzComponentParams: {
-    //       data: res
-    //     },
-    //     nzFooter: null
-    //   });
-    //   modal.afterClose.subscribe(() => {
-    //     // this.loadData();
-    //   });
-    // });
+    this.recSvc.getSingle(id).subscribe((res) => {
+      const modal = this.modalSvc.create({
+        nzTitle: '个人基本信息',
+        nzContent: JbxxdetailsComponent,
+        nzWidth: '70%',
+        nzComponentParams: {
+          data: res
+        },
+        nzFooter: null
+      });
+      modal.afterClose.subscribe(() => {
+        // this.loadData();
+      });
+    });
   }
 }

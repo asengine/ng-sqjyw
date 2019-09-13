@@ -51,26 +51,26 @@ export class SbbtComponent implements OnInit {
       this.pageIndex = 1;
     }
     if (this.idcard) {
-      // this.subSvc
-      //   .getBsListById(this.idcard, this.sortKey, this.sortValue, this.pageIndex, this.pageSize)
-      //   .subscribe(res => {
-      //     console.log(res);
-      //     this.loading = false;
-      //     this.total = res.Total;
-      //     this.listOfData = res.Data;
-      //   });
-      this.recSvc
-        .getList(this.sortKey, this.sortValue, this.pageIndex, this.pageSize, '')
+      this.subSvc
+        .getSsListById(this.idcard, this.sortKey, this.sortValue, this.pageIndex, this.pageSize)
         .subscribe(res => {
           console.log(res);
           this.loading = false;
           this.total = res.Total;
           this.listOfData = res.Data;
         });
+      // this.recSvc
+      //   .getList(this.sortKey, this.sortValue, this.pageIndex, this.pageSize, '')
+      //   .subscribe(res => {
+      //     console.log(res);
+      //     this.loading = false;
+      //     this.total = res.Total;
+      //     this.listOfData = res.Data;
+      //   });
     }
     else {
       this.subSvc
-        .getBsListBySi(this.sicard, this.sortKey, this.sortValue, this.pageIndex, this.pageSize)
+        .getSsListBySi(this.sicard, this.sortKey, this.sortValue, this.pageIndex, this.pageSize)
         .subscribe(res => {
           console.log(res);
           this.loading = false;

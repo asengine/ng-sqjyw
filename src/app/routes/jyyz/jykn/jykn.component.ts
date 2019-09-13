@@ -51,22 +51,22 @@ export class JyknComponent implements OnInit {
       this.pageIndex = 1;
     }
     if (this.idcard) {
-      // this.subSvc
-      //   .getHardListById(this.idcard, this.sortKey, this.sortValue, this.pageIndex, this.pageSize)
-      //   .subscribe(res => {
-      //     console.log(res);
-      //     this.loading = false;
-      //     this.total = res.Total;
-      //     this.listOfData = res.Data;
-      //   });
-      this.recSvc
-        .getList(this.sortKey, this.sortValue, this.pageIndex, this.pageSize, '')
+      this.empSvc
+        .getHardListById(this.idcard, this.sortKey, this.sortValue, this.pageIndex, this.pageSize)
         .subscribe(res => {
           console.log(res);
           this.loading = false;
           this.total = res.Total;
           this.listOfData = res.Data;
         });
+      // this.recSvc
+      //   .getList(this.sortKey, this.sortValue, this.pageIndex, this.pageSize, '')
+      //   .subscribe(res => {
+      //     console.log(res);
+      //     this.loading = false;
+      //     this.total = res.Total;
+      //     this.listOfData = res.Data;
+      //   });
     }
     else {
       this.empSvc
@@ -81,19 +81,19 @@ export class JyknComponent implements OnInit {
   }
 
   onClick(id: number) {
-    this.recSvc.getSingle(id).subscribe((res) => {
-      const modal = this.modalSvc.create({
-        nzTitle: '就业困难人员信息',
-        nzContent: JykndetailsComponent,
-        nzWidth: '70%',
-        nzComponentParams: {
-          data: res
-        },
-        nzFooter: null
-      });
-      modal.afterClose.subscribe(() => {
-        // this.loadData();
-      });
-    });
+    // this.recSvc.getSingle(id).subscribe((res) => {
+    //   const modal = this.modalSvc.create({
+    //     nzTitle: '就业困难人员信息',
+    //     nzContent: JykndetailsComponent,
+    //     nzWidth: '70%',
+    //     nzComponentParams: {
+    //       data: res
+    //     },
+    //     nzFooter: null
+    //   });
+    //   modal.afterClose.subscribe(() => {
+    //     // this.loadData();
+    //   });
+    // });
   }
 }

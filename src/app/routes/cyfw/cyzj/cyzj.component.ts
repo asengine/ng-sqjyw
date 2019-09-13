@@ -51,22 +51,22 @@ export class CyzjComponent implements OnInit {
       this.pageIndex = 1;
     }
     if (this.idcard) {
-      // this.subSvc
-      //   .getRtListById(this.idcard, this.sortKey, this.sortValue, this.pageIndex, this.pageSize)
-      //   .subscribe(res => {
-      //     console.log(res);
-      //     this.loading = false;
-      //     this.total = res.Total;
-      //     this.listOfData = res.Data;
-      //   });
-      this.recSvc
-        .getList(this.sortKey, this.sortValue, this.pageIndex, this.pageSize, '')
+      this.subSvc
+        .getRtListById(this.idcard, this.sortKey, this.sortValue, this.pageIndex, this.pageSize)
         .subscribe(res => {
           console.log(res);
           this.loading = false;
           this.total = res.Total;
           this.listOfData = res.Data;
         });
+      // this.recSvc
+      //   .getList(this.sortKey, this.sortValue, this.pageIndex, this.pageSize, '')
+      //   .subscribe(res => {
+      //     console.log(res);
+      //     this.loading = false;
+      //     this.total = res.Total;
+      //     this.listOfData = res.Data;
+      //   });
     }
     else {
       this.subSvc
@@ -81,19 +81,19 @@ export class CyzjComponent implements OnInit {
   }
 
   onClick(id: number) {
-    this.recSvc.getSingle(id).subscribe((res) => {
-      const modal = this.modalSvc.create({
-        nzTitle: '创业租金信息',
-        nzContent: CyzjdetailsComponent,
-        nzWidth: '70%',
-        nzComponentParams: {
-          data: res
-        },
-        nzFooter: null
-      });
-      modal.afterClose.subscribe(() => {
-        // this.loadData();
-      });
-    });
+    // this.subSvc.getRtSingle(id).subscribe((res) => {
+    //   const modal = this.modalSvc.create({
+    //     nzTitle: '创业租金信息',
+    //     nzContent: CyzjdetailsComponent,
+    //     nzWidth: '70%',
+    //     nzComponentParams: {
+    //       data: res
+    //     },
+    //     nzFooter: null
+    //   });
+    //   modal.afterClose.subscribe(() => {
+    //     // this.loadData();
+    //   });
+    // });
   }
 }

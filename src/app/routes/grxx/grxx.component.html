@@ -1,0 +1,22 @@
+<div class="container">
+    <!-- <nz-page-header (nzBack)="onBack()" nzBackIcon nzTitle="就业服务查询" nzSubtitle=""></nz-page-header> -->
+    <table cellpadding="0" cellspacing="10">
+        <tbody>
+            <tr>
+                <td style="width: 50%"><a (click)="showModal('jbxx','个人基本信息')">个人基本信息</a></td>
+                <td style="width: 50%"><a (click)="showModal('jycyz','就业创业证')">就业创业证</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="title" [nzFooter]="null" (nzOnCancel)="handleCancel()"
+    (nzOnOk)="handleOk()">
+    <table class="read-card" cellspacing="10">
+        <tbody>
+            <tr>
+                <td><a (click)="readidcard()">读身份证</a></td>
+                <td><a (click)="readsicard()">读社保卡</a></td>
+            </tr>
+        </tbody>
+    </table>
+</nz-modal>

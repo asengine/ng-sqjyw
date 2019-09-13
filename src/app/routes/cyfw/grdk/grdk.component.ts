@@ -81,19 +81,19 @@ export class GrdkComponent implements OnInit {
   }
 
   onClick(id: number) {
-    this.recSvc.getSingle(id).subscribe((res) => {
-      const modal = this.modalSvc.create({
-        nzTitle: '个人创业贷款信息',
-        nzContent: GrdkdetailsComponent,
-        nzWidth: '70%',
-        nzComponentParams: {
-          data: res
-        },
-        nzFooter: null
-      });
-      modal.afterClose.subscribe(() => {
-        // this.loadData();
-      });
-    });
+    // this.recSvc.getSingle(id).subscribe((res) => {
+    //   const modal = this.modalSvc.create({
+    //     nzTitle: '个人创业贷款信息',
+    //     nzContent: GrdkdetailsComponent,
+    //     nzWidth: '70%',
+    //     nzComponentParams: {
+    //       data: res
+    //     },
+    //     nzFooter: null
+    //   });
+    //   modal.afterClose.subscribe(() => {
+    //     // this.loadData();
+    //   });
+    // });
   }
 }

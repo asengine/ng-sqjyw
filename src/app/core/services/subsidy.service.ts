@@ -18,6 +18,12 @@ export class SubsidyService {
 
     }
 
+    getSsSingle(id: number) {
+        const url = `${this.baseUrl}${this.apiUrl}/ss/${id}`;
+        const result = this.http.get<any>(url);
+        return result;
+    }
+
     //根据身份证查询个人社保补贴列表
     public getSsListById(
         id: string,
@@ -39,6 +45,14 @@ export class SubsidyService {
         pageSize: number
     ) {
         const url = `${this.baseUrl}${this.apiUrl}/ss/si/${si}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}`;
+        const result = this.http.get<any>(url);
+        return result;
+    }
+
+
+    
+    getBsSingle(id: number) {
+        const url = `${this.baseUrl}${this.apiUrl}/bs/${id}`;
         const result = this.http.get<any>(url);
         return result;
     }
@@ -68,6 +82,12 @@ export class SubsidyService {
         return result;
     }
 
+
+    getRtSingle(id: number) {
+        const url = `${this.baseUrl}${this.apiUrl}/rt/${id}`;
+        const result = this.http.get<any>(url);
+        return result;
+    }
     //根据身份证查询创业租金Rental
     public getRtListById(
         id: string,

@@ -81,19 +81,19 @@ export class QydkComponent implements OnInit {
   }
 
   onClick(id: number) {
-    this.recSvc.getSingle(id).subscribe((res) => {
-      const modal = this.modalSvc.create({
-        nzTitle: '个人创业贷款信息',
-        nzContent: QydkdetailsComponent,
-        nzWidth: '70%',
-        nzComponentParams: {
-          data: res
-        },
-        nzFooter: null
-      });
-      modal.afterClose.subscribe(() => {
-        // this.loadData();
-      });
-    });
+    // this.recSvc.getSingle(id).subscribe((res) => {
+    //   const modal = this.modalSvc.create({
+    //     nzTitle: '个人创业贷款信息',
+    //     nzContent: QydkdetailsComponent,
+    //     nzWidth: '70%',
+    //     nzComponentParams: {
+    //       data: res
+    //     },
+    //     nzFooter: null
+    //   });
+    //   modal.afterClose.subscribe(() => {
+    //     // this.loadData();
+    //   });
+    // });
   }
 }

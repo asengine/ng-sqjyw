@@ -4,20 +4,18 @@
         (nzPageSizeChange)="searchData(true)" nzBordered="true" [nzShowTotal]="totalTemplate">
         <thead (nzSortChange)="sort($event)" nzSingleSort>
             <tr>
-                <th nzShowSort nzSortKey="ACC300">申请补贴序号</th>
-                <th nzShowSort nzSortKey="AAB004">经营实体(网店)名称</th>
-                <th nzShowSort nzSortKey="ACC30I">申请补贴金额</th>
-                <th nzShowSort nzSortKey="AAC003">姓名</th>
-                <th nzShowSort nzSortKey="AAC187">发证日期</th>
+                <th nzShowSort nzSortKey="aac002">公民身份号码</th>
+                <th nzShowSort nzSortKey="aac003">姓名</th>
+                <th nzShowSort nzSortKey="adc001">就业失业登记证号码</th>
+                <th nzShowSort nzSortKey="AAC003">发证日期</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of ajaxTable.data">
-                <td><a (click)="onClick(data.BAZ001)">{{data.ACC300}}</a></td>
-                <td>{{data.AAB004}}</td>
-                <td>{{data.ACC30I}}</td>
+                <td><a (click)="onClick(data.BAZ001)">{{data.aac002}}</a></td>
+                <td>{{data.aac003}}</td>
+                <td>{{data.adc001}}</td>
                 <td>{{data.AAC003}}</td>
-                <td>{{data.AAC187}}</td>
             </tr>
         </tbody>
     </nz-table>
