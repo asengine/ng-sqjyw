@@ -15,18 +15,16 @@ export class JobComponent implements OnInit {
   pageSize = 10;
   total = 1;
   listOfData = [];
+  sortKey = 'AAE030';
+  sortValue = 'desc';
+  key = '';
+
   loading = false;
-  sortKey = "AAE030";
-  sortValue = "desc";
-  filterGender = [{ text: 'male', value: 'male' }, { text: 'female', value: 'female' }];
-  searchGenderList: string[] = [];
-  editingRow: any;
 
   constructor(
     public router: Router,
     private svc: JobService,
-    private modalSrv: NzModalService,
-    public message: NzMessageService
+    private modalSvc: NzModalService,
   ) {
 
   }
@@ -46,29 +44,25 @@ export class JobComponent implements OnInit {
   }
 
   searchData(reset: boolean = false): void {
+    console.log(this.key);
     if (reset) {
       this.pageIndex = 1;
     }
     this.loading = true;
     this.svc
-      .getList(this.sortKey, this.sortValue, this.pageIndex, this.pageSize, '')
+      .getList(this.sortKey, this.sortValue, this.pageIndex, this.pageSize, this.key)
       .subscribe(res => {
+        console.log(res);
         this.loading = false;
         this.total = res.Total;
         this.listOfData = res.Data;
-        // this.message.success("查询成功");
       });
-  }
-
-  updateFilter(value: string[]): void {
-    this.searchGenderList = value;
-    this.searchData(true);
   }
 
   onClick(id: number) {
     this.svc.getSingle(id).subscribe((res) => {
-      const modal = this.modalSrv.create({
-        nzTitle: '岗位信息',
+      const modal = this.modalSvc.create({
+        nzTitle: '招聘会信息',
         nzContent: DetailsComponent,
         nzWidth: '70%',
         nzComponentParams: {

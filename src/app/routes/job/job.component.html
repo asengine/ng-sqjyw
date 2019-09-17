@@ -1,28 +1,43 @@
 <div class="container">
-    <nz-page-header (nzBack)="onBack()" nzBackIcon nzTitle="招聘会查询" nzSubtitle=""> </nz-page-header>
+    <!-- <nz-page-header (nzBack)="onBack()" nzBackIcon nzTitle="岗位查询" nzSubtitle=""></nz-page-header> -->
+    <form nz-form #formRef="ngForm" (ngSubmit)="!loading&&searchData(true)">
+        <nz-form-item>
+            <nz-form-control>
+                <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+                    <input nz-input #KeyRef="ngModel" [(ngModel)]="key" name="key" placeholder="请输入关键字" />
+                </nz-input-group>
+                <ng-template #suffixButton>
+                    <button nz-button type="submit" nzType="primary" nzSize="large"
+                        [disabled]="formRef.invalid||loading" nzSearch>搜索</button>
+                </ng-template>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
     <nz-table #ajaxTable nzShowSizeChanger [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
         [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzPageIndexChange)="searchData()"
         (nzPageSizeChange)="searchData(true)" nzBordered="true" [nzShowTotal]="totalTemplate">
         <thead (nzSortChange)="sort($event)" nzSingleSort>
             <tr>
+                <th nzShowSort nzSortKey="AAB004">公司名称</th>
                 <th nzShowSort nzSortKey="ACA112">岗位名称</th>
                 <th nzShowSort nzSortKey="ACB21A">岗位类型</th>
-                <th nzShowSort nzSortKey="AAEA20">发布单位</th>
+                <th nzShowSort nzSortKey="ACB214">薪资</th>
                 <th nzShowSort nzSortKey="AAE030">截止日期</th>
                 <!-- <th>Action</th> -->
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of ajaxTable.data">
-                <td><a (click)="onClick(data.ACB210)">{{data.ACA112}}</a></td>
+                <td><a (click)="onClick(data.ACB210)">{{data.AAB004}}</a></td>
+                <td>{{data.ACA112}}</td>
                 <td>{{data.ACB21A}}</td>
-                <td>{{data.AAEA20}}</td>
+                <td>{{data.ACB214}}</td>
                 <td>{{data.AAE030}}</td>
                 <!-- <td>
-                    <a>Action 一 {{ data.name }}</a>
-                    <nz-divider nzType="vertical"></nz-divider>
-                    <a>Delete</a>
-                </td> -->
+                <a>Action 一 {{ data.name }}</a>
+                <nz-divider nzType="vertical"></nz-divider>
+                <a>Delete</a>
+            </td> -->
             </tr>
         </tbody>
     </nz-table>

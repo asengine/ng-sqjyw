@@ -1,0 +1,47 @@
+<div class="container">
+    <nz-table #ajaxTable nzShowSizeChanger [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
+        [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzPageIndexChange)="searchData()"
+        (nzPageSizeChange)="searchData(true)" nzBordered="true" [nzShowTotal]="totalTemplate">
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+            <tr>
+                <th nzShowSort nzSortKey="aac002">公民身份号码</th>
+                <th nzShowSort nzSortKey="aac003">姓名</th>
+                <th nzShowSort nzSortKey="adc001">就业失业登记证号码</th>
+                <th nzShowSort nzSortKey="AAC003">发证日期</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of ajaxTable.data">
+                <td><a (click)="onClick(data.BAZ001)">{{data.aac002}}</a></td>
+                <td>{{data.aac003}}</td>
+                <td>{{data.adc001}}</td>
+                <td>{{data.AAC003}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+    <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template>
+</div>
+
+<!-- <div class="container">
+    <nz-table #ajaxTable nzShowSizeChanger [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
+        [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzPageIndexChange)="searchData()"
+        (nzPageSizeChange)="searchData(true)" nzBordered="true" [nzShowTotal]="totalTemplate">
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+            <tr>
+                <th nzShowSort nzSortKey="ACA112">岗位名称</th>
+                <th nzShowSort nzSortKey="ACB21A">岗位类型</th>
+                <th nzShowSort nzSortKey="AAEA20">发布单位</th>
+                <th nzShowSort nzSortKey="AAE030">截止日期</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of ajaxTable.data">
+                <td><a (click)="onClick(data.ACB210)">{{data.ACA112}}</a></td>
+                <td>{{data.ACB21A}}</td>
+                <td>{{data.AAEA20}}</td>
+                <td>{{data.AAE030}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+    <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template>
+</div> -->

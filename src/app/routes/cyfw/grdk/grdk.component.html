@@ -1,0 +1,51 @@
+<div class="container">
+    <nz-table #ajaxTable nzShowSizeChanger [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
+        [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzPageIndexChange)="searchData()"
+        (nzPageSizeChange)="searchData(true)" nzBordered="true" [nzShowTotal]="totalTemplate">
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+            <tr>
+                <th nzShowSort nzSortKey="ACC140">个人小额担保贷款流水号</th>
+                <th nzShowSort nzSortKey="AAB004">创业企业名(全称)</th>
+                <th nzShowSort nzSortKey="ACC146">贷款申请金额</th>
+                <th nzShowSort nzSortKey="AAC003">姓名</th>
+                <th nzShowSort nzSortKey="acb1a3">借贷起始日期</th>
+                <th nzShowSort nzSortKey="acb1a4">还贷截至日期</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of ajaxTable.data">
+                <td><a (click)="onClick(data.BAZ001)">{{data.ACC140}}</a></td>
+                <td>{{data.AAB004}}</td>
+                <td>{{data.ACC146}}</td>
+                <td>{{data.AAC003}}</td>
+                <td>{{data.acb1a3}}</td>
+                <td>{{data.acb1a4}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+    <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template>
+</div>
+
+<!-- <div class="container">
+    <nz-table #ajaxTable nzShowSizeChanger [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
+        [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzPageIndexChange)="searchData()"
+        (nzPageSizeChange)="searchData(true)" nzBordered="true" [nzShowTotal]="totalTemplate">
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+            <tr>
+                <th nzShowSort nzSortKey="ACA112">岗位名称</th>
+                <th nzShowSort nzSortKey="ACB21A">岗位类型</th>
+                <th nzShowSort nzSortKey="AAEA20">发布单位</th>
+                <th nzShowSort nzSortKey="AAE030">截止日期</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of ajaxTable.data">
+                <td><a (click)="onClick(data.ACB210)">{{data.ACA112}}</a></td>
+                <td>{{data.ACB21A}}</td>
+                <td>{{data.AAEA20}}</td>
+                <td>{{data.AAE030}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+    <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template>
+</div> -->

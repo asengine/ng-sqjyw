@@ -15,12 +15,11 @@ export class RecruitComponent implements OnInit {
   pageSize = 10;
   total = 1;
   listOfData = [];
-  loading = false;
   sortKey = 'AAE030';
   sortValue = 'desc';
-  filterGender = [{ text: 'male', value: 'male' }, { text: 'female', value: 'female' }];
-  searchGenderList: string[] = [];
   key = '';
+
+  loading = false;
 
   constructor(
     public router: Router,
@@ -53,15 +52,11 @@ export class RecruitComponent implements OnInit {
     this.svc
       .getList(this.sortKey, this.sortValue, this.pageIndex, this.pageSize, this.key)
       .subscribe(res => {
+        console.log(res);
         this.loading = false;
         this.total = res.Total;
         this.listOfData = res.Data;
       });
-  }
-
-  updateFilter(value: string[]): void {
-    this.searchGenderList = value;
-    this.searchData(true);
   }
 
   onClick(id: number) {

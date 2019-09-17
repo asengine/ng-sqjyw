@@ -1,0 +1,53 @@
+<div class="container">
+    <div nz-row nzType="flex" nzJustify="space-around">
+        <div nz-col nzSpan="6"><a (click)="showModal('jbxx','个人基本信息')">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_13-22.png" />
+                </p>
+                <p>个人基本信息</p>
+            </a>
+        </div>
+        <div nz-col nzSpan="6"><a (click)="showModal('jycyz','就业创业证')">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_11.png" />
+                </p>
+                <p>就业创业证</p>
+            </a>
+        </div>
+    </div>
+</div>
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="title" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <div nz-row nzType="flex" nzJustify="space-around">
+        <div nz-col nzSpan="12"><a (click)="readidcard()">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_03.png" />
+                </p>
+                <p>读身份证</p>
+            </a>
+        </div>
+        <div nz-col nzSpan="12"><a (click)="readidcard()">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_13-19.png" />
+                </p>
+                <p>读社保卡</p>
+            </a>
+        </div>
+    </div>
+</nz-modal>
+<!-- <div class="container">
+    <table cellpadding="0" cellspacing="10">
+        <tbody>
+            <tr>
+                <td style="width: 50%"><a (click)="showModal('jbxx','个人基本信息')">个人基本信息</a></td>
+                <td style="width: 50%"><a (click)="showModal('jycyz','就业创业证')">就业创业证</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<nz-modal [(nzVisible)]="isVisible" [nzTitle]="title" [nzFooter]="null" (nzOnCancel)="handleCancel()"
+    (nzOnOk)="handleOk()">
+    <table class="read-card" cellspacing="10">
+        <tbody>
+            <tr>
+                <td><a (click)="readidcard()">读身份证</a></td>
+                <td><a (click)="readsicard()">读社保卡</a></td>
+            </tr>
+        </tbody>
+    </table>
+</nz-modal> -->
