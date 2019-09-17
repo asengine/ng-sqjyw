@@ -1,5 +1,4 @@
-<div class="container">
-    <!-- <nz-page-header (nzBack)="onBack()" nzBackIcon nzTitle="就业服务查询" nzSubtitle=""></nz-page-header> -->
+<!-- <div class="container">
     <table cellpadding="0" cellspacing="10">
         <tbody>
             <tr>
@@ -12,14 +11,50 @@
             </tr>
         </tbody>
     </table>
+</div> -->
+
+
+<div class="container">
+    <div nz-row nzType="flex" nzJustify="space-around">
+        <div nz-col nzSpan="6"><a (click)="showModal('grdk','个人创业贷款')">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_25-40.png" />
+                </p>
+                <p>个人创业贷款</p>
+            </a>
+        </div>
+        <div nz-col nzSpan="6"><a (click)="showModal('qydk','企业小额担保贷款')">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_20-29.png" />
+                </p>
+                <p>企业小额担保贷款</p>
+            </a>
+        </div>
+        <div nz-col nzSpan="6"><a (click)="showModal('cybt','初次创业补贴')">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_18-21.png" />
+                </p>
+                <p>初次创业补贴</p>
+            </a>
+        </div>
+        <div nz-col nzSpan="6"><a (click)="showModal('cyzj','创业租金补贴')">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_23.png" />
+                </p>
+                <p>创业租金补贴</p>
+            </a>
+        </div>
+    </div>
 </div>
 <nz-modal [(nzVisible)]="isVisible" [nzTitle]="title" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
-    <table class="read-card" cellspacing="10">
-        <tbody>
-            <tr>
-                <td><a (click)="readidcard()">读身份证</a></td>
-                <td><a (click)="readsicard()">读社保卡</a></td>
-            </tr>
-        </tbody>
-    </table>
+    <div nz-row nzType="flex" nzJustify="space-around">
+        <div nz-col nzSpan="12"><a (click)="readidcard()">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_03.png" />
+                </p>
+                <p>读身份证</p>
+            </a>
+        </div>
+        <div nz-col nzSpan="12"><a (click)="readidcard()">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_13-19.png" />
+                </p>
+                <p>读社保卡</p>
+            </a>
+        </div>
+    </div>
 </nz-modal>

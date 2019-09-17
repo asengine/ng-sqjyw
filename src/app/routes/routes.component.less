@@ -46,6 +46,10 @@
   color: #ffffff;
 }
 
+::ng-deep .container .ant-table-body table{
+  background: url(../../assets/timg.jpg) repeat;
+}
+
 ::ng-deep .container .ant-table-body table .ant-table-thead .ant-table-row th {
   // background-color: #ffffff;
   // background-color: #3ba0e9;
@@ -73,7 +77,8 @@
 }
 
 ::ng-deep .ant-modal-content {
-  background: url(../../assets/timg.jpg) repeat;
+  /*background: url(../../assets/timg.jpg) repeat;*/
+  background-color:#05073a;
 }
 
 ::ng-deep .ant-modal-header {
@@ -98,4 +103,18 @@
 
 ::ng-deep .ant-descriptions-item-content {
   color: #ffffff;
+}
+
+::ng-deep .ant-row-flex .ant-col-6,
+::ng-deep .ant-row-flex .ant-col-12 {
+  margin: 50px 0;
+}
+
+::ng-deep .ant-row-flex a{
+  font-size: 20px;
+  color:#ffffff;
+}
+
+::ng-deep .ant-row-flex a p{
+  text-align: center;
 }

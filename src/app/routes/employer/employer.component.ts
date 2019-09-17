@@ -15,7 +15,7 @@ export class EmployerComponent implements OnInit {
   pageSize = 10;
   total = 1;
   listOfData = [];
-  sortKey = 'AAE030';
+  sortKey = 'AAB001';
   sortValue = 'desc';
   key = '';
 
