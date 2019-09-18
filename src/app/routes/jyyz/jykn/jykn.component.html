@@ -5,15 +5,15 @@
         <thead (nzSortChange)="sort($event)" nzSingleSort>
             <tr>
                 <th nzShowSort nzSortKey="AAC003">姓名</th>
-                <th nzShowSort nzSortKey="aac002">公民身份号码</th>
-                <th nzShowSort nzSortKey="adc310">认定困难类别</th>
+                <th nzShowSort nzSortKey="AAC002">公民身份号码</th>
+                <th nzShowSort nzSortKey="ADC310">认定困难类别</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of ajaxTable.data">
                 <td><a (click)="onClick(data.BAZ001)">{{data.AAC003}}</a></td>
-                <td>{{data.aac002}}</td>
-                <td>{{data.adc310}}</td>
+                <td>{{data.AAC002}}</td>
+                <td>{{data.ADC310}}</td>
             </tr>
         </tbody>
     </nz-table>

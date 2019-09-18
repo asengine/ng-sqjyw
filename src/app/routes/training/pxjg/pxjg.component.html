@@ -1,0 +1,34 @@
+<div class="container">
+    <form nz-form #formRef="ngForm" (ngSubmit)="!loading&&searchData(true)">
+        <nz-form-item>
+            <nz-form-control>
+                <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+                    <input nz-input #KeyRef="ngModel" [(ngModel)]="key" name="key" placeholder="请输入关键字" />
+                </nz-input-group>
+                <ng-template #suffixButton>
+                    <button nz-button type="submit" nzType="primary" nzSize="large"
+                        [disabled]="formRef.invalid||loading" nzSearch>搜索</button>
+                </ng-template>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+    <nz-table #ajaxTable nzShowSizeChanger [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
+        [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzPageIndexChange)="searchData()"
+        (nzPageSizeChange)="searchData(true)" nzBordered="true" [nzShowTotal]="totalTemplate">
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+            <tr>
+                <th nzShowSort nzSortKey="AHB401">培训机构名称</th>
+                <th nzShowSort nzSortKey="AAE005">联系电话</th>
+                <th nzShowSort nzSortKey="AAE006">地址</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of ajaxTable.data">
+                <td><a (click)="onClick(data.AHB400)">{{data.AHB401}}</a></td>
+                <td>{{data.AAE005}}</td>
+                <td>{{data.AAE006}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+    <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template>
+</div>

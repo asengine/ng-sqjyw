@@ -1,0 +1,21 @@
+<div class="container">
+    <nz-table #ajaxTable nzShowSizeChanger [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
+        [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize" (nzPageIndexChange)="searchData()"
+        (nzPageSizeChange)="searchData(true)" nzBordered="true" [nzShowTotal]="totalTemplate">
+        <thead (nzSortChange)="sort($event)" nzSingleSort>
+            <tr>
+                <th nzShowSort nzSortKey="AAC003">姓名</th>
+                <th nzShowSort nzSortKey="AHB401">培训机构名称</th>
+                <th nzShowSort nzSortKey="AHB509">开班日期</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of ajaxTable.data">
+                <td><a (click)="onClick(data.AHB500)">{{data.AAC003}}</a></td>
+                <td>{{data.AHB401}}</td>
+                <td>{{data.AHB509}}</td>
+            </tr>
+        </tbody>
+    </nz-table>
+    <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template>
+</div>

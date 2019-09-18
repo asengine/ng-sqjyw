@@ -4,22 +4,22 @@
         (nzPageSizeChange)="searchData(true)" nzBordered="true" [nzShowTotal]="totalTemplate">
         <thead (nzSortChange)="sort($event)" nzSingleSort>
             <tr>
-                <th nzShowSort nzSortKey="acb140">企业小额担保贷款流水号</th>
-                <th nzShowSort nzSortKey="aab004">单位名称</th>
-                <th nzShowSort nzSortKey="acb142">贷款金额</th>
-                <th nzShowSort nzSortKey="aae045">法定代表人姓名</th>
-                <th nzShowSort nzSortKey="acb143">贷款起始日期</th>
-                <th nzShowSort nzSortKey="acb144">贷款终止日期</th>
+                <th nzShowSort nzSortKey="ACB140">企业小额担保贷款流水号</th>
+                <th nzShowSort nzSortKey="AAB004">单位名称</th>
+                <th nzShowSort nzSortKey="ACB142">贷款金额</th>
+                <th nzShowSort nzSortKey="AAE045">法定代表人姓名</th>
+                <th nzShowSort nzSortKey="ACB143">贷款起始日期</th>
+                <th nzShowSort nzSortKey="ACB144">贷款终止日期</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of ajaxTable.data">
-                <td><a (click)="onClick(data.BAZ001)">{{data.acb140}}</a></td>
-                <td>{{data.aab004}}</td>
-                <td>{{data.acb142}}</td>
-                <td>{{data.aae045}}</td>
-                <td>{{data.acb143}}</td>
-                <td>{{data.acb144}}</td>
+                <td><a (click)="onClick(data.BAZ001)">{{data.ACB140}}</a></td>
+                <td>{{data.AAB004}}</td>
+                <td>{{data.ACB142}}</td>
+                <td>{{data.AAE045}}</td>
+                <td>{{data.ACB143}}</td>
+                <td>{{data.ACB144}}</td>
             </tr>
         </tbody>
     </nz-table>
