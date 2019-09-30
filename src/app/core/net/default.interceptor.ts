@@ -96,6 +96,7 @@ export class DefaultInterceptor implements HttpInterceptor {
         // 清空 token 信息
         (this.injector.get(DA_SERVICE_TOKEN) as ITokenService).clear();
         this.injector.get(MacService).getLocalMac().subscribe(res => {
+          console.log(res);
           // 向服务端申请授权
           this.injector.get(AuthService).loginWithCredentials(res).subscribe(token => {
             console.log(token);

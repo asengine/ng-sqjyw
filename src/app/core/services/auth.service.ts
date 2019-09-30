@@ -23,6 +23,7 @@ export class AuthService {
   // 验证是否登录
   authCheck() {
     const url = `${this.authUrl}api/authcheck`;
+    console.log(url);
     const result = this.http.get<any>(url);
     return result;
   }
