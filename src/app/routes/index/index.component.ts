@@ -25,6 +25,6 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.tokenService.get().token);
+    // console.log(this.tokenService.get().token);
   }
 }
