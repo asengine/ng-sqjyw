@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { ListComponent } from './list/list.component';
+import { ReadCardService } from 'src/app/core/services/readcard.service';
 
 @Component({
   selector: 'app-sybx',
@@ -13,6 +14,7 @@ export class SybxComponent implements OnInit {
   constructor(
     public router: Router,
     private modalSvc: NzModalService,
+    private cardSvc: ReadCardService,
     private msgSvc: NzMessageService
   ) { }
 
@@ -22,35 +24,37 @@ export class SybxComponent implements OnInit {
 
   //读身份证
   readidcard() {
-    const idcard = '321321198801087813';
-    const modal = this.modalSvc.create({
-      nzTitle: this.title,
-      nzContent: ListComponent,
-      nzWidth: '70%',
-      nzComponentParams: {
-        idcard: idcard
-      },
-      nzFooter: null
-    });
-    modal.afterClose.subscribe(() => {
-      // this.loadData();
+    this.cardSvc.readIdCard().subscribe(res => {
+      const modal = this.modalSvc.create({
+        nzTitle: this.title,
+        nzContent: ListComponent,
+        nzWidth: '70%',
+        nzComponentParams: {
+          idcard: res
+        },
+        nzFooter: null
+      });
+      modal.afterClose.subscribe(() => {
+        // this.loadData();
+      });
     });
   }
 
   //读社保卡
   readsicard() {
-    const sicard = '321321198801087813';
-    const modal = this.modalSvc.create({
-      nzTitle: this.title,
-      nzContent: ListComponent,
-      nzWidth: '70%',
-      nzComponentParams: {
-        sicard: sicard
-      },
-      nzFooter: null
-    });
-    modal.afterClose.subscribe(() => {
-      // this.loadData();
+    this.cardSvc.readSiCard().subscribe(res => {
+      const modal = this.modalSvc.create({
+        nzTitle: this.title,
+        nzContent: ListComponent,
+        nzWidth: '70%',
+        nzComponentParams: {
+          sicard: res
+        },
+        nzFooter: null
+      });
+      modal.afterClose.subscribe(() => {
+        // this.loadData();
+      });
     });
   }
 }

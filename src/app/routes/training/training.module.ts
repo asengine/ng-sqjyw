@@ -8,6 +8,7 @@ import { PxjgdetailsComponent } from './pxjg/pxjgdetails/pxjgdetails.component';
 import { PxcjComponent } from './pxcj/pxcj.component';
 import { PxcjdetailsComponent } from './pxcj/pxcjdetails/pxcjdetails.component';
 import { TrainingService } from 'src/app/core/services/training.service';
+import { ReadCardService } from 'src/app/core/services/readcard.service';
 
 
 
@@ -30,7 +31,8 @@ import { TrainingService } from 'src/app/core/services/training.service';
     TrainingRoutingModule
   ],
   providers: [
-    TrainingService
+    TrainingService,
+    ReadCardService
   ]
 })
 export class TrainingModule { }

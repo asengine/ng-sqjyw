@@ -11,6 +11,7 @@ import { JykndetailsComponent } from './jykn/jykndetails/jykndetails.component';
 import { SbbtComponent } from './sbbt/sbbt.component';
 import { SbbtdetailsComponent } from './sbbt/sbbtdetails/sbbtdetails.component';
 import { EmploymentService } from 'src/app/core/services/employment.service';
+import { ReadCardService } from 'src/app/core/services/readcard.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { EmploymentService } from 'src/app/core/services/employment.service';
     SubsidyService,
     LoanService,
     RecruitService,
-    EmploymentService
+    EmploymentService,
+    ReadCardService
   ]
 })
 export class JyyzModule { }

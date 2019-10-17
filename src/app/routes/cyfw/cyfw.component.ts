@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { GrdkComponent } from './grdk/grdk.component';
 import { QydkComponent } from './qydk/qydk.component';
+import { ReadCardService } from 'src/app/core/services/readcard.service';
 
 @Component({
   selector: 'app-cyfw',
@@ -14,10 +15,10 @@ import { QydkComponent } from './qydk/qydk.component';
 export class CyfwComponent implements OnInit {
   isVisible = false;
   cmpMap = {
-    'cybt': CybtComponent,//创业补贴
-    'cyzj': CyzjComponent,//创业租金
-    'grdk': GrdkComponent,//个人贷款
-    'qydk': QydkComponent//企业贷款
+    'cybt': CybtComponent,// 创业补贴
+    'cyzj': CyzjComponent,// 创业租金
+    'grdk': GrdkComponent,// 个人贷款
+    'qydk': QydkComponent// 企业贷款
   };
   title: string;
   cmp: string;
@@ -25,6 +26,7 @@ export class CyfwComponent implements OnInit {
   constructor(
     public router: Router,
     private modalSvc: NzModalService,
+    private cardSvc: ReadCardService,
     private msgSvc: NzMessageService
   ) { }
 
@@ -48,37 +50,39 @@ export class CyfwComponent implements OnInit {
     this.isVisible = false;
   }
 
-  //读身份证
+  // 读身份证
   readidcard() {
-    const idcard = '321321198801087813';
-    const modal = this.modalSvc.create({
-      nzTitle: this.title,
-      nzContent: this.cmpMap[this.cmp],
-      nzWidth: '70%',
-      nzComponentParams: {
-        idcard: idcard
-      },
-      nzFooter: null
-    });
-    modal.afterClose.subscribe(() => {
-      // this.loadData();
+    this.cardSvc.readIdCard().subscribe(res => {
+      const modal = this.modalSvc.create({
+        nzTitle: this.title,
+        nzContent: this.cmpMap[this.cmp],
+        nzWidth: '70%',
+        nzComponentParams: {
+          idcard: res
+        },
+        nzFooter: null
+      });
+      modal.afterClose.subscribe(() => {
+        // this.loadData();
+      });
     });
   }
 
-  //读社保卡
+  // 读社保卡
   readsicard() {
-    const sicard = '321321198801087813';
-    const modal = this.modalSvc.create({
-      nzTitle: this.title,
-      nzContent: this.cmpMap[this.cmp],
-      nzWidth: '70%',
-      nzComponentParams: {
-        sicard: sicard
-      },
-      nzFooter: null
-    });
-    modal.afterClose.subscribe(() => {
-      // this.loadData();
+    this.cardSvc.readSiCard().subscribe(res => {
+      const modal = this.modalSvc.create({
+        nzTitle: this.title,
+        nzContent: this.cmpMap[this.cmp],
+        nzWidth: '70%',
+        nzComponentParams: {
+          sicard: res
+        },
+        nzFooter: null
+      });
+      modal.afterClose.subscribe(() => {
+        // this.loadData();
+      });
     });
   }
 }

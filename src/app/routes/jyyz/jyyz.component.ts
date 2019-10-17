@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { JyknComponent } from './jykn/jykn.component';
 import { SbbtComponent } from './sbbt/sbbt.component';
+import { ReadCardService } from 'src/app/core/services/readcard.service';
 
 @Component({
   selector: 'app-jyyz',
@@ -21,6 +22,7 @@ export class JyyzComponent implements OnInit {
   constructor(
     public router: Router,
     private modalSvc: NzModalService,
+    private cardSvc: ReadCardService,
     private msgSvc: NzMessageService
   ) { }
 
@@ -45,37 +47,40 @@ export class JyyzComponent implements OnInit {
     this.isVisible = false;
   }
 
-  //读身份证
+
+  // 读身份证
   readidcard() {
-    const idcard = '321321198801087813';
-    const modal = this.modalSvc.create({
-      nzTitle: this.title,
-      nzContent: this.cmpMap[this.cmp],
-      nzWidth: '70%',
-      nzComponentParams: {
-        idcard: idcard
-      },
-      nzFooter: null
-    });
-    modal.afterClose.subscribe(() => {
-      // this.loadData();
+    this.cardSvc.readIdCard().subscribe(res => {
+      const modal = this.modalSvc.create({
+        nzTitle: this.title,
+        nzContent: this.cmpMap[this.cmp],
+        nzWidth: '70%',
+        nzComponentParams: {
+          idcard: res
+        },
+        nzFooter: null
+      });
+      modal.afterClose.subscribe(() => {
+        // this.loadData();
+      });
     });
   }
 
-  //读社保卡
+  // 读社保卡
   readsicard() {
-    const sicard = '321321198801087813';
-    const modal = this.modalSvc.create({
-      nzTitle: this.title,
-      nzContent: this.cmpMap[this.cmp],
-      nzWidth: '70%',
-      nzComponentParams: {
-        sicard: sicard
-      },
-      nzFooter: null
-    });
-    modal.afterClose.subscribe(() => {
-      // this.loadData();
+    this.cardSvc.readSiCard().subscribe(res => {
+      const modal = this.modalSvc.create({
+        nzTitle: this.title,
+        nzContent: this.cmpMap[this.cmp],
+        nzWidth: '70%',
+        nzComponentParams: {
+          sicard: res
+        },
+        nzFooter: null
+      });
+      modal.afterClose.subscribe(() => {
+        // this.loadData();
+      });
     });
   }
 }

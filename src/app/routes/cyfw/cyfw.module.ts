@@ -14,6 +14,7 @@ import { GrdkComponent } from './grdk/grdk.component';
 import { GrdkdetailsComponent } from './grdk/grdkdetails/grdkdetails.component';
 import { QydkComponent } from './qydk/qydk.component';
 import { QydkdetailsComponent } from './qydk/qydkdetails/qydkdetails.component';
+import { ReadCardService } from 'src/app/core/services/readcard.service';
 
 
 
@@ -46,7 +47,8 @@ import { QydkdetailsComponent } from './qydk/qydkdetails/qydkdetails.component';
   providers: [
     SubsidyService,
     LoanService,
-    RecruitService
+    RecruitService,
+    ReadCardService
   ]
 })
 export class CyfwModule { }
