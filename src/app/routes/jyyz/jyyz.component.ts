@@ -51,6 +51,7 @@ export class JyyzComponent implements OnInit {
   // 读身份证
   readidcard() {
     this.cardSvc.readIdCard().subscribe(res => {
+      console.log(res);
       const modal = this.modalSvc.create({
         nzTitle: this.title,
         nzContent: this.cmpMap[this.cmp],

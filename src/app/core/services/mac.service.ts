@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenObj } from '../models/token';
-import { RDC_URL } from '../config/service.config';
+import { MAC_URL } from '../config/service.config';
 
 @Injectable({
     providedIn: 'root',
@@ -12,7 +12,7 @@ export class MacService {
 
     constructor(
         private http: HttpClient,
-        @Inject(RDC_URL) private baseUrl: string
+        @Inject(MAC_URL) private baseUrl: string
     ) { }
 
     getLocalMac(): Observable<string[]> {

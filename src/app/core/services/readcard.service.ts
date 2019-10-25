@@ -6,7 +6,7 @@ import { SettingsService } from '@delon/theme';
 @Injectable()
 export class ReadCardService {
 
-    apiUrl = 'api/readcard';//TODO 测试完改为recruit
+    apiUrl = 'api/readcard';
 
     constructor(
         private http: HttpClient,
@@ -17,8 +17,8 @@ export class ReadCardService {
     }
 
     readIdCard() {
-        const url = `${this.baseUrl}${this.apiUrl}/id`;
-        const result = this.http.get<string>(url);
+        const url = `${this.baseUrl}api/ReadMsg`;
+        const result = this.http.jsonp<string>(url, 'callback');
         return result;
     }
 
