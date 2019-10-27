@@ -108,13 +108,14 @@ export class DefaultInterceptor implements HttpInterceptor {
                 time: +new Date()
               });
               console.info('提示', '身份认证成功，即将重新加载数据。');
+              this.notification.info('提示', '系统验证设备成功，请重更新查询。');
             } else {
               this.notification.error('设备访问未授权', ``);
               return;
             }
           });
         });
-        //this.goTo('/passport/login');
+        // this.goTo('/index');
         break;
       case 403:
       case 404:

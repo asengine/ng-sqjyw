@@ -53,18 +53,33 @@ export class CyfwComponent implements OnInit {
   // 读身份证
   readidcard() {
     this.cardSvc.readIdCard().subscribe(res => {
-      const modal = this.modalSvc.create({
-        nzTitle: this.title,
-        nzContent: this.cmpMap[this.cmp],
-        nzWidth: '70%',
-        nzComponentParams: {
-          idcard: res
-        },
-        nzFooter: null
-      });
-      modal.afterClose.subscribe(() => {
-        // this.loadData();
-      });
+      console.log(res);
+      if (res.retcode === '0x90 0x1') {
+        const modal = this.modalSvc.create({
+          nzTitle: this.title,
+          nzContent: this.cmpMap[this.cmp],
+          nzWidth: '70%',
+          nzComponentParams: {
+            idcard: res
+          },
+          nzFooter: null
+        });
+        modal.afterClose.subscribe(() => {
+          // this.loadData();
+        });
+      }
+      else if (res.retcode === '0x1') {
+        this.msgSvc.warning('身份证读卡器未连接');
+      }
+      else if (res.retcode === '0x41') {
+        this.msgSvc.warning('请将身份证放至读卡器');
+      }
+      else {
+        this.msgSvc.warning('未知错误');
+      }
+    }, error => {
+      console.log(error);
+      this.msgSvc.warning('读卡器服务未启动，请联系系统管理员。');
     });
   }
 

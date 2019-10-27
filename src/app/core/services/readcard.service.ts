@@ -18,7 +18,7 @@ export class ReadCardService {
 
     readIdCard() {
         const url = `${this.baseUrl}api/ReadMsg`;
-        const result = this.http.jsonp<string>(url, 'callback');
+        const result = this.http.jsonp<any>(url, 'callback');
         return result;
     }
 
