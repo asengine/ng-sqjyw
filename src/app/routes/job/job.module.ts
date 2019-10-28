@@ -5,6 +5,7 @@ import { JobRoutingModule } from './job.routing.module';
 import { JobService } from 'src/app/core/services/job.service';
 import { DetailsComponent } from './details/details.component';
 import { SharedModule } from 'src/app/shared';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SharedModule } from 'src/app/shared';
     DetailsComponent
   ],
   providers: [
-    JobService
+    JobService,
+    AuthService
   ]
 })
 export class JobModule { }

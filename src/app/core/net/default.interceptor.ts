@@ -108,9 +108,9 @@ export class DefaultInterceptor implements HttpInterceptor {
                 time: +new Date()
               });
               console.info('提示', '身份认证成功，即将重新加载数据。');
-              this.notification.info('提示', '系统验证设备成功，请重更新查询。');
+              // this.notification.info('提示', '系统验证设备成功，请重更新查询。');
             } else {
-              this.notification.error('设备访问未授权', ``);
+              this.notification.error('设备未授权访问', ``);
               return;
             }
           });

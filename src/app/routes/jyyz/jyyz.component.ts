@@ -4,6 +4,7 @@ import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { JyknComponent } from './jykn/jykn.component';
 import { SbbtComponent } from './sbbt/sbbt.component';
 import { ReadCardService } from 'src/app/core/services/readcard.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-jyyz',
@@ -21,10 +22,17 @@ export class JyyzComponent implements OnInit {
 
   constructor(
     public router: Router,
+    private authSvc: AuthService,
     private modalSvc: NzModalService,
     private cardSvc: ReadCardService,
     private msgSvc: NzMessageService
-  ) { }
+  ) {
+    this.authSvc.authCheck().subscribe(res => {
+      console.log(res);
+    }, (e) => {
+      console.log(e);
+    });
+  }
 
   ngOnInit() {
 

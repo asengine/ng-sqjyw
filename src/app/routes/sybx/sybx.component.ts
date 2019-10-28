@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { ListComponent } from './list/list.component';
 import { ReadCardService } from 'src/app/core/services/readcard.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-sybx',
@@ -13,10 +14,17 @@ export class SybxComponent implements OnInit {
   title = '失业保险金发放';
   constructor(
     public router: Router,
+    private authSvc: AuthService,
     private modalSvc: NzModalService,
     private cardSvc: ReadCardService,
     private msgSvc: NzMessageService
-  ) { }
+  ) {
+    this.authSvc.authCheck().subscribe(res => {
+      console.log(res);
+    }, (e) => {
+      console.log(e);
+    });
+  }
 
   ngOnInit() {
 

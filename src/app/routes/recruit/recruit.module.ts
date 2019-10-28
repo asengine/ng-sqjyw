@@ -4,6 +4,7 @@ import { RecruitRoutingModule } from './recruit.routing.module';
 import { RecruitService } from '../../core/services/recruit.service';
 import { DetailsComponent } from './details/details.component';
 import { SharedModule } from 'src/app/shared';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @NgModule({
   declarations: [RecruitComponent, DetailsComponent],
@@ -15,7 +16,8 @@ import { SharedModule } from 'src/app/shared';
     DetailsComponent
   ],
   providers: [
-    RecruitService
+    RecruitService,
+    AuthService
   ]
 })
 export class RecruitModule { }

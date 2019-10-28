@@ -3,6 +3,7 @@ import { JobService } from 'src/app/core/services/job.service';
 import { NzMessageService, NzModalService } from 'ng-zorro-antd';
 import { DetailsComponent } from './details/details.component';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-job',
@@ -24,13 +25,19 @@ export class JobComponent implements OnInit {
   constructor(
     public router: Router,
     private svc: JobService,
+    private authSvc: AuthService,
     private modalSvc: NzModalService,
   ) {
-
+    this.authSvc.authCheck().subscribe(res => {
+      console.log(res);
+      this.searchData();
+    }, (e) => {
+      console.log(e);
+    });
   }
 
   ngOnInit() {
-    this.searchData();
+
   }
 
   sort(sort: { key: string; value: string }): void {

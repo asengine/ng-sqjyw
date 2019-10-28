@@ -13,6 +13,7 @@ import { RecruitService } from 'src/app/core/services/recruit.service';
 import { EmploymentService } from 'src/app/core/services/employment.service';
 import { EmpCertService } from 'src/app/core/services/empcert.service';
 import { ReadCardService } from 'src/app/core/services/readcard.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 
 
@@ -40,7 +41,8 @@ import { ReadCardService } from 'src/app/core/services/readcard.service';
     RecruitService,
     EmploymentService,
     EmpCertService,
-    ReadCardService
+    ReadCardService,
+    AuthService
   ]
 })
 export class GrxxModule { }

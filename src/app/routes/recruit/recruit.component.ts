@@ -3,6 +3,7 @@ import { RecruitService } from '../../core/services/recruit.service';
 import { NzModalService } from 'ng-zorro-antd';
 import { DetailsComponent } from './details/details.component';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-recruit',
@@ -23,10 +24,15 @@ export class RecruitComponent implements OnInit {
 
   constructor(
     public router: Router,
+    private authSvc: AuthService,
     private svc: RecruitService,
     private modalSvc: NzModalService,
   ) {
-
+    this.authSvc.authCheck().subscribe(res => {
+      console.log(res);
+    }, (e) => {
+      console.log(e);
+    });
   }
 
   ngOnInit() {

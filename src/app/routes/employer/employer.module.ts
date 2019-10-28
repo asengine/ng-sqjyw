@@ -5,6 +5,7 @@ import { DetailsComponent } from './details/details.component';
 import { SharedModule } from 'src/app/shared';
 import { EmployerRoutingModule } from './employer.routing.module';
 import { EmployerService } from 'src/app/core/services/employer.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 
 
@@ -21,7 +22,8 @@ import { EmployerService } from 'src/app/core/services/employer.service';
     DetailsComponent
   ],
   providers: [
-    EmployerService
+    EmployerService,
+    AuthService
   ]
 })
 export class EmployerModule { }

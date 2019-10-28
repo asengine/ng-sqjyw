@@ -6,6 +6,7 @@ import { SybxRoutingModule } from './sybx.routing.module';
 import { ListComponent } from './list/list.component';
 import { InsuranceService } from 'src/app/core/services/insurance.service';
 import { ReadCardService } from 'src/app/core/services/readcard.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 
 
@@ -21,9 +22,10 @@ import { ReadCardService } from 'src/app/core/services/readcard.service';
     SharedModule,
     SybxRoutingModule
   ],
-  providers:[
+  providers: [
     InsuranceService,
-    ReadCardService
+    ReadCardService,
+    AuthService
   ]
 })
 export class SybxModule { }

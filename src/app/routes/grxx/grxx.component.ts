@@ -4,6 +4,7 @@ import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { JbxxComponent } from './jbxx/jbxx.component';
 import { JycyzComponent } from './jycyz/jycyz.component';
 import { ReadCardService } from 'src/app/core/services/readcard.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-grxx',
@@ -22,10 +23,17 @@ export class GrxxComponent implements OnInit {
 
   constructor(
     public router: Router,
+    private authSvc: AuthService,
     private modalSvc: NzModalService,
     private cardSvc: ReadCardService,
     private msgSvc: NzMessageService
-  ) { }
+  ) {
+    this.authSvc.authCheck().subscribe(res => {
+      console.log(res);
+    }, (e) => {
+      console.log(e);
+    });
+  }
 
   ngOnInit() {
 

@@ -18,7 +18,6 @@ export class IndexComponent implements OnInit {
   ) {
     this.authSvc.authCheck().subscribe(res => {
       console.log(res);
-      this.data = res;
     }, (e) => {
       console.log(e);
     });

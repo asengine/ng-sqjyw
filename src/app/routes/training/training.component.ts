@@ -4,6 +4,7 @@ import { PxcjComponent } from './pxcj/pxcj.component';
 import { Router } from '@angular/router';
 import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { ReadCardService } from 'src/app/core/services/readcard.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-training',
@@ -20,10 +21,17 @@ export class TrainingComponent implements OnInit {
 
   constructor(
     public router: Router,
+    private authSvc: AuthService,
     private modalSvc: NzModalService,
     private cardSvc: ReadCardService,
     private msgSvc: NzMessageService
-  ) { }
+  ) {
+    this.authSvc.authCheck().subscribe(res => {
+      console.log(res);
+    }, (e) => {
+      console.log(e);
+    });
+  }
 
   ngOnInit() {
 

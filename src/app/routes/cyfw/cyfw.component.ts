@@ -6,6 +6,7 @@ import { NzModalService, NzMessageService } from 'ng-zorro-antd';
 import { GrdkComponent } from './grdk/grdk.component';
 import { QydkComponent } from './qydk/qydk.component';
 import { ReadCardService } from 'src/app/core/services/readcard.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-cyfw',
@@ -25,10 +26,17 @@ export class CyfwComponent implements OnInit {
 
   constructor(
     public router: Router,
+    private authSvc: AuthService,
     private modalSvc: NzModalService,
     private cardSvc: ReadCardService,
     private msgSvc: NzMessageService
-  ) { }
+  ) {
+    this.authSvc.authCheck().subscribe(res => {
+      console.log(res);
+    }, (e) => {
+      console.log(e);
+    });
+  }
 
   ngOnInit() {
 

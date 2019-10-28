@@ -9,6 +9,7 @@ import { PxcjComponent } from './pxcj/pxcj.component';
 import { PxcjdetailsComponent } from './pxcj/pxcjdetails/pxcjdetails.component';
 import { TrainingService } from 'src/app/core/services/training.service';
 import { ReadCardService } from 'src/app/core/services/readcard.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 
 
@@ -32,7 +33,8 @@ import { ReadCardService } from 'src/app/core/services/readcard.service';
   ],
   providers: [
     TrainingService,
-    ReadCardService
+    ReadCardService,
+    AuthService
   ]
 })
 export class TrainingModule { }

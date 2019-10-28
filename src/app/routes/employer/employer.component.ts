@@ -3,6 +3,7 @@ import { DetailsComponent } from './details/details.component';
 import { EmployerService } from 'src/app/core/services/employer.service';
 import { Router } from '@angular/router';
 import { NzModalService, NzMessageService } from 'ng-zorro-antd';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-employer',
@@ -23,10 +24,15 @@ export class EmployerComponent implements OnInit {
 
   constructor(
     public router: Router,
+    private authSvc: AuthService,
     private svc: EmployerService,
     private modalSvc: NzModalService,
   ) {
-
+    this.authSvc.authCheck().subscribe(res => {
+      console.log(res);
+    }, (e) => {
+      console.log(e);
+    });
   }
 
   ngOnInit() {
