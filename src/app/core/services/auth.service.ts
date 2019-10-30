@@ -17,6 +17,7 @@ export class AuthService {
 
   loginWithCredentials(mac: string[]): Observable<TokenObj> {
     const url = `${this.authUrl}${this.apiUrl}`;
+    console.log(url);
     return this.http.post<TokenObj>(url, { 'mac': mac });
   }
 
