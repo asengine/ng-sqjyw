@@ -18,6 +18,7 @@ registerLocaleData(zh);
 // #region Http Interceptors
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DefaultInterceptor } from './core/net/default.interceptor';
+import { HtmlPipe } from './core/providers/html.pipe';
 
 const INTERCEPTOR_PROVIDES = [
   { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true },
@@ -25,7 +26,8 @@ const INTERCEPTOR_PROVIDES = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HtmlPipe
   ],
   imports: [
     BrowserModule,
