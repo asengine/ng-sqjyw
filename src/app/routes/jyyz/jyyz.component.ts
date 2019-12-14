@@ -96,7 +96,7 @@ export class JyyzComponent implements OnInit {
         nzContent: this.cmpMap[this.cmp],
         nzWidth: '70%',
         nzComponentParams: {
-          sicard: res
+          idcard: res
         },
         nzFooter: null
       });

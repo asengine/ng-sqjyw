@@ -10,7 +10,6 @@ import { NzModalService } from 'ng-zorro-antd';
 export class PxcjComponent implements OnInit {
 
   @Input() idcard: string;//身份证号
-  @Input() sicard: string;//社保卡号
 
   /// 分页参数
   pageIndex = 1;
@@ -49,16 +48,6 @@ export class PxcjComponent implements OnInit {
     if (this.idcard) {
       this.trnSvc
         .getGradeListById(this.idcard, this.sortKey, this.sortValue, this.pageIndex, this.pageSize)
-        .subscribe(res => {
-          console.log(res);
-          this.loading = false;
-          this.total = res.Total;
-          this.listOfData = res.Data;
-        });
-    }
-    else {
-      this.trnSvc
-        .getGradeListBySi(this.sicard, this.sortKey, this.sortValue, this.pageIndex, this.pageSize)
         .subscribe(res => {
           console.log(res);
           this.loading = false;

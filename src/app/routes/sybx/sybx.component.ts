@@ -70,7 +70,7 @@ export class SybxComponent implements OnInit {
         nzContent: ListComponent,
         nzWidth: '70%',
         nzComponentParams: {
-          sicard: res
+          idcard: res
         },
         nzFooter: null
       });

@@ -11,7 +11,6 @@ import { NzModalService } from 'ng-zorro-antd';
 })
 export class CybtComponent implements OnInit {
   @Input() idcard: string;//身份证号
-  @Input() sicard: string;//社保卡号
 
   /// 分页参数
   pageIndex = 1;
@@ -31,7 +30,6 @@ export class CybtComponent implements OnInit {
 
   ngOnInit() {
     console.log('身份账号：' + this.idcard);
-    console.log('社保卡号：' + this.sicard);
     this.searchData();
   }
 
@@ -66,16 +64,6 @@ export class CybtComponent implements OnInit {
       //     this.total = res.Total;
       //     this.listOfData = res.Data;
       //   });
-    }
-    else {
-      this.subSvc
-        .getBsListBySi(this.sicard, this.sortKey, this.sortValue, this.pageIndex, this.pageSize)
-        .subscribe(res => {
-          console.log(res);
-          this.loading = false;
-          this.total = res.Total;
-          this.listOfData = res.Data;
-        });
     }
   }
 

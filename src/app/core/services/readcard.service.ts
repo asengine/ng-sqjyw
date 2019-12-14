@@ -1,29 +1,28 @@
 import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { RDC_URL } from '../config/service.config';
+import { RDC_URL, IDC_URL } from '../config/service.config';
 import { SettingsService } from '@delon/theme';
 
 @Injectable()
 export class ReadCardService {
 
-    apiUrl = 'api/readcard';
-
     constructor(
         private http: HttpClient,
         public settings: SettingsService,
-        @Inject(RDC_URL) private baseUrl: string
+        @Inject(RDC_URL) private rdcUrl: string,
+        @Inject(IDC_URL) private idcUrl: string
     ) {
 
     }
 
     readIdCard() {
-        const url = `${this.baseUrl}api/ReadMsg`;
+        const url = `${this.rdcUrl}api/ReadMsg`;
         const result = this.http.jsonp<any>(url, 'callback');
         return result;
     }
 
     readSiCard() {
-        const url = `${this.baseUrl}${this.apiUrl}/si`;
+        const url = `${this.idcUrl}api/readcard`;
         const result = this.http.get<string>(url);
         return result;
     }
