@@ -16,7 +16,7 @@ export class RecruitComponent implements OnInit {
   pageSize = 10;
   total = 1;
   listOfData = [];
-  sortKey = 'AAE030';
+  sortKey = 'ACB333';
   sortValue = 'desc';
   key = '';
 

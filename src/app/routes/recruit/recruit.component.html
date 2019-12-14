@@ -18,19 +18,19 @@
         (nzPageSizeChange)="searchData(true)" nzBordered="true" [nzShowTotal]="totalTemplate">
         <thead (nzSortChange)="sort($event)" nzSingleSort>
             <tr>
-                <th nzShowSort nzSortKey="ACA112">岗位名称</th>
-                <th nzShowSort nzSortKey="ACB21A">岗位类型</th>
-                <th nzShowSort nzSortKey="AAEA20">发布单位</th>
-                <th nzShowSort nzSortKey="AAE030">截止日期</th>
+                <th nzShowSort nzSortKey="ACB331">招聘会名称</th>
+                <th>地址</th>
+                <th nzShowSort nzSortKey="ACB333">开始日期</th>
+                <th nzShowSort nzSortKey="ACB334">截止日期</th>
                 <!-- <th>Action</th> -->
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let data of ajaxTable.data">
-                <td><a (click)="onClick(data.ACB210)">{{data.ACA112}}</a></td>
-                <td>{{data.ACB21A}}</td>
-                <td>{{data.AAEA20}}</td>
-                <td>{{data.AAE030}}</td>
+                <td>{{data.ACB331}}</td>
+                <td>{{data.ACB336}}</td>
+                <td>{{data.ACB333}}</td>
+                <td>{{data.ACB334}}</td>
                 <!-- <td>
                 <a>Action 一 {{ data.name }}</a>
                 <nz-divider nzType="vertical"></nz-divider>

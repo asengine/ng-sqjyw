@@ -106,6 +106,9 @@ export class CyfwComponent implements OnInit {
       modal.afterClose.subscribe(() => {
         // this.loadData();
       });
+    }, error => {
+      console.log(error);
+      this.msgSvc.warning('读卡器服务未启动，请联系系统管理员。');
     });
   }
 }
