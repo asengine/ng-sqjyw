@@ -8,7 +8,7 @@ import { SettingsService } from '@delon/theme';
 @Injectable()
 export class RecruitService {
 
-  apiUrl = 'api/job';//TODO 测试完改为recruit
+  apiUrl = 'api/recruit';//TODO 测试完改为recruit
 
   constructor(
     private http: HttpClient,

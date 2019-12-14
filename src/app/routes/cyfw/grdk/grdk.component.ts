@@ -31,7 +31,6 @@ export class GrdkComponent implements OnInit {
 
   ngOnInit() {
     console.log('身份账号：' + this.idcard);
-    console.log('社保卡号：' + this.sicard);
     this.searchData();
   }
 
