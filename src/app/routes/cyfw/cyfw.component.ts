@@ -61,7 +61,6 @@ export class CyfwComponent implements OnInit {
   // 读身份证
   readidcard() {
     this.cardSvc.readIdCard().subscribe(res => {
-      console.log(res);
       if (res.retcode === '0x90 0x1') {
         const modal = this.modalSvc.create({
           nzTitle: this.title,

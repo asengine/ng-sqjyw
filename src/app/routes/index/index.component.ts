@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MacService } from 'src/app/core/services/mac.service';
 import { ITokenService, DA_SERVICE_TOKEN } from '@delon/auth';
+import { NzModalService } from 'ng-zorro-antd';
+import { JszwfwComponent } from './jszwfw/jszwfw.component';
 
 @Component({
   selector: 'app-index',
@@ -14,6 +16,7 @@ export class IndexComponent implements OnInit {
   constructor(
     private authSvc: AuthService,
     private macSvc: MacService,
+    private modalSvc: NzModalService,
     @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService
   ) {
     this.authSvc.authCheck().subscribe(res => {
@@ -25,5 +28,17 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     // console.log(this.tokenService.get().token);
+  }
+
+  onClick() {
+    const modal = this.modalSvc.create({
+      nzTitle: '政务不见面审批',
+      nzContent: JszwfwComponent,
+      nzWidth: '90%',
+      nzFooter: null
+    });
+    modal.afterClose.subscribe(() => {
+      // this.loadData();
+    });
   }
 }
