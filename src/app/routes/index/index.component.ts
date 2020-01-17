@@ -31,14 +31,15 @@ export class IndexComponent implements OnInit {
   }
 
   onClick() {
-    const modal = this.modalSvc.create({
-      nzTitle: '政务不见面审批',
-      nzContent: JszwfwComponent,
-      nzWidth: '90%',
-      nzFooter: null
-    });
-    modal.afterClose.subscribe(() => {
-      // this.loadData();
-    });
+    window.open('http://sq.jszwfw.gov.cn', '政务不见面审批', 'height=900, width=1240, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no');
+    // const modal = this.modalSvc.create({
+    //   nzTitle: '政务不见面审批',
+    //   nzContent: JszwfwComponent,
+    //   nzWidth: '90%',
+    //   nzFooter: null
+    // });
+    // modal.afterClose.subscribe(() => {
+    //   // this.loadData();
+    // });
   }
 }
