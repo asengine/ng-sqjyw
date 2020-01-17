@@ -31,7 +31,7 @@ export class IndexComponent implements OnInit {
   }
 
   onClick() {
-    window.open('http://sq.jszwfw.gov.cn', '政务不见面审批', 'height=900, width=1240, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no');
+    window.open("http://sq.jszwfw.gov.cn", "_blank", "width=1240,height=900,scrollbars=yes,resizable=1,modal=false,alwaysRaised=yes", false);
     // const modal = this.modalSvc.create({
     //   nzTitle: '政务不见面审批',
     //   nzContent: JszwfwComponent,
