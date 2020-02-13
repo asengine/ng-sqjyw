@@ -131,5 +131,8 @@
       }
     }
   },
-  "defaultProject": "ng-sqjyw"
+  "defaultProject": "ng-sqjyw",
+  "cli": {
+    "analytics": "60a3873c-28b5-4cc7-ac0a-15b392d7a5e1"
+  }
 }
