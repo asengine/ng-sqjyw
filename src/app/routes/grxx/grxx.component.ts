@@ -86,6 +86,18 @@ export class GrxxComponent implements OnInit {
       console.log(error);
       this.msgSvc.warning('读卡器服务未启动，请联系系统管理员。');
     });
+    // const modal = this.modalSvc.create({
+    //   nzTitle: this.title,
+    //   nzContent: this.cmpMap[this.cmp],
+    //   nzWidth: '70%',
+    //   nzComponentParams: {
+    //     idcard: '321322199112228626'
+    //   },
+    //   nzFooter: null
+    // });
+    // modal.afterClose.subscribe(() => {
+    //   // this.loadData();
+    // });
   }
 
   // 读社保卡
