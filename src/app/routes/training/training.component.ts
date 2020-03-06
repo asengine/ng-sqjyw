@@ -79,7 +79,7 @@ export class TrainingComponent implements OnInit {
           nzContent: this.cmpMap[this.cmp],
           nzWidth: '70%',
           nzComponentParams: {
-            idcard: res
+            idcard: res.cardno
           },
           nzFooter: null
         });

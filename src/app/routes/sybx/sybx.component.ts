@@ -39,7 +39,7 @@ export class SybxComponent implements OnInit {
           nzContent: ListComponent,
           nzWidth: '70%',
           nzComponentParams: {
-            idcard: res
+            idcard: res.cardno
           },
           nzFooter: null
         });
