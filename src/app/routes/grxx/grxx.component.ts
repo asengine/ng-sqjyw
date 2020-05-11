@@ -80,7 +80,7 @@ export class GrxxComponent implements OnInit {
         this.msgSvc.warning('请将身份证放至读卡器');
       }
       else {
-        this.msgSvc.warning('未知错误');
+        this.msgSvc.warning(res.retmsg);
       }
     }, error => {
       console.log(error);
