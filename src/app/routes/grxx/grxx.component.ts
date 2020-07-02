@@ -57,6 +57,19 @@ export class GrxxComponent implements OnInit {
 
   // 读身份证
   readidcard() {
+    // const modal = this.modalSvc.create({
+    //   nzTitle: this.title,
+    //   nzContent: this.cmpMap[this.cmp],
+    //   nzWidth: '70%',
+    //   nzComponentParams: {
+    //     idcard: '321321198801087813'
+    //   },
+    //   nzFooter: null
+    // });
+    // modal.afterClose.subscribe(() => {
+    //   // this.loadData();
+    // });
+
     this.cardSvc.readIdCard().subscribe(res => {
       console.log(res);
       if (res.retcode === '0x90 0x1') {
