@@ -1,25 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app.routing.module';
-import { AppComponent } from './app.component';
-import { NgZorroAntdModule, NZ_I18N, zh_CN } from 'ng-zorro-antd';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
+import { HttpClientJsonpModule, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import zh from '@angular/common/locales/zh';
-import { AuthGuard } from './shared/guard';
-import { JYW_URL, RSJ_URL, RDC_URL, AUTH_URL, IDC_URL } from './core/config/service.config';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
 import { environment } from 'src/environments/environment';
-
-registerLocaleData(zh);
-
-// #region Http Interceptors
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routing.module';
+import { AUTH_URL, IDC_URL, JYW_URL, RDC_URL, RSJ_URL } from './core/config/service.config';
 import { DefaultInterceptor } from './core/net/default.interceptor';
 import { HtmlPipe } from './core/providers/html.pipe';
+import { AuthGuard } from './shared/guard';
 
+
+registerLocaleData(zh);
 const INTERCEPTOR_PROVIDES = [
   { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true },
 ];
@@ -32,8 +29,8 @@ const INTERCEPTOR_PROVIDES = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgZorroAntdModule,
     FormsModule,
+    NgZorroAntdModule,
     HttpClientModule,
     HttpClientJsonpModule,
     BrowserAnimationsModule
