@@ -53,6 +53,26 @@ export class DefaultInterceptor implements HttpInterceptor {
     setTimeout(() => this.injector.get(Router).navigateByUrl(url));
   }
 
+  private get tokenSrv(): ITokenService {
+    return this.injector.get(DA_SERVICE_TOKEN);
+  }
+
+  /**
+ * 重新附加新 Token 信息
+ *
+ * > 由于已经发起的请求，不会再走一遍 `@delon/auth` 因此需要结合业务情况重新附加新的 Token
+ */
+  private reAttachToken(req: HttpRequest<any>): HttpRequest<any> {
+    // 以下示例是以 NG-ALAIN 默认使用 `SimpleInterceptor`
+    const token = this.tokenSrv.get()?.token;
+    return req.clone({
+      setHeaders: {
+        //token: `Bearer ${token}`,
+        'Authorization': `bearer ${token}`
+      },
+    });
+  }
+
   private checkStatus(ev: HttpResponseBase) {
     if ((ev.status >= 200 && ev.status < 300) || ev.status === 401) {
       return;
@@ -62,7 +82,7 @@ export class DefaultInterceptor implements HttpInterceptor {
     this.notification.error(`请求错误 ${ev.status}: ${ev.url}`, errortext);
   }
 
-  private handleData(ev: HttpResponseBase): Observable<any> {
+  private handleData(ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     // 可能会因为 `throw` 导出无法执行 `_HttpClient` 的 `end()` 操作
     if (ev.status > 0) {
       this.injector.get(_HttpClient).end();
@@ -108,6 +128,7 @@ export class DefaultInterceptor implements HttpInterceptor {
                 time: +new Date()
               });
               console.info('提示', '身份认证成功，即将重新加载数据。');
+              return next.handle(this.reAttachToken(req));
               // this.notification.info('提示', '系统验证设备成功，请重更新查询。');
             } else {
               this.notification.error('设备未授权访问', ``);
@@ -144,17 +165,17 @@ export class DefaultInterceptor implements HttpInterceptor {
 
     const newReq = req.clone({
       url,
-      headers: new HttpHeaders({ 'Authorization': 'bearer ' + this.tokenService.get().token })
+      headers: new HttpHeaders({ 'Authorization': `bearer ${this.tokenService.get().token}` })
       // withCredentials: true
     });
     return next.handle(newReq).pipe(
       mergeMap((event: any) => {
         // 允许统一对请求错误处理
-        if (event instanceof HttpResponseBase) return this.handleData(event);
+        if (event instanceof HttpResponseBase) return this.handleData(event, newReq, next);
         // 若一切都正常，则后续操作
         return of(event);
       }),
-      catchError((err: HttpErrorResponse) => this.handleData(err)),
+      catchError((err: HttpErrorResponse) => this.handleData(err, newReq, next)),
     );
   }
 }
