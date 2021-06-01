@@ -5,7 +5,7 @@ import { Menu } from '@delon/theme';
 
 @Injectable()
 export class SidebarService {
-  apiUrl = 'api/routemenu/alain-menus';
+  apiUrl = '/api/routemenu/alain-menus';
   // private httpOptions = {};
 
   constructor(

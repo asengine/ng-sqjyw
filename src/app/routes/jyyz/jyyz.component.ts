@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NzModalService, NzMessageService } from 'ng-zorro-antd';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { JyknComponent } from './jykn/jykn.component';
 import { SbbtComponent } from './sbbt/sbbt.component';
 import { ReadCardService } from 'src/app/core/services/readcard.service';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-jyyz',
@@ -17,8 +18,8 @@ export class JyyzComponent implements OnInit {
     'jykn': JyknComponent,//就业困难人员信息查询
     'sbbt': SbbtComponent
   };
-  title: string;
-  cmp: string;
+  title: string = '';
+  cmp: string = '';
 
   constructor(
     public router: Router,

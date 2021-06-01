@@ -7,7 +7,7 @@ import { SettingsService } from '@delon/theme';
 
 @Injectable()
 export class InsuranceService {
-    apiUrl = 'api/unemployment/insurance';
+    apiUrl = '/api/unemployment/insurance';
 
     constructor(
         private http: HttpClient,

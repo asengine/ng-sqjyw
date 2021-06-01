@@ -7,7 +7,7 @@ import { SettingsService } from '@delon/theme';
 
 @Injectable()
 export class JobService {
-    apiUrl = 'api/job';
+    apiUrl = '/api/job';
 
     constructor(
         private http: HttpClient,

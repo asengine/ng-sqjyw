@@ -1,10 +1,14 @@
 export class PageList<T> {
 
-    Data: Array<T>
+    Data: Array<T>;
 
-    Total: number;
+    Total: number = 0;
 
-    Page: number;
+    Page: number = 1;
 
-    Size: number;
+    Size: number = 0;
+
+    constructor() {
+        this.Data = new Array<T>();
+    }
 }

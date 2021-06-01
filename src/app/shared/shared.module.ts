@@ -1,16 +1,34 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { NgModule, Type } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-// #region third libs
-import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { DelonACLModule } from '@delon/acl';
+import { DelonFormModule } from '@delon/form';
+import { AlainThemeModule } from '@delon/theme';
+// import { TranslateModule } from '@ngx-translate/core';
+import { CountdownModule } from 'ngx-countdown';
+import { HeaderComponent } from './components/header/header.component';
+import { SizeDirective } from './directives/size/size.directive';
+import { SHARED_DELON_MODULES } from './shared-delon.module';
+import { SHARED_ZORRO_MODULES } from './shared-zorro.module';
 
-const THIRDMODULES = [NgZorroAntdModule];
+// #region third libs
+// import { NgxTinymceModule } from 'ngx-tinymce';
+// import { UEditorModule } from 'ngx-ueditor';
+
+const THIRDMODULES: Type<any>[] = [
+  CountdownModule
+];
 // #endregion
 
 // #region your componets & directives
-const COMPONENTS = [];
-const DIRECTIVES = [];
+const COMPONENTS: Type<any>[] = [
+  HeaderComponent
+];
+const DIRECTIVES: Type<any>[] = [
+  SizeDirective,
+  SizeDirective
+];
 // #endregion
 
 @NgModule({
@@ -19,6 +37,11 @@ const DIRECTIVES = [];
     FormsModule,
     RouterModule,
     ReactiveFormsModule,
+    AlainThemeModule.forChild(),
+    DelonACLModule,
+    DelonFormModule,
+    ...SHARED_DELON_MODULES,
+    ...SHARED_ZORRO_MODULES,
     // third libs
     ...THIRDMODULES,
   ],
@@ -32,6 +55,12 @@ const DIRECTIVES = [];
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    AlainThemeModule,
+    DelonACLModule,
+    DelonFormModule,
+    // TranslateModule,
+    ...SHARED_DELON_MODULES,
+    ...SHARED_ZORRO_MODULES,
     // third libs
     ...THIRDMODULES,
     // your components

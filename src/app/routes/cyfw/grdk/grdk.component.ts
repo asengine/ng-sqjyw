@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LoanService } from 'src/app/core/services/loan.service';
 import { RecruitService } from 'src/app/core/services/recruit.service';
-import { NzModalService } from 'ng-zorro-antd';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { GrdkdetailsComponent } from './grdkdetails/grdkdetails.component';
 
 @Component({
@@ -11,13 +11,13 @@ import { GrdkdetailsComponent } from './grdkdetails/grdkdetails.component';
 })
 export class GrdkComponent implements OnInit {
 
-  @Input() idcard: string;//身份证号
+  @Input() idcard: string = '';//身份证号
 
   /// 分页参数
   pageIndex = 1;
   pageSize = 10;
   total = 1;
-  listOfData = [];
+  listOfData: any[] = [];
   sortKey = 'AAE036';
   sortValue = 'desc';
 
@@ -34,7 +34,7 @@ export class GrdkComponent implements OnInit {
     this.searchData();
   }
 
-  sort(sort: { key: string; value: string }): void {
+  sort(sort: any): void {
     console.log(sort);
     this.sortKey = sort.key;
     if (sort.value) {

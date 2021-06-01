@@ -1,0 +1,89 @@
+<div class="container">
+    <nz-layout class="layout01">
+        <nz-header class="header01">
+            <img class="logo" src="../../../assets/index1/logo.png" />
+            <span class="name">宿迁人社自助服务一体机</span>
+            <span class="time">12:35</span>
+            <span class="week">星期五</span>
+            <span class="date">2021/06/01</span>
+            <span class="exit">滑动退卡</span>
+        </nz-header>
+        <nz-content>
+            <div class="card-container">
+                <nz-tabset nzType="card" nzLinkRouter>
+                    <nz-tab style="margin-left: 0;">
+                        <a *nzTabLink nz-tab-link routerLink="/layout/shbx" [queryParams]="{ tab: '社会保险' }"
+                            queryParamsHandling="merge"><span class="shbx-logo"></span><span
+                                class="title">社会保险</span></a>
+                    </nz-tab>
+                    <nz-tab style="margin-left: 0;">
+                        <a *nzTabLink nz-tab-link routerLink="/layout/sybx" [queryParams]="{ tab: '就业创业' }"
+                            queryParamsHandling="merge"><span class="jycy-logo"></span><span
+                                class="title">就业创业</span></a>
+                    </nz-tab>
+                    <nz-tab style="margin-left: 0;">
+                        <a *nzTabLink nz-tab-link routerLink="/layout/shbx" [queryParams]="{ tab: '人才服务' }"
+                            queryParamsHandling="merge"><span class="rcfw-logo"></span><span
+                                class="title">人才服务</span></a>
+                    </nz-tab>
+                    <nz-tab style="margin-left: 0;">
+                        <a *nzTabLink nz-tab-link routerLink="/layout/shbx" [queryParams]="{ tab: '社会保障卡' }"
+                            queryParamsHandling="merge"><span class="shbzk-logo"></span><span
+                                class="title">社会保障卡</span></a>
+                    </nz-tab>
+                </nz-tabset>
+                <router-outlet></router-outlet>
+            </div>
+        </nz-content>
+    </nz-layout>
+</div>
+<!-- 
+<div class="container">
+    <div nz-row nzType="flex" nzJustify="space-around">
+        <div nz-col nzSpan="6"><a href="http://sq.jszwfw.gov.cn" target="_blank">
+                <p><img src=" ../../../assets/index/bda7ee3a80121ab5d7fd589_17-27.png" /></p>
+                <p>政务不见面审批</p>
+            </a>
+        </div>
+        <div nz-col nzSpan="6"><a routerLink="/sybx">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_18-21.png" /></p>
+                <p>失业保险金发放查询</p>
+            </a>
+        </div>
+        <div nz-col nzSpan="6"><a routerLink="/training">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_06.png" /></p>
+                <p>职业培训查询</p>
+            </a>
+        </div>
+        <div nz-col nzSpan="6"><a routerLink="/cyfw">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_07.png" />
+                </p>
+                <p>创业服务查询</p>
+            </a>
+        </div>
+        <div nz-col nzSpan="6"><a routerLink="/jyyz">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_26-50.png" />
+                </p>
+                <p>就业援助查询</p>
+            </a>
+        </div>
+        <div nz-col nzSpan="6"><a routerLink="/grxx">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_03.png" />
+                </p>
+                <p>基本信息查询</p>
+            </a>
+        </div>
+        <div nz-col nzSpan="6"><a href="http://www.jshrss.gov.cn/rlzy/#/ww/index" target="_blank">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_20-39.png" />
+                </p>
+                <p>自助求职</p>
+            </a>
+        </div>
+        <div nz-col nzSpan="6"><a href="http://www.jshrss.gov.cn/rlzy/#/ww/c/a/wwca_cont.html" target="_blank">
+                <p><img src="../../../assets/index/bda7ee3a80121ab5d7fd589_27.png" />
+                </p>
+                <p>招聘会</p>
+            </a>
+        </div>
+    </div>
+</div> -->

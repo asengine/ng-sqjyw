@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TrainingService } from 'src/app/core/services/training.service';
-import { NzModalService } from 'ng-zorro-antd';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-pxcj',
@@ -9,13 +9,13 @@ import { NzModalService } from 'ng-zorro-antd';
 })
 export class PxcjComponent implements OnInit {
 
-  @Input() idcard: string;//身份证号
+  @Input() idcard: string = '';//身份证号
 
   /// 分页参数
   pageIndex = 1;
   pageSize = 10;
   total = 1;
-  listOfData = [];
+  listOfData: any[] = [];
   sortKey = 'AAE036';
   sortValue = 'desc';
   key = '';
@@ -31,7 +31,7 @@ export class PxcjComponent implements OnInit {
     this.searchData();
   }
 
-  sort(sort: { key: string; value: string }): void {
+  sort(sort: any): void {
     console.log(sort);
     this.sortKey = sort.key;
     if (sort.value) {

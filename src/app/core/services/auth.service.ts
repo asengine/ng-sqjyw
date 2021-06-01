@@ -8,7 +8,7 @@ import { AUTH_URL } from '../config/service.config';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'api/token';
+  private apiUrl = '/api/token';
 
   constructor(
     private http: HttpClient,
@@ -23,7 +23,7 @@ export class AuthService {
 
   // 验证是否登录
   authCheck() {
-    const url = `${this.authUrl}api/authcheck`;
+    const url = `${this.authUrl}/api/authcheck`;
     const result = this.http.get<any>(url);
     return result;
   }

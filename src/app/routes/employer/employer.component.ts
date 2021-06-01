@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DetailsComponent } from './details/details.component';
 import { EmployerService } from 'src/app/core/services/employer.service';
 import { Router } from '@angular/router';
-import { NzModalService, NzMessageService } from 'ng-zorro-antd';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class EmployerComponent implements OnInit {
   pageIndex = 1;
   pageSize = 10;
   total = 1;
-  listOfData = [];
+  listOfData: any[] = [];
   sortKey = 'AAB001';
   sortValue = 'desc';
   key = '';
@@ -39,7 +39,7 @@ export class EmployerComponent implements OnInit {
     this.searchData();
   }
 
-  sort(sort: { key: string; value: string }): void {
+  sort(sort:any): void {
     console.log(sort);
     this.sortKey = sort.key;
     if (sort.value) {

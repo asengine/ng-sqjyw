@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JobService } from 'src/app/core/services/job.service';
-import { NzMessageService, NzModalService } from 'ng-zorro-antd';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { DetailsComponent } from './details/details.component';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -15,7 +15,7 @@ export class JobComponent implements OnInit {
   pageIndex = 1;
   pageSize = 10;
   total = 1;
-  listOfData = [];
+  listOfData: any[] = [];
   sortKey = 'AAE030';
   sortValue = 'desc';
   key = '';
@@ -40,7 +40,7 @@ export class JobComponent implements OnInit {
 
   }
 
-  sort(sort: { key: string; value: string }): void {
+  sort(sort: any): void {
     console.log(sort);
     this.sortKey = sort.key;
     if (sort.value) {

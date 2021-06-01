@@ -7,7 +7,7 @@ import { ResponseResult } from '../models/reponseresult';
 
 @Injectable()
 export class UserService {
-  apiUrl = 'api/sysuser';
+  apiUrl = '/api/sysuser';
 
   constructor(
     private http: HttpClient,
@@ -46,7 +46,7 @@ export class UserService {
 
   public delete(ids: number[]) {
     const url = `${this.baseUrl}${this.apiUrl}/delete`;
-    const items = [];
+    const items: { Id: number; }[] = [];
     ids.forEach(function (value, key) {
       items.push({ Id: value });
     });

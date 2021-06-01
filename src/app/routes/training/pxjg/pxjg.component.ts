@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TrainingService } from 'src/app/core/services/training.service';
-import { RecruitService } from 'src/app/core/services/recruit.service';
-import { NzModalService } from 'ng-zorro-antd';
+import { TrainingService } from '@core/services/training.service';
+import { RecruitService } from '@core/services/recruit.service';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-pxjg',
@@ -13,7 +13,7 @@ export class PxjgComponent implements OnInit {
   pageIndex = 1;
   pageSize = 10;
   total = 1;
-  listOfData = [];
+  listOfData: any[] = [];
   sortKey = 'AAE036';
   sortValue = 'desc';
   key = '';
@@ -29,7 +29,7 @@ export class PxjgComponent implements OnInit {
     this.searchData();
   }
 
-  sort(sort: { key: string; value: string }): void {
+  sort(sort: any): void {
     console.log(sort);
     this.sortKey = sort.key;
     if (sort.value) {

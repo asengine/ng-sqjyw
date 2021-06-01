@@ -8,7 +8,7 @@ import { SettingsService } from '@delon/theme';
 @Injectable()
 export class EmploymentService {
 
-    apiUrl = 'api/employment';
+    apiUrl = '/api/employment';
 
     constructor(
         private http: HttpClient,

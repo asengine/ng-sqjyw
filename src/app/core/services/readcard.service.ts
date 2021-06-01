@@ -16,13 +16,13 @@ export class ReadCardService {
     }
 
     readIdCard() {
-        const url = `${this.idcUrl}api/ReadMsg`;
+        const url = `${this.idcUrl}/api/ReadMsg`;
         const result = this.http.jsonp<any>(url, 'callback');
         return result;
     }
 
     readSiCard() {
-        const url = `${this.rdcUrl}api/readcard`;
+        const url = `${this.rdcUrl}/api/readcard`;
         const result = this.http.get<string>(url);
         return result;
     }

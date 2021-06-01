@@ -8,7 +8,7 @@ import { SettingsService } from '@delon/theme';
 @Injectable()
 export class LoanService {
 
-    apiUrl = 'api/loan';
+    apiUrl = '/api/loan';
 
     constructor(
         private http: HttpClient,
@@ -25,7 +25,7 @@ export class LoanService {
         pageNumber: number,
         pageSize: number) {
         const url = `${this.baseUrl}${this.apiUrl}/enterprise/id/${id}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}`;
-        const result = this.http.get<any>(url);
+        const result = this.http.get<PageList<any>>(url);
         return result;
     }
 
@@ -36,7 +36,7 @@ export class LoanService {
         pageNumber: number,
         pageSize: number) {
         const url = `${this.baseUrl}${this.apiUrl}/enterprise/si/${id}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}`;
-        const result = this.http.get<any>(url);
+        const result = this.http.get<PageList<any>>(url);
         return result;
     }
 
@@ -47,7 +47,7 @@ export class LoanService {
         pageNumber: number,
         pageSize: number) {
         const url = `${this.baseUrl}${this.apiUrl}/personal/id/${id}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}`;
-        const result = this.http.get<any>(url);
+        const result = this.http.get<PageList<any>>(url);
         return result;
     }
 
@@ -58,7 +58,7 @@ export class LoanService {
         pageNumber: number,
         pageSize: number) {
         const url = `${this.baseUrl}${this.apiUrl}/personal/si/${id}?sort=${sort}&order=${order}&size=${pageSize}&page=${pageNumber}`;
-        const result = this.http.get<any>(url);
+        const result = this.http.get<PageList<any>>(url);
         return result;
     }
 }

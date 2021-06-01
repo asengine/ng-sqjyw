@@ -1,6 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { CanActivate } from '@angular/router';
-import { Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
 import { ITokenService, DA_SERVICE_TOKEN } from '@delon/auth';
 
 @Injectable()
@@ -12,7 +11,7 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate() {
-    if (this.tokenService.get().token) {
+    if (this.tokenService.get()?.token) {
       return true;
     }
     this.router.navigate([this.tokenService.login_url]);

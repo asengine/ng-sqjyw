@@ -8,7 +8,7 @@ import { SettingsService } from '@delon/theme';
 @Injectable()
 export class SubsidyService {
 
-    apiUrl = 'api/subsidy';
+    apiUrl = '/api/subsidy';
 
     constructor(
         private http: HttpClient,

@@ -4,7 +4,7 @@ import { JYW_URL } from '../config/service.config';
 
 @Injectable()
 export class OperationService {
-  apiUrl = 'api/operation';
+  apiUrl = '/api/operation';
 
   constructor(
     private http: HttpClient,

@@ -8,7 +8,7 @@ import { RDC_URL } from '../config/service.config';
     providedIn: 'root',
 })
 export class MacService {
-    private apiUrl = 'api/mac';
+    private apiUrl = '/api/mac';
 
     constructor(
         private http: HttpClient,

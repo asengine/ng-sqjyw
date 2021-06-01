@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { PxjgComponent } from './pxjg/pxjg.component';
 import { PxcjComponent } from './pxcj/pxcj.component';
 import { Router } from '@angular/router';
-import { NzModalService, NzMessageService } from 'ng-zorro-antd';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { ReadCardService } from 'src/app/core/services/readcard.service';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-training',
@@ -16,8 +17,8 @@ export class TrainingComponent implements OnInit {
   cmpMap = {
     'pxcj': PxcjComponent //培训成绩
   };
-  title: string;
-  cmp: string;
+  title: string = '';
+  cmp: string = '';
 
   constructor(
     public router: Router,

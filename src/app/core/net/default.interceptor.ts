@@ -1,25 +1,19 @@
-import { Injectable, Injector, Inject } from '@angular/core';
+import { HttpHeaders } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponseBase } from '@angular/common/http';
+import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  HttpInterceptor,
-  HttpRequest,
-  HttpHandler,
-  HttpErrorResponse,
-  HttpEvent,
-  HttpResponseBase,
-  HttpHeaders,
-  HttpClient,
-} from '@angular/common/http';
-import { Observable, of, throwError, Subject } from 'rxjs';
-import { mergeMap, catchError } from 'rxjs/operators';
-import { NzMessageService, NzNotificationService } from 'ng-zorro-antd';
+import { AUTH_URL, BASE_URL } from '@core/config/service.config';
+import { TokenObj } from '@core/models/token';
+import { AuthService } from '@core/services/auth.service';
+import { MacService } from '@core/services/mac.service';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
-import { environment } from 'src/environments/environment';
 import { _HttpClient } from '@delon/theme';
-import { AuthService } from '../services/auth.service';
-import { MacService } from '../services/mac.service';
+import { environment } from '@env/environment';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { catchError, filter, mergeMap, switchMap, take, tap } from 'rxjs/operators';
 
-const CODEMESSAGE = {
+const CODEMESSAGE: { [key: number]: string } = {
   200: '服务器成功返回请求的数据。',
   201: '新建或修改数据成功。',
   202: '一个请求已经进入后台排队（异步任务）。',
@@ -42,38 +36,37 @@ const CODEMESSAGE = {
  */
 @Injectable()
 export class DefaultInterceptor implements HttpInterceptor {
-  constructor(private injector: Injector,
-    @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService) { }
+  private refreshTokenType: 're-request' | 'auth-refresh' = 'auth-refresh';
+  private refreshToking = false;
+  private refreshToken$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  public baseUrl: string;
+
+  constructor(private injector: Injector) {
+    // 如果需要自动刷新Token取消注释以下行
+    this.refreshTokenType = 're-request';
+    this.baseUrl = this.injector.get(AUTH_URL);
+    // if (this.refreshTokenType === 'auth-refresh') {
+    //   this.buildAuthRefresh();
+    // }
+  }
 
   private get notification(): NzNotificationService {
     return this.injector.get(NzNotificationService);
-  }
-
-  private goTo(url: string) {
-    setTimeout(() => this.injector.get(Router).navigateByUrl(url));
   }
 
   private get tokenSrv(): ITokenService {
     return this.injector.get(DA_SERVICE_TOKEN);
   }
 
-  /**
- * 重新附加新 Token 信息
- *
- * > 由于已经发起的请求，不会再走一遍 `@delon/auth` 因此需要结合业务情况重新附加新的 Token
- */
-  private reAttachToken(req: HttpRequest<any>): HttpRequest<any> {
-    // 以下示例是以 NG-ALAIN 默认使用 `SimpleInterceptor`
-    const token = this.tokenSrv.get()?.token;
-    return req.clone({
-      setHeaders: {
-        //token: `Bearer ${token}`,
-        'Authorization': `bearer ${token}`
-      },
-    });
+  private get http(): _HttpClient {
+    return this.injector.get(_HttpClient);
   }
 
-  private checkStatus(ev: HttpResponseBase) {
+  private goTo(url: string): void {
+    setTimeout(() => this.injector.get(Router).navigateByUrl(url));
+  }
+
+  private checkStatus(ev: HttpResponseBase): void {
     if ((ev.status >= 200 && ev.status < 300) || ev.status === 401) {
       return;
     }
@@ -82,11 +75,128 @@ export class DefaultInterceptor implements HttpInterceptor {
     this.notification.error(`请求错误 ${ev.status}: ${ev.url}`, errortext);
   }
 
-  private handleData(ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
-    // 可能会因为 `throw` 导出无法执行 `_HttpClient` 的 `end()` 操作
-    if (ev.status > 0) {
-      this.injector.get(_HttpClient).end();
+  /**
+   * 刷新 Token 请求
+   */
+  private refreshTokenRequest(): Observable<any> {
+    // 清空 token 信息
+    (this.injector.get(DA_SERVICE_TOKEN) as ITokenService).clear();
+    return this.injector.get(MacService).getLocalMac().pipe(
+      switchMap((res) => {
+        console.log(res);
+        // 向服务端申请授权
+        return this.injector.get(AuthService).loginWithCredentials(res);
+      }),
+      catchError((err) => {
+        this.refreshToking = false;
+        // this.toLogin();
+        return throwError('设备未授权访问');
+      })
+    );
+    // return this.http.post(`${this.baseUrl}/api/token`, request, null, { headers: { refresh_token: model?.refresh_token || '' } });
+  }
+
+  // #region 刷新Token方式一：使用 401 重新刷新 Token
+
+  private tryRefreshToken(ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
+    // 1、若请求为刷新Token请求，表示来自刷新Token可以直接跳转登录页
+    if ([`${this.baseUrl}/api/token`].some((url) => req.url.includes(url))) {
+      console.log('1、');
+      // this.toLogin();
+      return throwError('设备未授权访问');
     }
+    // 2、如果 `refreshToking` 为 `true` 表示已经在请求刷新 Token 中，后续所有请求转入等待状态，直至结果返回后再重新发起请求
+    if (this.refreshToking) {
+      console.log('2、');
+      return this.refreshToken$.pipe(
+        filter((v) => !!v),
+        take(1),
+        switchMap(() => next.handle(this.reAttachToken(req))),
+      );
+    }
+    // 3、尝试调用刷新 Token
+    console.log('3、');
+    this.refreshToking = true;
+    this.refreshToken$.next(null);
+
+    return this.refreshTokenRequest().pipe(
+      switchMap((res) => {
+        console.log(res);
+        if (res.success) {
+          // 通知后续请求继续执行
+          this.refreshToking = false;
+          const new_token = {
+            token: res.access_token, // '123456789',
+            userId: res.id,
+            name: res.userName,
+            time: +new Date()
+          };
+          this.refreshToken$.next(new_token);
+          // 重新保存新 token
+          this.tokenSrv.set(new_token);
+          // 重新发起请求
+          return next.handle(this.reAttachToken(req));
+        } else {
+          this.refreshToking = false;
+          // this.toLogin();
+          return throwError(res.message);
+        }
+      }),
+      catchError((err) => {
+        this.refreshToking = false;
+        this.toLogin();
+        return throwError('设备未授权访问');
+      }),
+    );
+  }
+
+  /**
+   * 重新附加新 Token 信息
+   *
+   * > 由于已经发起的请求，不会再走一遍 `@delon/auth` 因此需要结合业务情况重新附加新的 Token
+   */
+  private reAttachToken(req: HttpRequest<any>): HttpRequest<any> {
+    // 以下示例是以 NG-ALAIN 默认使用 `SimpleInterceptor`
+    const token = this.tokenSrv.get()?.token;
+    return req.clone({
+      setHeaders: {
+        Authorization: `bearer ${token}`,
+      },
+    });
+  }
+
+  // #endregion
+
+  // #region 刷新Token方式二：使用 `@delon/auth` 的 `refresh` 接口
+
+  private buildAuthRefresh(): void {
+    this.tokenSrv.refresh
+      .pipe(
+        filter(() => !this.refreshToking),
+        switchMap(() => {
+          this.refreshToking = true;
+          return this.refreshTokenRequest();
+        }),
+      )
+      .subscribe(
+        (res) => {
+          // TODO: Mock expired value
+          res.expired = +new Date() + 1000 * 60 * 5;
+          this.refreshToking = false;
+          this.tokenSrv.set(res);
+        },
+        () => this.toLogin(),
+      );
+  }
+
+  // #endregion
+
+  private toLogin(): void {
+    // this.notification.error(`未登录或登录已过期，请重新登录。`, ``);
+    this.goTo('/login');
+  }
+
+  private handleData(ev: HttpResponseBase, req: HttpRequest<any>, next: HttpHandler): Observable<any> {
     this.checkStatus(ev);
     // 业务处理：一些通用操作
     switch (ev.status) {
@@ -96,64 +206,47 @@ export class DefaultInterceptor implements HttpInterceptor {
         //  错误内容：{ status: 1, msg: '非法参数' }
         //  正确内容：{ status: 0, response: {  } }
         // 则以下代码片断可直接适用
-        // if (event instanceof HttpResponse) {
-        //     const body: any = event.body;
-        //     if (body && body.status !== 0) {
-        //         this.msg.error(body.msg);
-        //         // 继续抛出错误中断后续所有 Pipe、subscribe 操作，因此：
-        //         // this.http.get('/').subscribe() 并不会触发
-        //         return throwError({});
-        //     } else {
-        //         // 重新修改 `body` 内容为 `response` 内容，对于绝大多数场景已经无须再关心业务状态码
-        //         return of(new HttpResponse(Object.assign(event, { body: body.response })));
-        //         // 或者依然保持完整的格式
-        //         return of(event);
-        //     }
+        // if (ev instanceof HttpResponse) {
+        //   const body = ev.body;
+        //   if (body && body.status !== 0) {
+        //     this.injector.get(NzMessageService).error(body.msg);
+        //     // 继续抛出错误中断后续所有 Pipe、subscribe 操作，因此：
+        //     // this.http.get('/').subscribe() 并不会触发
+        //     return throwError({});
+        //   } else {
+        //     // 重新修改 `body` 内容为 `response` 内容，对于绝大多数场景已经无须再关心业务状态码
+        //     return of(new HttpResponse(Object.assign(ev, { body: body.response })));
+        //     // 或者依然保持完整的格式
+        //     return of(ev);
+        //   }
         // }
         break;
       case 401:
-        console.warn(`未登录或登录已过期，需要重新获取授权。`, ``);
-        // 清空 token 信息
-        (this.injector.get(DA_SERVICE_TOKEN) as ITokenService).clear();
-        this.injector.get(MacService).getLocalMac().subscribe(res => {
-          console.log(res);
-          // 向服务端申请授权
-          this.injector.get(AuthService).loginWithCredentials(res).subscribe(token => {
-            if (token.success) {// 身份验证成功
-              // 设置Token信息
-              this.tokenService.set({
-                token: token.access_token, // '123456789',
-                userId: token.id,
-                name: token.userName,
-                time: +new Date()
-              });
-              console.info('提示', '身份认证成功，即将重新加载数据。');
-              return next.handle(this.reAttachToken(req));
-              // this.notification.info('提示', '系统验证设备成功，请重更新查询。');
-            } else {
-              this.notification.error('设备未授权访问', ``);
-              return;
-            }
-          });
-        });
-        // this.goTo('/index');
+        console.log(this.refreshTokenType);
+        if (this.refreshTokenType === 're-request') {
+          return this.tryRefreshToken(ev, req, next);
+        }
+        // this.toLogin();
         break;
       case 403:
       case 404:
       case 500:
         this.goTo(`/exception/${ev.status}`);
         break;
-      case 204:
-        console.warn('', ev);
-        break;
       default:
         if (ev instanceof HttpErrorResponse) {
-          console.warn('未可知错误，大部分是由于后端不支持CORS或无效配置引起', ev);
-          return throwError(ev);
+          console.warn(
+            '未可知错误，大部分是由于后端不支持跨域CORS或无效配置引起，请参考 https://ng-alain.com/docs/server 解决跨域问题',
+            ev,
+          );
         }
         break;
     }
-    return of(ev);
+    if (ev instanceof HttpErrorResponse) {
+      return throwError(ev);
+    } else {
+      return of(ev);
+    }
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -165,15 +258,17 @@ export class DefaultInterceptor implements HttpInterceptor {
 
     const newReq = req.clone({
       url,
-      headers: new HttpHeaders({ 'Authorization': `bearer ${this.tokenService.get().token}` })
+      headers: new HttpHeaders({ Authorization: `bearer ${this.tokenSrv.get()?.token}` }),
       // withCredentials: true
     });
     return next.handle(newReq).pipe(
-      mergeMap((event: any) => {
+      mergeMap((ev) => {
         // 允许统一对请求错误处理
-        if (event instanceof HttpResponseBase) return this.handleData(event, newReq, next);
+        if (ev instanceof HttpResponseBase) {
+          return this.handleData(ev, newReq, next);
+        }
         // 若一切都正常，则后续操作
-        return of(event);
+        return of(ev);
       }),
       catchError((err: HttpErrorResponse) => this.handleData(err, newReq, next)),
     );

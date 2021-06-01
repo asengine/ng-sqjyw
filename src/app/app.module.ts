@@ -1,44 +1,43 @@
-import { registerLocaleData } from '@angular/common';
-import { HttpClientJsonpModule, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import zh from '@angular/common/locales/zh';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { NZ_I18N, zh_CN } from 'ng-zorro-antd/i18n';
-import { environment } from 'src/environments/environment';
-import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
-import { AUTH_URL, IDC_URL, JYW_URL, RDC_URL, RSJ_URL } from './core/config/service.config';
-import { DefaultInterceptor } from './core/net/default.interceptor';
-import { HtmlPipe } from './core/providers/html.pipe';
-import { AuthGuard } from './shared/guard';
+import { AppComponent } from './app.component';
+import { AUTH_URL, BASE_URL, IDC_URL, JYW_URL, RDC_URL, RSJ_URL } from './core/config/service.config';
+import { AuthGuard } from '@shared/guard';
+import { environment } from '@env/environment';
+import { DefaultInterceptor } from '@core/net/default.interceptor';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { GlobalConfigModule } from './global-config.module';
+import { NzNotificationModule } from 'ng-zorro-antd/notification';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { SharedModule } from '@shared';
+import { LayoutComponent } from './layout/layout.component';
 
-
-registerLocaleData(zh);
 const INTERCEPTOR_PROVIDES = [
-  { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true },
+  //{ provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HtmlPipe
+    LayoutComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    NgZorroAntdModule,
+    BrowserAnimationsModule,
+    GlobalConfigModule.forRoot(),
     HttpClientModule,
-    HttpClientJsonpModule,
-    BrowserAnimationsModule
+    SharedModule,
+    NzNotificationModule,
+    AppRoutingModule
   ],
   providers: [
-    { provide: NZ_I18N, useValue: zh_CN },
     ...INTERCEPTOR_PROVIDES,
+    NzModalService,
     AuthGuard,
+    { provide: BASE_URL, useValue: environment.BASE_URL },
     { provide: AUTH_URL, useValue: environment.AUTH_URL },
     { provide: JYW_URL, useValue: environment.JYW_URL },
     { provide: RSJ_URL, useValue: environment.RSJ_URL },

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RecruitService } from 'src/app/core/services/recruit.service';
-import { NzModalService } from 'ng-zorro-antd';
-import { EmploymentService } from 'src/app/core/services/employment.service';
-import { InsuranceService } from 'src/app/core/services/insurance.service';
+import { RecruitService } from '@core/services/recruit.service';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { EmploymentService } from '@core/services/employment.service';
+import { InsuranceService } from '@core/services/insurance.service';
 
 @Component({
   selector: 'app-list',
@@ -11,13 +11,13 @@ import { InsuranceService } from 'src/app/core/services/insurance.service';
 })
 export class ListComponent implements OnInit {
 
-  @Input() idcard: string;//身份证号
+  @Input() idcard: string = '';//身份证号
 
   /// 分页参数
   pageIndex = 1;
   pageSize = 10;
   total = 1;
-  listOfData = [];
+  listOfData: any[] = [];
   sortKey = 'AAE036';
   sortValue = 'desc';
 
@@ -33,7 +33,7 @@ export class ListComponent implements OnInit {
     this.searchData();
   }
 
-  sort(sort: { key: string; value: string }): void {
+  sort(sort: any): void {
     console.log(sort);
     this.sortKey = sort.key;
     if (sort.value) {

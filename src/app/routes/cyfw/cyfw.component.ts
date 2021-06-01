@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CybtComponent } from './cybt/cybt.component';
 import { CyzjComponent } from './cyzj/cyzj.component';
 import { Router } from '@angular/router';
-import { NzModalService, NzMessageService } from 'ng-zorro-antd';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { GrdkComponent } from './grdk/grdk.component';
 import { QydkComponent } from './qydk/qydk.component';
 import { ReadCardService } from 'src/app/core/services/readcard.service';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-cyfw',
@@ -21,8 +22,8 @@ export class CyfwComponent implements OnInit {
     'grdk': GrdkComponent,// 个人贷款
     'qydk': QydkComponent// 企业贷款
   };
-  title: string;
-  cmp: string;
+  title: string = '';
+  cmp: string = '';
 
   constructor(
     public router: Router,

@@ -2,16 +2,19 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MacService } from 'src/app/core/services/mac.service';
 import { ITokenService, DA_SERVICE_TOKEN } from '@delon/auth';
-import { NzModalService } from 'ng-zorro-antd';
 import { JszwfwComponent } from './jszwfw/jszwfw.component';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
-  styleUrls: ['./index.component.less', '../routes.component.less']
+  styleUrls: [
+    './index.component.less',
+    '../routes.component.less'
+  ]
 })
 export class IndexComponent implements OnInit {
-  data: string;
+  data!: string;
 
   constructor(
     private authSvc: AuthService,

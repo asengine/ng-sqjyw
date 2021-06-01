@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RecruitService } from '../../core/services/recruit.service';
-import { NzModalService } from 'ng-zorro-antd';
+import { RecruitService } from '@core/services/recruit.service';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { DetailsComponent } from './details/details.component';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -15,7 +15,7 @@ export class RecruitComponent implements OnInit {
   pageIndex = 1;
   pageSize = 10;
   total = 1;
-  listOfData = [];
+  listOfData: any[] = [];
   sortKey = 'ACB333';
   sortValue = 'desc';
   key = '';
@@ -39,7 +39,7 @@ export class RecruitComponent implements OnInit {
     this.searchData();
   }
 
-  sort(sort: { key: string; value: string }): void {
+  sort(sort: any): void {
     console.log(sort);
     this.sortKey = sort.key;
     if (sort.value) {
