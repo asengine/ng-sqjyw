@@ -10,7 +10,8 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: '', redirectTo: 'shbx', pathMatch: 'full' },
-      { path: 'shbx', loadChildren: () => import('./routes/shbx/shbx.module').then(m => m.ShbxModule) },
+      { path: 'shbx', loadChildren: () => import('./routes/shbx/shbx.module').then(m => m.ShbxModule) }, // 社会保险
+      { path: 'jycy', loadChildren: () => import('./routes/jycy/jycy.module').then(m => m.JycyModule) }, // 就业创业
       { path: 'sybx', loadChildren: () => import('./routes/sybx/sybx.module').then(m => m.SybxModule) },
       { path: 'job', loadChildren: () => import('./routes/job/job.module').then(m => m.JobModule) },
       { path: 'recruit', loadChildren: () => import('./routes/recruit/recruit.module').then(m => m.RecruitModule) },
