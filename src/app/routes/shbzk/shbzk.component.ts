@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-jycy',
-  templateUrl: './jycy.component.html',
+  selector: 'app-shbzk',
+  templateUrl: './shbzk.component.html',
   styleUrls: [
-    './jycy.component.less',
+    './shbzk.component.less',
     '../routes.component.less'
   ]
 })
-export class JycyComponent implements OnInit {
-
+export class ShbzkComponent implements OnInit {
   effect = 'scrollx';
-
-
   constructor() { }
 
   ngOnInit(): void {

@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-jycy',
-  templateUrl: './jycy.component.html',
+  selector: 'app-rcfw',
+  templateUrl: './rcfw.component.html',
   styleUrls: [
-    './jycy.component.less',
+    './rcfw.component.less',
     '../routes.component.less'
   ]
 })
-export class JycyComponent implements OnInit {
+export class RcfwComponent implements OnInit {
 
   effect = 'scrollx';
-
 
   constructor() { }
 

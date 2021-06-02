@@ -12,6 +12,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'shbx', pathMatch: 'full' },
       { path: 'shbx', loadChildren: () => import('./routes/shbx/shbx.module').then(m => m.ShbxModule) }, // 社会保险
       { path: 'jycy', loadChildren: () => import('./routes/jycy/jycy.module').then(m => m.JycyModule) }, // 就业创业
+      { path: 'rcfw', loadChildren: () => import('./routes/rcfw/rcfw.module').then(m => m.RcfwModule) }, // 人才服务
+      { path: 'shbzk', loadChildren: () => import('./routes/shbzk/shbzk.module').then(m => m.ShbzkModule) }, // 社会保障卡
       { path: 'sybx', loadChildren: () => import('./routes/sybx/sybx.module').then(m => m.SybxModule) },
       { path: 'job', loadChildren: () => import('./routes/job/job.module').then(m => m.JobModule) },
       { path: 'recruit', loadChildren: () => import('./routes/recruit/recruit.module').then(m => m.RecruitModule) },
