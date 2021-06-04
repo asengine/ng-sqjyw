@@ -5,28 +5,24 @@ import { Renyuanjiben } from '@core/models/renyuanjiben';
 import { ShebaokaService } from '@core/services/shebaoka.service';
 import { ShehuibaoxianService } from '@core/services/shehuibaoxian.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
 
 /**
- * 人员基本信息查询
+ * 社保卡信息
  */
 @Component({
-  selector: 'app-ryjbxx',
-  templateUrl: './ryjbxx.component.html',
+  selector: 'app-sbkxx',
+  templateUrl: './sbkxx.component.html',
   styleUrls: [
-    './ryjbxx.component.less',
+    './sbkxx.component.less',
     '../default.component.less'
   ]
 })
-export class RyjbxxComponent implements OnInit {
-  config: CountdownConfig = {
-    format: `mm:ss`,
-    leftTime: 180,
-  };
+export class SbkxxComponent implements OnInit {
+
   public loading = true; //正在加载数据
   public cardno = '';
-  public title = '个人基本信息';
-  public data: Renyuanjiben = new Renyuanjiben();
+  public title = '社保卡信息';
+  public data: any;
 
   constructor(
     private router: Router,
@@ -35,9 +31,7 @@ export class RyjbxxComponent implements OnInit {
     private shebaoka: ShebaokaService,
     private shehuibaoxian: ShehuibaoxianService,
     private msgSvc: NzMessageService
-  ) {
-    this.titleSvc.setTitle(this.title);
-  }
+  ) { }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
@@ -47,26 +41,9 @@ export class RyjbxxComponent implements OnInit {
   }
 
   loadData() {
-    // this.shebaoka.getPersonId('', this.cardno, '').subscribe(res => {
-    //   console.log(res);
-    // });
-    this.shehuibaoxian.getRenyuanjibenTest().subscribe(res => {
-      console.log(res.data.data);
-      this.data = res.data.data[0] as Renyuanjiben;
-      console.log(this.data);
+    setTimeout(() => {
       this.loading = false;
-    });
-    // setTimeout(() => {
-    //   this.loading = false;
-    // }, 2000);
-  }
-
-
-  handleEvent(event: CountdownEvent) {
-    console.log(event);
-    if (event.action === 'done') {
-      this.router.navigate([`/index`]);
-    }
+    }, 1000);
   }
 
   back() {

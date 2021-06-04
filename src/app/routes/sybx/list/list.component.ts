@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
   sortKey = 'AAE036';
   sortValue = 'desc';
 
-  loading = false;
+  loading = true;
 
   constructor(
     private empSvc: InsuranceService,

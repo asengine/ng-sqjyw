@@ -15,11 +15,22 @@ const routes: Routes = [
         path: 'read-card',// 读卡方式
         loadChildren: () => import('./routes/default/read-card/read-card.module').then(m => m.ReadCardModule)
       },
+      /** 社会保险 */
       {
         path: 'ryjbxx', // 人员基本信息查询
         loadChildren: () => import('./routes/default/ryjbxx/ryjbxx.module').then(m => m.RyjbxxModule)
       },
+      {
+        path: 'ryjf', // 人员缴费查询
+        loadChildren: () => import('./routes/default/ryjf/ryjf.module').then(m => m.RyjfModule)
+      },
+      /** 社会保险 */
 
+      /**社会保障卡 */
+      {
+        path: 'sbkxx', // 社保卡信息查询
+        loadChildren: () => import('./routes/default/sbkxx/sbkxx.module').then(m => m.SbkxxModule)
+      },
     ]
   },
   {

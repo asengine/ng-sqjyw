@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ReadCardService } from '@core/services/readcard.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
 
 /**
  * 选择读卡方式
@@ -16,6 +17,11 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   ]
 })
 export class ReadCardComponent implements OnInit {
+
+  config: CountdownConfig = {
+    format: `mm:ss`,
+    leftTime: 180,
+  };
   private url: string;
   public title: string;
 
@@ -90,6 +96,14 @@ export class ReadCardComponent implements OnInit {
   //扫二维码
   scanCode() {
     console.log('扫二维码');
+  }
+
+
+  handleEvent(event: CountdownEvent) {
+    console.log(event);
+    if (event.action === 'done') {
+      this.router.navigate([`/index`]);
+    }
   }
 
   back() {

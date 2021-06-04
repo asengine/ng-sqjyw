@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
 
 @Component({
   selector: 'app-shbx',
@@ -9,11 +11,22 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class ShbxComponent implements OnInit {
-
   effect = 'scrollx';
-  constructor() { }
+  config: CountdownConfig = {
+    format: `mm:ss`,
+    leftTime: 180,
+  };
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
+  handleEvent(event: CountdownEvent) {
+    console.log(event);
+    if (event.action === 'done') {
+      this.router.navigate([`/index`]);
+    }
+  }
 }

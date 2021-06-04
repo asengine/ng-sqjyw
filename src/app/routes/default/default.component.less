@@ -17,6 +17,15 @@ nz-content {
   position: relative;
 }
 
+:host ::ng-deep .ant-card {
+  background: transparent;
+}
+
+:host ::ng-deep .ant-card-body {
+  padding: 0;
+  background: transparent;
+}
+
 .location {
   position: absolute;
   background: url(../../../assets/index1/location_03.png) 0 center no-repeat;
@@ -45,22 +54,42 @@ nz-content {
   line-height: 27px;
 }
 
-
 .back-btn {
   position: absolute;
   display: inline-block;
   width: 180px;
   height: 54px;
   line-height: 54px;
-  background: #0062FF;
+  background: #0062ff;
   border-radius: 8px;
   font-family: "Alibaba-PuHuiTi-Regular";
   font-size: 24px;
-  color: #F7FBFF;
+  color: #f7fbff;
   text-align: center;
   left: 550px;
   bottom: 54px;
 }
 
+.count-down-area {
+  font-family: "Alibaba-PuHuiTi-Regular";
+  font-size: 18px;
+  color: #ffec00;
+  text-align: center;
+  height: 33px;
+  line-height: 33px;
+  position: absolute;
+  top: -39px;
+  right: 0;
+}
 
-nz-layout:last-child {}
+.count-down-area .count-down {
+  width: 50px;
+  font-family: "Alibaba-PuHuiTi-Regular";
+  font-size: 24px;
+  color: #ffec00;
+  text-align: center;
+  line-height: 33px;
+}
+
+nz-layout:last-child {
+}

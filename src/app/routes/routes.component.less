@@ -5,79 +5,103 @@
   height: 900px;
 }
 
-::ng-deep .container .ant-page-header {
+::ng-deep .table .ant-page-header {
   background-color: transparent;
   color: azure;
 }
 
-::ng-deep .container .ant-page-header .ant-page-header-heading-title {
+::ng-deep .table .ant-page-header .ant-page-header-heading-title {
   color: azure;
 }
 
-::ng-deep .container .ant-page-header .ant-page-header-back-button {
+::ng-deep .table .ant-page-header .ant-page-header-back-button {
   color: azure;
 }
 
-::ng-deep .container .ant-pagination-item {
+::ng-deep .table .ant-pagination-item {
   background-color: transparent;
   width: 60px;
   height: 60px;
   line-height: 60px;
 }
 
-::ng-deep .container .ant-pagination-item a {
-  color: #ffffff;
+::ng-deep .table .ant-pagination-item a {
+  // //color: #ffffff;
 }
 
-::ng-deep .container .ant-pagination-prev,
-::ng-deep .container .ant-pagination-next {
+::ng-deep .table .ant-pagination-prev,
+::ng-deep .table .ant-pagination-next {
   background-color: transparent;
   width: 60px;
   height: 60px;
   line-height: 60px;
 }
 
-::ng-deep .container .ant-pagination-prev .ant-pagination-item-link,
-::ng-deep .container .ant-pagination-next .ant-pagination-item-link {
+::ng-deep .table .ant-pagination-prev .ant-pagination-item-link,
+::ng-deep .table .ant-pagination-next .ant-pagination-item-link {
   background-color: transparent;
-  color: #ffffff;
+  //color: #ffffff;
 }
 
-::ng-deep .container .ant-pagination-jump-prev .ant-pagination-item-link span,
-::ng-deep .container .ant-pagination-jump-next .ant-pagination-item-link span {
-  color: #ffffff;
+::ng-deep .table .ant-pagination-jump-prev .ant-pagination-item-link span,
+::ng-deep .table .ant-pagination-jump-next .ant-pagination-item-link span {
+  //color: #ffffff;
 }
 
-::ng-deep .container .ant-table-body table {
+::ng-deep .table .ant-table-body table {
   background: url(../../assets/timg.jpg) repeat;
 }
 
-::ng-deep .container .ant-table-body table .ant-table-thead .ant-table-row th {
-  // background-color: #ffffff;
+::ng-deep .table .ant-table-thead > tr > th {
+  // background-//color: #ffffff;
   // background-color: #3ba0e9;
-  background-color: transparent;
-  color: #ffffff;
-  font-weight: bold;
+  background: #e7f2ff;
+  border-radius: 4px 4px 0 0;
+  //color: #ffffff;
+  font-family: PingFangSC-Medium;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.85);
+  line-height: 22px;
 }
 
-::ng-deep .container .ant-table-body table td {
+::ng-deep .table .ant-table-body table td {
   padding: 0;
   text-indent: 16px;
-  color: #ffffff;
+  //color: #ffffff;
   height: 3em;
   line-height: 3em;
 }
 
-::ng-deep .container .ant-table-body table a {
+::ng-deep .table .ant-table-body table a {
   display: inline-block;
   height: 3em;
   width: 100%;
   line-height: 3em;
-  color: #ffffff;
+  //color: #ffffff;
 }
 
-::ng-deep .container .ant-pagination-total-text {
-  color: #ffffff;
+::ng-deep .table .ant-pagination-total-text {
+  //color: #ffffff;
+  height: 60px;
+  line-height: 60px;
+  font-family: "Alibaba-PuHuiTi-Regular";
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+::ng-deep
+  .ant-select-single:not(.ant-select-customize-input)
+  .ant-select-selector {
+  height: 60px;
+  line-height: 60px;
+}
+
+::ng-deep .ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+::ng-deep
+  .ant-select-single.ant-select-show-arrow
+  .ant-select-selection-placeholder {
+  height: 60px;
+  line-height: 60px;
 }
 
 ::ng-deep .ant-modal-content {
@@ -90,12 +114,12 @@
 }
 
 ::ng-deep .ant-modal-header div {
-  color: #ffffff !important;
+  //color: #ffffff !important;
   font-weight: bold;
 }
 
 ::ng-deep .ant-modal-close-x {
-  background-color: #ffffff;
+  //background-color: #ffffff;
 }
 
 // ::ng-deep .ant-descriptions-item-label {
@@ -115,9 +139,11 @@
 // }
 
 ::ng-deep .ant-row .ant-col-6,
-::ng-deep .ant-row .ant-col-12 {}
+::ng-deep .ant-row .ant-col-12 {
+}
 
-::ng-deep .ant-row a {}
+::ng-deep .ant-row a {
+}
 
 ::ng-deep .ant-row a p {
   text-align: center;
@@ -134,6 +160,10 @@ nz-layout a {
 nz-header.header01 {
   height: 184px;
   position: relative;
+}
+
+nz-header.header01 a {
+  color: #ffffff;
 }
 
 nz-header.header01 .logo {
@@ -175,7 +205,6 @@ nz-header.header01 .home a {
   font-size: 18px;
   width: 154px;
   height: 50px;
-  color: #ffffff;
   text-align: left;
 }
 
@@ -188,7 +217,7 @@ nz-header.header01 .exit {
   top: 60px;
   font-family: "Alibaba-PuHuiTi-Regular";
   font-size: 16px;
-  color: #ffffff;
+  //color: #ffffff;
   text-align: center;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 25px;
@@ -201,6 +230,6 @@ nz-header.header01 .exit a {
   font-size: 18px;
   width: 154px;
   height: 50px;
-  color: #ffffff;
+  //color: #ffffff;
   text-align: left;
 }

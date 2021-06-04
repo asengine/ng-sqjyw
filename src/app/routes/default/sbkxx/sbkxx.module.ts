@@ -1,21 +1,23 @@
 import { NgModule } from '@angular/core';
-import { RyjbxxComponent } from './ryjbxx.component';
-import { RyjbxxRoutingModule } from './ryjbxx.routing.module';
+import { SbkxxComponent } from './sbkxx.component';
 import { SharedModule } from '@shared';
-import { ShehuibaoxianService } from '@core/services/shehuibaoxian.service';
+import { SbkxxRoutingModule } from './sbkxx.routing.module';
 import { ShebaokaService } from '@core/services/shebaoka.service';
+import { ShehuibaoxianService } from '@core/services/shehuibaoxian.service';
+
+
 
 @NgModule({
   declarations: [
-    RyjbxxComponent
+    SbkxxComponent
   ],
   imports: [
     SharedModule,
-    RyjbxxRoutingModule
+    SbkxxRoutingModule
   ],
   providers: [
     ShebaokaService,
     ShehuibaoxianService
   ]
 })
-export class RyjbxxModule { }
+export class SbkxxModule { }

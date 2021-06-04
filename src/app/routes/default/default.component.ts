@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-default',
@@ -11,8 +11,10 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   ]
 })
 export class DefaultComponent implements OnInit {
-  constructor(
 
+  constructor(
+    private router: Router,
+    private msg: NzMessageService
   ) { }
 
   ngOnInit(): void {

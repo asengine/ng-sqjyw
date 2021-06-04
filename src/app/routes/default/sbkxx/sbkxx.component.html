@@ -1,0 +1,52 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading" [nzAvatar]="{ size: 'large' }">
+        <!-- <nz-card-meta [nzAvatar]="avatarTemplate" nzTitle="Card title" nzDescription="This is the description">
+        </nz-card-meta> -->
+        <!-- <nz-avatar nzSrc="../../../../assets/orthers/604161128.png"></nz-avatar> -->
+        <!-- <div class="">
+            <img src="../../../../assets/orthers/604161128.png" width="180" height="232" alt="头像" />
+            <div>11111111111111</div>
+        </div> -->
+        <table>
+            <tr>
+                <td rowspan="6" class="item-label" style="width: 168px;"><img
+                        src="../../../../assets/orthers/604161128.png"></td>
+            </tr>
+            <tr>
+                <td class="item-label" style="width: 201px;">身份证号：</td>
+                <td class="item-content" style="width: 251px;">321321198801087813</td>
+                <td class="item-label" style="width: 201px;">银行卡号：</td>
+                <td class="item-content" style="width: 251px;">321321198801087813</td>
+            </tr>
+            <tr>
+                <td class="item-label">姓名：</td>
+                <td class="item-content">张晓晓</td>
+                <td class="item-label">办理银行：</td>
+                <td class="item-content">招商银行XXX路支行</td>
+            </tr>
+            <tr>
+                <td class="item-label">联系电话：</td>
+                <td class="item-content">18115852889</td>
+                <td class="item-label">社保状态：</td>
+                <td class="item-content">激活</td>
+            </tr>
+            <tr>
+                <td class="item-label">社保卡号：</td>
+                <td class="item-content">B8888888888</td>
+                <td class="item-label">金融状态：</td>
+                <td class="item-content">激活</td>
+            </tr>
+            <tr>
+                <td class="item-label"></td>
+                <td class="item-content"></td>
+                <td class="item-label">卡类型：</td>
+                <td class="item-content">三代卡（一卡通）</td>
+            </tr>
+        </table>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

@@ -1,3 +1,7 @@
+<div class="count-down-area">本页面将在
+        <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+        秒后自动退出
+</div>
 <nz-carousel class="query-item" [nzEffect]="effect">
     <div nz-carousel-content>
         <ul>

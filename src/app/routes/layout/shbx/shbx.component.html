@@ -1,3 +1,7 @@
+<div class="count-down-area">本页面将在
+        <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+        秒后自动退出
+</div>
 <nz-carousel class="query-item" [nzEffect]="effect">
         <div nz-carousel-content>
                 <ul>
@@ -15,7 +19,8 @@
                 <ul>
                         <li><a><span class="icon78_53"><img src="../../../../assets/shbx-icon/编组12备份.png"></span>
                                         <span class="title">人员基础信息变更查询</span></a></li>
-                        <li><a><span class="icon62"><img src="../../../../assets/shbx-icon/编组22.png"></span>
+                        <li><a routerLink="/default/read-card" [queryParams]="{title:'人员缴费查询',url:'ryjf'}"><span
+                                                class="icon62"><img src="../../../../assets/shbx-icon/编组22.png"></span>
                                         <span class="title">人员缴费查询</span></a></li>
                         <li><a><span class="icon54_63"><img src="../../../../assets/shbx-icon/编组12.png"></span>
                                         <span class="title">人员月账户信息查询</span></a></li>
