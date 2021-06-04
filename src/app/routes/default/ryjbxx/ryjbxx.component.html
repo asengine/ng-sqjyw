@@ -1,0 +1,99 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading" [nzAvatar]="{ size: 'large' }">
+        <!-- <nz-card-meta [nzAvatar]="avatarTemplate" nzTitle="Card title" nzDescription="This is the description">
+        </nz-card-meta> -->
+
+        <!-- <nz-avatar nzSrc="../../../../assets/orthers/604161128.png"></nz-avatar> -->
+        <!-- <div class="">
+            <img src="../../../../assets/orthers/604161128.png" width="180" height="232" alt="头像" />
+            <div>11111111111111</div>
+        </div> -->
+        <table>
+            <tr>
+                <td class="item-label" style="width: 168px;">姓名：</td>
+                <td class="item-content">张晓晓</td>
+                <td class="item-label" style="width: 168px;">专业技术职务：</td>
+                <td class="item-content" style="width: 68px;">会计</td>
+                <td class="item-label" style="width: 144px;">户口性质：</td>
+                <td class="item-content">非农业户口（乡镇）</td>
+            </tr>
+            <tr>
+                <td class="item-label">性别：</td>
+                <td class="item-content">女</td>
+                <td class="item-label">婚姻状况：</td>
+                <td class="item-content">未婚</td>
+                <td class="item-label">户口所在地：</td>
+                <td class="item-content">宿迁市洪泽湖路189号康庭茗苑21幢503</td>
+            </tr>
+            <tr>
+                <td class="item-label">民族：</td>
+                <td class="item-content">汉族</td>
+                <td class="item-label">政治面貌：</td>
+                <td class="item-content">团员</td>
+                <td class="item-label">联系电话：</td>
+                <td class="item-content">18667829387</td>
+            </tr>
+            <tr>
+                <td class="item-label">国籍：</td>
+                <td class="item-content">中国</td>
+                <td class="item-label">联系人：</td>
+                <td class="item-content">张三</td>
+                <td class="item-label">通讯地址：</td>
+                <td class="item-content">宿迁市洪泽湖路189号康庭茗苑21幢503</td>
+            </tr>
+            <tr>
+                <td class="item-label">身份证号：</td>
+                <td class="item-content">321321198801087813</td>
+                <td class="item-label"></td>
+                <td class="item-content"></td>
+                <td class="item-label">邮政编码：</td>
+                <td class="item-content">223800</td>
+            </tr>
+            <tr>
+                <td class="item-label">证件类型：</td>
+                <td class="item-content">居民身份证</td>
+                <td class="item-label"></td>
+                <td class="item-content"></td>
+                <td class="item-label">单位编号：</td>
+                <td class="item-content">239229</td>
+            </tr>
+            <tr>
+                <td class="item-label">参加工作日期：</td>
+                <td class="item-content">2008年09月01日</td>
+                <td class="item-label"></td>
+                <td class="item-content"></td>
+                <td class="item-label">单位名称：</td>
+                <td class="item-content">江苏省广播电视有线网络股份有限公司</td>
+            </tr>
+            <tr>
+                <td class="item-label">有效证件类型：</td>
+                <td class="item-content">公民身份证</td>
+                <td class="item-label"></td>
+                <td class="item-content"></td>
+                <td class="item-label"></td>
+                <td class="item-content"></td>
+            </tr>
+            <tr>
+                <td class="item-label">人员状态：</td>
+                <td class="item-content">正常</td>
+                <td class="item-label"></td>
+                <td class="item-content"></td>
+                <td class="item-label"></td>
+                <td class="item-content"></td>
+            </tr>
+            <tr>
+                <td class="item-label">文化程度：</td>
+                <td class="item-content">其他</td>
+                <td class="item-label"></td>
+                <td class="item-content"></td>
+                <td class="item-label"></td>
+                <td class="item-content"></td>
+            </tr>
+        </table>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

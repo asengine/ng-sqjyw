@@ -1,1 +1,16 @@
-<p>read-card works!</p>
+<div class="location">
+        <span class="t">您的位置：</span>
+        <span class="location-name">{{title}}</span>
+</div>
+<div class="query-item">
+        <div class="header-title">请选择读卡方式</div>
+        <ul>
+                <li><a (click)="readIdCard()"><span class="icon1"><img src="../../../../assets/orthers/编组12.png"></span>
+                                <span class="title">读取身份证</span></a></li>
+                <li><a (click)="readSiCard()"><span class="icon2"><img src="../../../../assets/orthers/编组13.png"></span>
+                                <span class="title">插入社保卡</span></a></li>
+                <li><a (click)="scanCode()"><span class="icon3"><img src="../../../../assets/orthers/编组16.png"></span>
+                                <span class="title">扫描电子社保卡</span></a></li>
+        </ul>
+</div>
+<a (click)="back()" class="back-btn">返回</a>

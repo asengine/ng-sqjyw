@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: [
     './app.component.less',
     '../assets/font/BigruixianBlackGBV1.0/BigruixianBlackGBV1.0.css',
-    '../assets/font/Alibaba-PuHuiTi-Regular/Alibaba-PuHuiTi-Regular.css'
+    '../assets/font/Alibaba-PuHuiTi-Regular/Alibaba-PuHuiTi-Regular.css',
+    '../assets/font/Alibaba-PuHuiTi-Medium/Alibaba-PuHuiTi-Medium.css'
   ]
 })
 export class AppComponent {

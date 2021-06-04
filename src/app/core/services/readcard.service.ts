@@ -3,6 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { RDC_URL, IDC_URL } from '../config/service.config';
 import { SettingsService } from '@delon/theme';
 
+/**
+ * 读卡器服务
+ * 
+ */
 @Injectable()
 export class ReadCardService {
 
