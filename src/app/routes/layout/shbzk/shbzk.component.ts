@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './shbzk.component.html',
   styleUrls: [
     './shbzk.component.less',
-    '../routes.component.less'
+    '../layout.component.less'
   ]
 })
 export class ShbzkComponent implements OnInit {

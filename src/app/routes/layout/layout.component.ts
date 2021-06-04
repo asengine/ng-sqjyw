@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './layout.component.html',
   styleUrls: [
     './layout.component.less',
-    '../routes/routes.component.less'
+    '../routes.component.less'
   ]
 })
 export class LayoutComponent implements OnInit {

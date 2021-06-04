@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './rcfw.component.html',
   styleUrls: [
     './rcfw.component.less',
-    '../routes.component.less'
+    '../layout.component.less'
   ]
 })
 export class RcfwComponent implements OnInit {

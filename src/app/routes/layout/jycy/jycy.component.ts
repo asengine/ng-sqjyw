@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './jycy.component.html',
   styleUrls: [
     './jycy.component.less',
-    '../routes.component.less'
+    '../layout.component.less'
   ]
 })
 export class JycyComponent implements OnInit {

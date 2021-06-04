@@ -12,7 +12,7 @@ import { GlobalConfigModule } from './global-config.module';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { SharedModule } from '@shared';
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutComponent } from './routes/layout/layout.component';
 import { DefaultComponent } from './routes/default/default.component';
 
 const INTERCEPTOR_PROVIDES = [

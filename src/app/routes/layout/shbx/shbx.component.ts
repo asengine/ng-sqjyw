@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './shbx.component.html',
   styleUrls: [
     './shbx.component.less',
-    '../routes.component.less'
+    '../layout.component.less'
   ]
 })
 export class ShbxComponent implements OnInit {
