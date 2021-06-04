@@ -1,10 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
+import { DefaultComponent } from './routes/default/default.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'index', pathMatch: 'full' },
   { path: 'index', loadChildren: () => import('./routes/index/index.module').then(m => m.IndexModule) },
+  {
+    path: 'default',
+    component: DefaultComponent,
+
+    children: [
+      { path: '', redirectTo: 'read-card', pathMatch: 'full' },
+      { path: 'read-card', loadChildren: () => import('./routes/read-card/read-card.module').then(m => m.ReadCardModule) }, // 读卡方式
+
+
+    ]
+  },
   {
     path: 'layout',
     component: LayoutComponent,

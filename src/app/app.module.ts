@@ -13,6 +13,7 @@ import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { SharedModule } from '@shared';
 import { LayoutComponent } from './layout/layout.component';
+import { DefaultComponent } from './routes/default/default.component';
 
 const INTERCEPTOR_PROVIDES = [
   //{ provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true },
@@ -22,7 +23,8 @@ const INTERCEPTOR_PROVIDES = [
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent
+    LayoutComponent,
+    DefaultComponent
   ],
   imports: [
     BrowserModule,

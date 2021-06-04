@@ -1,0 +1,38 @@
+<div class="container">
+    <nz-layout class="layout01">
+        <nz-header class="header01">
+            <img class="logo" src="../../../assets/index1/logo.png" />
+            <span class="name">宿迁人社自助服务一体机</span>
+            <div class="home"><a routerLink="/index">回到首页</a></div>
+            <div class="exit"><a>滑动退卡</a></div>
+        </nz-header>
+        <nz-content>
+            <div class="card-container">
+                <nz-tabset nzType="card" nzLinkRouter>
+                    <nz-tab>
+                        <a *nzTabLink nz-tab-link routerLink="/layout/shbx" [queryParams]="{ tab: '社会保险' }"
+                            queryParamsHandling="merge"><span class="shbx-logo"></span><span
+                                class="title">社会保险</span></a>
+                    </nz-tab>
+                    <nz-tab>
+                        <a *nzTabLink nz-tab-link routerLink="/layout/jycy" [queryParams]="{ tab: '就业创业' }"
+                            queryParamsHandling="merge"><span class="jycy-logo"></span><span
+                                class="title">就业创业</span></a>
+                    </nz-tab>
+                    <nz-tab>
+                        <a *nzTabLink nz-tab-link routerLink="/layout/rcfw" [queryParams]="{ tab: '人才服务' }"
+                            queryParamsHandling="merge"><span class="rcfw-logo"></span><span
+                                class="title">人才服务</span></a>
+                    </nz-tab>
+                    <nz-tab>
+                        <a *nzTabLink nz-tab-link routerLink="/layout/shbzk" [queryParams]="{ tab: '社会保障卡' }"
+                            queryParamsHandling="merge"><span class="shbzk-logo"></span><span
+                                class="title">社会保障卡</span></a>
+                    </nz-tab>
+                </nz-tabset>
+                <router-outlet></router-outlet>
+            </div>
+        </nz-content>
+    </nz-layout>
+</div>
+<div class="tab-bg"></div>
