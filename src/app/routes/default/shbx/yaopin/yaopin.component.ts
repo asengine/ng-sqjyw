@@ -7,6 +7,9 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
 import { YaopinInfoComponent } from './yaopin-info/yaopin-info.component';
 
+/**
+ * 药品信息
+ */
 @Component({
   selector: 'app-yaopin',
   templateUrl: './yaopin.component.html',
@@ -23,7 +26,7 @@ export class YaopinComponent implements OnInit {
   public title = '药品信息';
   /// 分页参数
   public pageIndex = 1;
-  public pageSize = 7;
+  public pageSize = 6;
   public total = 1;
   public listOfData: Yaopin[] = Array<Yaopin>();
   public sortKey = 'AAE036';

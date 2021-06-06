@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\routes",
+    "\\src\\app\\routes\\default",
+    "\\src\\app\\routes\\default\\shbx",
+    "\\src\\app\\routes\\default\\shbx\\rynzh"
+  ],
+  "SelectedNode": "\\src\\app\\routes\\default\\shbx\\rynzh\\rynzh.component.html",
+  "PreviewInSolutionExplorer": false
+}

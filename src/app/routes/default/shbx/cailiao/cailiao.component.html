@@ -1,0 +1,54 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <div class="table">
+            <form nz-form #formRef="ngForm" (ngSubmit)="!loading&&searchData(true)">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+                            <input nz-input #ala059Ref="ngModel" [(ngModel)]="ala059" name="ala059" required
+                                placeholder="项目编码" />
+                        </nz-input-group>
+                        <ng-template #suffixButton>
+                            <button nz-button type="submit" nzType="primary" nzSize="large"
+                                [disabled]="formRef.invalid||loading" nzSearch>查询</button>
+                        </ng-template>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+            <nz-table #ajaxTable [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
+                [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
+                (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)">
+                <thead (nzSortOrderChange)="sort($event)" nzSingleSort>
+                    <tr>
+                        <th nzShowSort nzSortKey="ALA059">材料编码</th>
+                        <th nzShowSort nzSortKey="ALA060">材料名称</th>
+                        <th nzShowSort nzSortKey="ALA024">收费类别</th>
+                        <th nzShowSort nzSortKey="AAE100">有效标志</th>
+                        <th nzShowSort nzSortKey="ALC063">说明</th>
+                        <th nzShowSort nzSortKey="AAE100">有效标志</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listOfData">
+                        <td><a (click)="onClick(item.ALA059)">{{item.ALA059}}</a></td>
+                        <td>{{item.ALA060}}</td>
+                        <td>{{item.ALA024}}</td>
+                        <td>{{item.AAE100}}</td>
+                        <td>{{item.ALC063}}</td>
+                        <td>{{item.AAE100}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+            <!-- <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template> -->
+        </div>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

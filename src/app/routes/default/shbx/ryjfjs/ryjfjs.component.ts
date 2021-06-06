@@ -5,6 +5,9 @@ import { ShebaokaService } from '@core/services/shebaoka.service';
 import { ShehuibaoxianService } from '@core/services/shehuibaoxian.service';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
 
+/**
+ * 人员缴费基数
+ */
 @Component({
   selector: 'app-ryjfjs',
   templateUrl: './ryjfjs.component.html',

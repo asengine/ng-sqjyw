@@ -5,6 +5,23 @@
   height: 900px;
 }
 
+::ng-deep .ant-card {
+  background: transparent;
+}
+
+::ng-deep .ant-card-body {
+  padding: 0;
+  background: transparent;
+}
+
+::ng-deep .ant-card-bordered {
+  border: none;
+}
+
+::ng-deep .ant-card .ant-form .ant-form-item {
+  margin-bottom: 10px;
+}
+
 ::ng-deep .table .ant-page-header {
   background-color: transparent;
   color: azure;
@@ -27,6 +44,7 @@
 
 ::ng-deep .table .ant-pagination-item a {
   // //color: #ffffff;
+  font-family: "Alibaba-PuHuiTi-Regular";
 }
 
 ::ng-deep .table .ant-pagination-prev,
@@ -40,44 +58,73 @@
 ::ng-deep .table .ant-pagination-prev .ant-pagination-item-link,
 ::ng-deep .table .ant-pagination-next .ant-pagination-item-link {
   background-color: transparent;
-  //color: #ffffff;
+  font-family: "Alibaba-PuHuiTi-Regular";
 }
 
 ::ng-deep .table .ant-pagination-jump-prev .ant-pagination-item-link span,
 ::ng-deep .table .ant-pagination-jump-next .ant-pagination-item-link span {
-  //color: #ffffff;
+  color: rgba(0, 0, 0, 0.65);
+  font-family: "Alibaba-PuHuiTi-Regular";
 }
 
-::ng-deep .table .ant-table-body table {
-  background: url(../../assets/timg.jpg) repeat;
+::ng-deep .table nz-table .ant-table {
+  background-color: transparent;
 }
 
-::ng-deep .table .ant-table-thead > tr > th {
-  // background-//color: #ffffff;
-  // background-color: #3ba0e9;
+::ng-deep .table nz-table .ant-table .ant-table-content {
+  background-color: transparent;
+}
+
+::ng-deep
+  .table
+  nz-table
+  .ant-table
+  .ant-table-content
+  .ant-table-thead
+  > tr
+  > th {
   background: #e7f2ff;
-  // border-radius: 4px 4px 0 0;
-  //color: #ffffff;
+  font-weight: bold;
   font-family: "Alibaba-PuHuiTi-Regular";
   font-size: 20px;
   color: rgba(0, 0, 0, 0.85);
-  line-height: 22px;
+  text-align: center;
 }
 
-::ng-deep .table .ant-table-body table td {
+::ng-deep .table nz-table .ant-table .ant-table-content .ant-table-tbody {
+}
+
+::ng-deep
+  .table
+  nz-table
+  .ant-table
+  .ant-table-content
+  .ant-table-tbody
+  > tr
+  > td {
   padding: 0;
-  text-indent: 16px;
-  //color: #ffffff;
-  height: 3em;
-  line-height: 3em;
+  height: 50px;
+  line-height: 50px;
+  font-size: 20px;
+  text-align: center;
+  font-family: "Alibaba-PuHuiTi-Regular";
 }
 
-::ng-deep .table .ant-table-body table a {
+::ng-deep
+  .table
+  nz-table
+  .ant-table
+  .ant-table-content
+  .ant-table-tbody
+  > tr.ant-table-row
+  > td.ant-table-cell
+  > a {
   display: inline-block;
-  height: 3em;
   width: 100%;
-  line-height: 3em;
-  //color: #ffffff;
+  height: 100%;
+  font-size: 20px;
+  text-align: center;
+  font-family: "Alibaba-PuHuiTi-Regular";
 }
 
 ::ng-deep .table .ant-pagination-total-text {

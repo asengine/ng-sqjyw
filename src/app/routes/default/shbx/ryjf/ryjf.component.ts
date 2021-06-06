@@ -28,7 +28,7 @@ export class RyjfComponent implements OnInit {
   public title = '个人缴费信息';
   /// 分页参数
   public pageIndex = 1;
-  public pageSize = 7;
+  public pageSize = 6;
   public total = 1;
   public listOfData: Renyuanjiaofei[] = Array<Renyuanjiaofei>();
   public sortKey = 'AAE036';

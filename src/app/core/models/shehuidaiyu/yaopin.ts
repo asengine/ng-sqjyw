@@ -1,3 +1,7 @@
+
+/**
+ * 药品信息
+ */
 export class Yaopin {
 
     /**药品商品名编码 */
@@ -14,6 +18,8 @@ export class Yaopin {
 
     /**通用名称 */
     ALA006: string = "通用名称";
+
+    /**产品名称 */
     ALA007: string = "产品名称";
 
     /**药品商品名 */

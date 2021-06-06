@@ -5,6 +5,9 @@ import { ShebaokaService } from '@core/services/shebaoka.service';
 import { ShehuibaoxianService } from '@core/services/shehuibaoxian.service';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
 
+/**
+ * 人员参保变更
+ */
 @Component({
   selector: 'app-ryjcbg',
   templateUrl: './ryjcbg.component.html',
@@ -25,7 +28,7 @@ export class RyjcbgComponent implements OnInit {
   public title = '个人参保变更信息';
   /// 分页参数
   public pageIndex = 1;
-  public pageSize = 7;
+  public pageSize = 6;
   public total = 1;
   public listOfData: Renyuanjichubiangeng[] = Array<Renyuanjichubiangeng>();
   public sortKey = 'AAE036';

@@ -5,7 +5,9 @@ import { ShebaokaService } from '@core/services/shebaoka.service';
 import { ShehuibaoxianService } from '@core/services/shehuibaoxian.service';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
 
-
+/**
+ * 人员年账户
+ */
 @Component({
   selector: 'app-rynzh',
   templateUrl: './rynzh.component.html',
@@ -25,7 +27,7 @@ export class RynzhComponent implements OnInit {
   public title = '人员年账户信息';
   /// 分页参数
   public pageIndex = 1;
-  public pageSize = 7;
+  public pageSize = 6;
   public total = 1;
   public listOfData: Renyuannianzhanghu[] = Array<Renyuannianzhanghu>();
   public sortKey = 'AAE036';

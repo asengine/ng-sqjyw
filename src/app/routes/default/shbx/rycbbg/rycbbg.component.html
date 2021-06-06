@@ -9,9 +9,9 @@
 <nz-card>
     <nz-skeleton [nzActive]="true" [nzLoading]="loading">
         <div class="table">
-            <nz-table #ajaxTable nzShowSizeChanger [nzFrontPagination]="false" [nzData]="listOfData"
+            <nz-table #ajaxTable [nzFrontPagination]="false" [nzData]="listOfData"
                 [nzLoading]="loading" [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
-                (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)" nzBordered="true">
+                (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)">
                 <thead (nzSortOrderChange)="sort($event)" nzSingleSort>
                     <tr>
                         <th nzShowSort nzSortKey="AAE035">变更日期</th>

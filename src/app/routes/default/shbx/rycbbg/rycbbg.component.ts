@@ -25,7 +25,7 @@ export class RycbbgComponent implements OnInit {
   public title = '个人参保变更信息';
   /// 分页参数
   public pageIndex = 1;
-  public pageSize = 7;
+  public pageSize = 6;
   public total = 1;
   public listOfData: Renyuancanbaobiangeng[] = new Array<Renyuancanbaobiangeng>();
   public sortKey = 'AAE036';

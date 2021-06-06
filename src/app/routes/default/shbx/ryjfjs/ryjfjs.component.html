@@ -25,7 +25,7 @@
             </form>
             <nz-table #ajaxTable [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
                 [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
-                (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)" nzBordered="true">
+                (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)">
                 <thead (nzSortOrderChange)="sort($event)" nzSingleSort>
                     <tr>
                         <th nzShowSort nzSortKey="AAE041">开始年月</th>

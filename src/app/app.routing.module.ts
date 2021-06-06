@@ -52,6 +52,22 @@ const routes: Routes = [
         path: 'yaopin', // 药品信息查询
         loadChildren: () => import('./routes/default/shbx/yaopin/yaopin.module').then(m => m.YaopinModule)
       },
+      {
+        path: 'zhenliao', // 诊疗项目信息查询
+        loadChildren: () => import('./routes/default/shbx/zhenliao/zhenliao.module').then(m => m.ZhenliaoModule)
+      },
+      {
+        path: 'cailiao', // 材料信息查询
+        loadChildren: () => import('./routes/default/shbx/cailiao/cailiao.module').then(m => m.CailiaoModule)
+      },
+      {
+        path: 'gsjb', // 工伤基本信息查询
+        loadChildren: () => import('./routes/default/shbx/gsjb/gsjb.module').then(m => m.GsjbModule)
+      },
+      {
+        path: 'gsdyzf', // 工伤待遇支付明细查询
+        loadChildren: () => import('./routes/default/shbx/gsdyzf/gsdyzf.module').then(m => m.GsdyzfModule)
+      },
       /** 社会保险 */
 
       /**社会保障卡 */
