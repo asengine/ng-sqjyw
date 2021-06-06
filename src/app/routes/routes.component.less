@@ -56,9 +56,9 @@
   // background-//color: #ffffff;
   // background-color: #3ba0e9;
   background: #e7f2ff;
-  border-radius: 4px 4px 0 0;
+  // border-radius: 4px 4px 0 0;
   //color: #ffffff;
-  font-family: PingFangSC-Medium;
+  font-family: "Alibaba-PuHuiTi-Regular";
   font-size: 20px;
   color: rgba(0, 0, 0, 0.85);
   line-height: 22px;
@@ -106,7 +106,9 @@
 
 ::ng-deep .ant-modal-content {
   /*background: url(../../assets/timg.jpg) repeat;*/
-  background-color: #05073a;
+  background-image: linear-gradient(180deg, #fcfdff 0%, #f7fbff 100%);
+  border-radius: 10px;
+  /*background-color: #05073a;*/
 }
 
 ::ng-deep .ant-modal-header {
@@ -122,21 +124,19 @@
   //background-color: #ffffff;
 }
 
-// ::ng-deep .ant-descriptions-item-label {
-//   background-color: transparent !important;
-//   font-size: 24px;
-//   font-family: "Alibaba-PuHuiTi-Regular";
-//   color: rgba(0, 0, 0, 0.45);
-//   text-align: right;
-//   line-height: 42px;
-// }
+::ng-deep .ant-descriptions-bordered .ant-descriptions-item-label {
+  font-size: 20px;
+  font-family: "Alibaba-PuHuiTi-Regular";
+  color: rgba(0, 0, 0, 0.45);
+  text-align: right;
+}
 
-// ::ng-deep .ant-descriptions-item-content {
-//   font-family: "Alibaba-PuHuiTi-Regular";
-//   font-size: 24px;
-//   color: rgba(0, 0, 0, 0.85);
-//   line-height: 42px;
-// }
+::ng-deep .ant-descriptions-bordered .ant-descriptions-item-content {
+  font-family: "Alibaba-PuHuiTi-Regular";
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.85);
+  text-align: left;
+}
 
 ::ng-deep .ant-row .ant-col-6,
 ::ng-deep .ant-row .ant-col-12 {

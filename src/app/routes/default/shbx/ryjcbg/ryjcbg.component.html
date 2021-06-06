@@ -11,26 +11,27 @@
         <div class="table">
             <nz-table #ajaxTable nzShowSizeChanger [nzFrontPagination]="false" [nzData]="listOfData"
                 [nzLoading]="loading" [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
-                (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)" nzBordered="true"
-                [nzShowTotal]="totalTemplate">
-                <thead (nzSortChange)="sort($event)" nzSingleSort>
+                (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)" nzBordered="true">
+                <thead (nzSortOrderChange)="sort($event)" nzSingleSort>
                     <tr>
-                        <th nzShowSort nzSortKey="AAC003">姓名</th>
-                        <th nzShowSort nzSortKey="AAC002">公民身份号码</th>
-                        <th nzShowSort nzSortKey="ERRM">补缴情况说明</th>
+                        <th nzShowSort nzSortKey="AAE155">变更项名称</th>
+                        <th nzShowSort nzSortKey="AAE123">变更前信息</th>
+                        <th nzShowSort nzSortKey="AAE124">变更后信息</th>
+                        <th nzShowSort nzSortKey="AAE011">经办人</th>
                         <th nzShowSort nzSortKey="AAE036">经办日期</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let data of ajaxTable.data">
-                        <td><a (click)="onClick(data.BAZ001)">{{data.AAC003}}</a></td>
-                        <td>{{data.AAC002}}</td>
-                        <td>{{data.ERRM}}</td>
-                        <td>{{data.AAE036}}</td>
+                    <tr *ngFor="let item of listOfData">
+                        <td>{{item.AAE155}}</td>
+                        <td>{{item.AAE123}}</td>
+                        <td>{{item.AAE124}}</td>
+                        <td>{{item.AAE011}}</td>
+                        <td>{{item.AAE036}}</td>
                     </tr>
                 </tbody>
             </nz-table>
-            <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template>
+            <!-- <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template> -->
         </div>
     </nz-skeleton>
 </nz-card>

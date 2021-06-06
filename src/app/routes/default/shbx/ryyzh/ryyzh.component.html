@@ -1,0 +1,40 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <div class="table">
+            <nz-table #ajaxTable nzShowSizeChanger [nzFrontPagination]="false" [nzData]="listOfData"
+                [nzLoading]="loading" [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
+                (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)" nzBordered="true">
+                <thead (nzSortOrderChange)="sort($event)" nzSingleSort>
+                    <tr>
+                        <th nzShowSort nzSortKey="AAE003">缴费年月</th>
+                        <th nzShowSort nzSortKey="AAE202">缴费月数</th>
+                        <th nzShowSort nzSortKey="AAE180">划账基数</th>
+                        <th nzShowSort nzSortKey="AAE482">单位划账户金额</th>
+                        <th nzShowSort nzSortKey="AAE080">个人划账户金额</th>
+                        <th nzShowSort nzSortKey="AAB004">单位名称</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listOfData">
+                        <td>{{item.AAE003}}</td>
+                        <td>{{item.AAE202}}</td>
+                        <td>{{item.AAE180}}</td>
+                        <td>{{item.AAE482}}</td>
+                        <td>{{item.AAE080}}</td>
+                        <td>{{item.AAB004}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+            <!-- <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template> -->
+        </div>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

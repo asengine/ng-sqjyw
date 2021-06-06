@@ -1,0 +1,42 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <div class="table">
+            <nz-table #ajaxTable nzShowSizeChanger [nzFrontPagination]="false" [nzData]="listOfData"
+                [nzLoading]="loading" [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
+                (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)" nzBordered="true">
+                <thead (nzSortOrderChange)="sort($event)" nzSingleSort>
+                    <tr>
+                        <th nzShowSort nzSortKey="AAE001">年度</th>
+                        <th nzShowSort nzSortKey="BIC107">当年本金</th>
+                        <th nzShowSort nzSortKey="BIC108">当年利息</th>
+                        <th nzShowSort nzSortKey="BIC101">截至上年度单位本金本息</th>
+                        <th nzShowSort nzSortKey="BIC903">截至上年度个人本息</th>
+                        <th nzShowSort nzSortKey="BIC904">本年度单位本金</th>
+                        <th nzShowSort nzSortKey="BIC905">本年度个人本金</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listOfData">
+                        <td>{{item.AAE001}}</td>
+                        <td>{{item.BIC107}}</td>
+                        <td>{{item.BIC108}}</td>
+                        <td>{{item.BIC101}}</td>
+                        <td>{{item.BIC903}}</td>
+                        <td>{{item.BIC904}}</td>
+                        <td>{{item.BIC905}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+            <!-- <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template> -->
+        </div>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

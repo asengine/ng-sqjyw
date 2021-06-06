@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Renyuanjiben } from '@core/models/renyuanjiben';
+import { Renyuanjiben } from '@core/models/shehuibaoxian/renyuanjiben';
 import { ShebaokaService } from '@core/services/shebaoka.service';
 import { ShehuibaoxianService } from '@core/services/shehuibaoxian.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -14,7 +14,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   templateUrl: './sbkxx.component.html',
   styleUrls: [
     './sbkxx.component.less',
-    '../default.component.less'
+    '../../default.component.less'
   ]
 })
 export class SbkxxComponent implements OnInit {

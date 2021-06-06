@@ -27,7 +27,10 @@
             </tr>
             <tr>
                 <td class="item-label">性别：</td>
-                <td class="item-content">{{data.AAC004}}</td>
+                <td class="item-content">
+                    <span *ngIf="data.AAC004=='1'">男</span>
+                    <span *ngIf="data.AAC004=='2'">女</span>
+                </td>
                 <td class="item-label">婚姻状况：</td>
                 <td class="item-content">未婚</td>
                 <td class="item-label">户口所在地：</td>
