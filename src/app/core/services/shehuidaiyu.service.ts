@@ -10,6 +10,8 @@ import { Cailiao } from '@core/models/shehuidaiyu/cailiao';
 import { Gongshangjiben } from '@core/models/shehuidaiyu/gongshangjiben';
 import { Gongshangdaiyu } from '@core/models/shehuidaiyu/gongshangdaiyu';
 import { Gongshangdingqidaiyu } from '@core/models/shehuidaiyu/gongshangdingqidaiyu';
+import { Gongshanggongyang } from '@core/models/shehuidaiyu/gongshanggongyang';
+import { Gongshangdaiyushouli } from '@core/models/shehuidaiyu/gongshangdaiyushouli';
 
 /**
  * 20210520省一体化接口文档——社会待遇
@@ -171,7 +173,7 @@ export class ShehuidaiyuService {
      * @param pageSize 
      * @returns 
      */
-    public getGngshangdaiyu(
+    public getGongshangdaiyu(
         bac001: string,
         pageNo: number,
         pageSize: number
@@ -203,6 +205,54 @@ export class ShehuidaiyuService {
         const url = `${this.baseUrl}${this.apiUrl}/getgongshangdingqidaiyu`;
         const result = this.http.get<JsonResult<PagedList<Gongshangdingqidaiyu>>>('../../assets/data/gongshangjiben.json');
         // const result = this.http.post<JsonResult<PagedList<Gongshangdingqidaiyu>>>(url,
+        //     {
+        //         "bac001": bac001,
+        //         "pageNo": pageNo,
+        //         "pageSize": pageSize
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.7	工伤供养亲属待遇信息查询
+     * @param bac001 个人编号
+     * @param pageNo 
+     * @param pageSize 
+     * @returns 
+     */
+    public getGongshanggongyang(
+        bac001: string,
+        pageNo: number,
+        pageSize: number
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getgongshanggongyang`;
+        const result = this.http.get<JsonResult<PagedList<Gongshanggongyang>>>('../../assets/data/gongshangjiben.json');
+        // const result = this.http.post<JsonResult<PagedList<Gongshanggongyang>>>(url,
+        //     {
+        //         "bac001": bac001,
+        //         "pageNo": pageNo,
+        //         "pageSize": pageSize
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.8	工伤待遇受理信息查询
+     * @param bac001 个人编号
+     * @param pageNo 
+     * @param pageSize 
+     * @returns 
+     */
+    public getGongshangdaiyushouli(
+        bac001: string,
+        pageNo: number,
+        pageSize: number
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getgongshangdaiyushouli`;
+        const result = this.http.get<JsonResult<PagedList<Gongshangdaiyushouli>>>('../../assets/data/gongshangjiben.json');
+        // const result = this.http.post<JsonResult<PagedList<Gongshangdaiyushouli>>>(url,
         //     {
         //         "bac001": bac001,
         //         "pageNo": pageNo,

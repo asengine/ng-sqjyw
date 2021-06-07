@@ -1,0 +1,34 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <div class="table">
+            <nz-table #ajaxTable [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
+                [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
+                (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)">
+                <thead (nzSortOrderChange)="sort($event)" nzSingleSort>
+                    <tr>
+                        <th nzShowSort nzSortKey="AAC121">人员类型</th>
+                        <th nzShowSort nzSortKey="AAE116">待遇发放状态</th>
+                        <th nzShowSort nzSortKey="AAE019">定期待遇月标准</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listOfData">
+                        <td><a (click)="onClick(item.ROWNO)">{{item.AAC121}}</a></td>
+                        <td>{{item.AAE116}}</td>
+                        <td>{{item.AAE019}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+            <!-- <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template> -->
+        </div>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

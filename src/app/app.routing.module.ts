@@ -68,6 +68,18 @@ const routes: Routes = [
         path: 'gsdyzf', // 工伤待遇支付明细查询
         loadChildren: () => import('./routes/default/shbx/gsdyzf/gsdyzf.module').then(m => m.GsdyzfModule)
       },
+      {
+        path: 'gsdqdy', // 工伤定期待遇信息查询
+        loadChildren: () => import('./routes/default/shbx/gsdqdy/gsdqdy.module').then(m => m.GsdqdyModule)
+      },
+      {
+        path: 'gsgyqs', // 工伤供养亲属待遇信息查询
+        loadChildren: () => import('./routes/default/shbx/gsgyqs/gsgyqs.module').then(m => m.GsgyqsModule)
+      },
+      {
+        path: 'gsdysl', // 工伤待遇受理信息查询
+        loadChildren: () => import('./routes/default/shbx/gsdysl/gsdysl.module').then(m => m.GsdyslModule)
+      },
       /** 社会保险 */
 
       /**社会保障卡 */

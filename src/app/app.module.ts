@@ -14,6 +14,8 @@ import { NzModalService } from 'ng-zorro-antd/modal';
 import { SharedModule } from '@shared';
 import { LayoutComponent } from './routes/layout/layout.component';
 import { DefaultComponent } from './routes/default/default.component';
+import { RouteReuseStrategy } from '@angular/router';
+import { CustomReuseStrategy } from '@core/providers/custom-reuse-strategy';
 
 const INTERCEPTOR_PROVIDES = [
   //{ provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true },
@@ -39,6 +41,7 @@ const INTERCEPTOR_PROVIDES = [
     ...INTERCEPTOR_PROVIDES,
     NzModalService,
     AuthGuard,
+    { provide: RouteReuseStrategy, useClass: CustomReuseStrategy },
     { provide: BASE_URL, useValue: environment.BASE_URL },
     { provide: AUTH_URL, useValue: environment.AUTH_URL },
     { provide: JYW_URL, useValue: environment.JYW_URL },

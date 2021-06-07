@@ -1,22 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Gongshangdaiyu } from '@core/models/shehuidaiyu/gongshangdaiyu';
+import { Gongshangdingqidaiyu } from '@core/models/shehuidaiyu/gongshangdingqidaiyu';
 import { ShebaokaService } from '@core/services/shebaoka.service';
 import { ShehuidaiyuService } from '@core/services/shehuidaiyu.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
-import { GsdyzfInfoComponent } from './gsdyzf-info/gsdyzf-info.component';
+import { GsdqdyInfoComponent } from './gsdqdy-info/gsdqdy-info.component';
 
-/**
- * 工伤待遇支付明细
- */
+
 @Component({
-  selector: 'app-gsdyzf',
-  templateUrl: './gsdyzf.component.html',
-  styleUrls: ['./gsdyzf.component.less',
+  selector: 'app-gsdqdy',
+  templateUrl: './gsdqdy.component.html',
+  styleUrls: ['./gsdqdy.component.less',
     '../../default.component.less']
 })
-export class GsdyzfComponent implements OnInit {
+export class GsdqdyComponent implements OnInit {
 
   public config: CountdownConfig = {
     format: `mm:ss`,
@@ -25,12 +23,12 @@ export class GsdyzfComponent implements OnInit {
   public loading = true; //正在加载数据
   /**身份证号码 */
   public cardno = '';
-  public title = '工伤待遇支付明细';
+  public title = '工伤定期待遇信息';
   /// 分页参数
   public pageIndex = 1;
   public pageSize = 6;
   public total = 1;
-  public listOfData: Gongshangdaiyu[] = Array<Gongshangdaiyu>();
+  public listOfData: Gongshangdingqidaiyu[] = Array<Gongshangdingqidaiyu>();
   public sortKey = 'AAE036';
   public sortValue = 'desc';
   /**个人编号 */
@@ -78,7 +76,7 @@ export class GsdyzfComponent implements OnInit {
     if (reset) {
       this.pageIndex = 1;
     }
-    this.shehuidaiyu.getGongshangdaiyu(this.personId, this.pageIndex, this.pageSize)
+    this.shehuidaiyu.getGongshangdingqidaiyu(this.personId, this.pageIndex, this.pageSize)
       .subscribe(res => {
         console.log(res);
         this.loading = false;
@@ -95,8 +93,8 @@ export class GsdyzfComponent implements OnInit {
   onClick(ROWNO: number) {
     const data = this.listOfData.find(m => m.ROWNO === ROWNO);
     const modal = this.modalSvc.create({
-      nzTitle: '工伤待遇支付明细',
-      nzContent: GsdyzfInfoComponent,
+      nzTitle: '工伤定期待遇信息',
+      nzContent: GsdqdyInfoComponent,
       nzWidth: '90%',
       nzComponentParams: {
         data: data
