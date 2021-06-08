@@ -78,7 +78,7 @@ export class GlobalConfigModule {
     return {
       ngModule: GlobalConfigModule,
       providers: [
-        // ...alainProvides,
+        ...alainProvides,
         ...zorroProvides
       ],
     };

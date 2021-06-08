@@ -1,0 +1,57 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <div class="table">
+            <form nz-form #formRef="ngForm" (ngSubmit)="!loading&&searchData(true)">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+                            <!-- <input nz-input #aae002Ref="ngModel" [(ngModel)]="aae002" name="aae002" required
+                                placeholder="项目编码" /> -->
+                            <nz-date-picker #dateRef="ngModel" [(ngModel)]="date" name="date" placeholder="结算期"
+                                (ngModelChange)="onChange($event)" required>
+                            </nz-date-picker>
+                        </nz-input-group>
+                        <ng-template #suffixButton>
+                            <button nz-button type="submit" nzType="primary" nzSize="large"
+                                [disabled]="formRef.invalid||loading" nzSearch>查询</button>
+                        </ng-template>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+            <nz-table #ajaxTable [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
+                [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
+                (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)">
+                <thead (nzSortOrderChange)="sort($event)" nzSingleSort>
+                    <tr>
+                        <th nzShowSort nzSortKey="AAC003">姓名</th>
+                        <th nzShowSort nzSortKey="AAE140">险种</th>
+                        <th nzShowSort nzSortKey="BIC215">补扣类别</th>
+                        <th nzShowSort nzSortKey="AAE019">金额</th>
+                        <th nzShowSort nzSortKey="AAA160">补扣发原因</th>
+                        <th nzShowSort nzSortKey="AAB004">单位名称</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listOfData">
+                        <td><a (click)="onClick(item.ROWNO)">{{item.AAC003}}</a></td>
+                        <td>{{item.AAE140}}</td>
+                        <td>{{item.BIC215}}</td>
+                        <td>{{item.AAE019}}</td>
+                        <td>{{item.AAA160}}</td>
+                        <td>{{item.AAB004}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+            <!-- <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template> -->
+        </div>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

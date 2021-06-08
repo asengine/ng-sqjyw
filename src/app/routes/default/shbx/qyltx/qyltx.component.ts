@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Gongshanggongyang } from '@core/models/shehuidaiyu/gongshanggongyang';
+import { Qiyelituixiu } from '@core/models/shehuidaiyu/qiyelituixiu';
 import { ShebaokaService } from '@core/services/shebaoka.service';
 import { ShehuidaiyuService } from '@core/services/shehuidaiyu.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
-import { GsgyqsInfoComponent } from './gsgyqs-info/gsgyqs-info.component';
-
 
 @Component({
-  selector: 'app-gsgyqs',
-  templateUrl: './gsgyqs.component.html',
-  styleUrls: ['./gsgyqs.component.less',
+  selector: 'app-qyltx',
+  templateUrl: './qyltx.component.html',
+  styleUrls: ['./qyltx.component.less',
     '../../default.component.less']
 })
-export class GsgyqsComponent implements OnInit {
-  
+export class QyltxComponent implements OnInit {
+
   public config: CountdownConfig = {
     format: `mm:ss`,
     leftTime: 180,
@@ -23,12 +21,12 @@ export class GsgyqsComponent implements OnInit {
   public loading = true; //正在加载数据
   /**身份证号码 */
   public cardno = '';
-  public title = '工伤供养亲属待遇信息';
+  public title = '企业离退休人员';
   /// 分页参数
   public pageIndex = 1;
   public pageSize = 6;
   public total = 1;
-  public listOfData: Gongshanggongyang[] = Array<Gongshanggongyang>();
+  public listOfData: Qiyelituixiu[] = Array<Qiyelituixiu>();
   public sortKey = 'AAE036';
   public sortValue = 'desc';
   /**个人编号 */
@@ -76,7 +74,7 @@ export class GsgyqsComponent implements OnInit {
     if (reset) {
       this.pageIndex = 1;
     }
-    this.shehuidaiyu.getGongshanggongyang(this.personId, this.pageIndex, this.pageSize)
+    this.shehuidaiyu.getQiyelituixiu(this.personId, this.pageIndex, this.pageSize)
       .subscribe(res => {
         console.log(res);
         this.loading = false;
@@ -85,27 +83,6 @@ export class GsgyqsComponent implements OnInit {
       });
   }
 
-
-  /**
-   * 
-   * @param ROWNO 行编号
-   */
-  onClick(ROWNO: number) {
-    const data = this.listOfData.find(m => m.ROWNO === ROWNO);
-    const modal = this.modalSvc.create({
-      nzTitle: '工伤供养亲属待遇信息',
-      nzContent: GsgyqsInfoComponent,
-      nzWidth: '90%',
-      nzComponentParams: {
-        data: data
-      },
-      nzFooter: null
-    });
-    modal.afterClose.subscribe(() => {
-      // this.loadData();
-    });
-
-  }
 
   /**倒计时事件 */
   handleEvent(event: CountdownEvent) {
@@ -118,4 +95,5 @@ export class GsgyqsComponent implements OnInit {
   back() {
     history.back();
   }
+
 }

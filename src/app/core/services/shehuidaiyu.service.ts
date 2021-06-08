@@ -12,6 +12,10 @@ import { Gongshangdaiyu } from '@core/models/shehuidaiyu/gongshangdaiyu';
 import { Gongshangdingqidaiyu } from '@core/models/shehuidaiyu/gongshangdingqidaiyu';
 import { Gongshanggongyang } from '@core/models/shehuidaiyu/gongshanggongyang';
 import { Gongshangdaiyushouli } from '@core/models/shehuidaiyu/gongshangdaiyushouli';
+import { Qiyelituixiu } from '@core/models/shehuidaiyu/qiyelituixiu';
+import { Yanglaojin } from '@core/models/shehuidaiyu/yanglaojin';
+import { Gongyangjiben } from '@core/models/shehuidaiyu/gongyangjiben';
+import { Bukoufa } from '@core/models/shehuidaiyu/bukoufa';
 
 /**
  * 20210520省一体化接口文档——社会待遇
@@ -255,6 +259,108 @@ export class ShehuidaiyuService {
         // const result = this.http.post<JsonResult<PagedList<Gongshangdaiyushouli>>>(url,
         //     {
         //         "bac001": bac001,
+        //         "pageNo": pageNo,
+        //         "pageSize": pageSize
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.9	企业离退休人员查询
+     * @param bac001 个人编号
+     * @param pageNo 
+     * @param pageSize 
+     * @returns 
+     */
+    public getQiyelituixiu(
+        bac001: string,
+        pageNo: number,
+        pageSize: number
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getqiyelituixiu`;
+        const result = this.http.get<JsonResult<PagedList<Qiyelituixiu>>>('../../assets/data/gongshangjiben.json');
+        // const result = this.http.post<JsonResult<PagedList<Qiyelituixiu>>>(url,
+        //     {
+        //         "bac001": bac001,
+        //         "pageNo": pageNo,
+        //         "pageSize": pageSize
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.10	养老金调整情况查询
+     * @param bac001 个人编号
+     * @param pageNo 
+     * @param pageSize 
+     * @returns 
+     */
+    public getYanglaojin(
+        bac001: string,
+        pageNo: number,
+        pageSize: number
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getyanglaojin`;
+        const result = this.http.get<JsonResult<PagedList<Yanglaojin>>>('../../assets/data/gongshangjiben.json');
+        // const result = this.http.post<JsonResult<PagedList<Qiyelituixiu>>>(url,
+        //     {
+        //         "bac001": bac001,
+        //         "pageNo": pageNo,
+        //         "pageSize": pageSize
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.11	供养基本情况查询
+     * @param bac001 个人编号
+     * @param pageNo 
+     * @param pageSize 
+     * @returns 
+     */
+    public getGongyangjiben(
+        bac001: string,
+        pageNo: number,
+        pageSize: number
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getgongyangjiben`;
+        const result = this.http.get<JsonResult<PagedList<Gongyangjiben>>>('../../assets/data/gongshangjiben.json');
+        // const result = this.http.post<JsonResult<PagedList<Qiyelituixiu>>>(url,
+        //     {
+        //         "bac001": bac001,
+        //         "pageNo": pageNo,
+        //         "pageSize": pageSize
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.12	补扣发查询
+     * @param bac001 个人编号
+     * @param bic215 补扣发类别
+     * @param aae002 结算期
+     * @param pageNo 
+     * @param pageSize 
+     * @returns 
+     */
+    public getBukoufa(
+        bac001: string,
+        bic215: string,
+        aae002: string,
+        pageNo: number,
+        pageSize: number
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getbukoufa`;
+        const result = this.http.get<JsonResult<PagedList<Bukoufa>>>('../../assets/data/gongshangjiben.json');
+        // const result = this.http.post<JsonResult<PagedList<Qiyelituixiu>>>(url,
+        //     {
+        //         "bac001": bac001,
+        //         "bic215": bic215,
+        //         "aae002": aae002,
         //         "pageNo": pageNo,
         //         "pageSize": pageSize
         //     }

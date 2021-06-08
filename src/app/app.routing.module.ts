@@ -80,6 +80,22 @@ const routes: Routes = [
         path: 'gsdysl', // 工伤待遇受理信息查询
         loadChildren: () => import('./routes/default/shbx/gsdysl/gsdysl.module').then(m => m.GsdyslModule)
       },
+      {
+        path: 'qyltx', // 企业离退休人员
+        loadChildren: () => import('./routes/default/shbx/qyltx/qyltx.module').then(m => m.QyltxModule)
+      },
+      {
+        path: 'yljtzqk', // 养老金调整情况查询
+        loadChildren: () => import('./routes/default/shbx/yljtzqk/yljtzqk.module').then(m => m.YljtzqkModule)
+      },
+      {
+        path: 'gyjb', // 供养基本情况查询
+        loadChildren: () => import('./routes/default/shbx/gyjb/gyjb.module').then(m => m.GyjbModule)
+      },
+      {
+        path: 'bkf', // 补扣发查询
+        loadChildren: () => import('./routes/default/shbx/bkf/bkf.module').then(m => m.BkfModule)
+      },
       /** 社会保险 */
 
       /**社会保障卡 */

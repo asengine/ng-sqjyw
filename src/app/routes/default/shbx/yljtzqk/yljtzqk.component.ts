@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Gongshanggongyang } from '@core/models/shehuidaiyu/gongshanggongyang';
+import { Yanglaojin } from '@core/models/shehuidaiyu/yanglaojin';
 import { ShebaokaService } from '@core/services/shebaoka.service';
 import { ShehuidaiyuService } from '@core/services/shehuidaiyu.service';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
-import { GsgyqsInfoComponent } from './gsgyqs-info/gsgyqs-info.component';
-
+import { YljtzqkInfoComponent } from './yljtzqk-info/yljtzqk-info.component';
 
 @Component({
-  selector: 'app-gsgyqs',
-  templateUrl: './gsgyqs.component.html',
-  styleUrls: ['./gsgyqs.component.less',
+  selector: 'app-yljtzqk',
+  templateUrl: './yljtzqk.component.html',
+  styleUrls: ['./yljtzqk.component.less',
     '../../default.component.less']
 })
-export class GsgyqsComponent implements OnInit {
-  
+export class YljtzqkComponent implements OnInit {
+
   public config: CountdownConfig = {
     format: `mm:ss`,
     leftTime: 180,
@@ -23,12 +22,12 @@ export class GsgyqsComponent implements OnInit {
   public loading = true; //正在加载数据
   /**身份证号码 */
   public cardno = '';
-  public title = '工伤供养亲属待遇信息';
+  public title = '养老金调整情况';
   /// 分页参数
   public pageIndex = 1;
   public pageSize = 6;
   public total = 1;
-  public listOfData: Gongshanggongyang[] = Array<Gongshanggongyang>();
+  public listOfData: Yanglaojin[] = Array<Yanglaojin>();
   public sortKey = 'AAE036';
   public sortValue = 'desc';
   /**个人编号 */
@@ -76,7 +75,7 @@ export class GsgyqsComponent implements OnInit {
     if (reset) {
       this.pageIndex = 1;
     }
-    this.shehuidaiyu.getGongshanggongyang(this.personId, this.pageIndex, this.pageSize)
+    this.shehuidaiyu.getYanglaojin(this.personId, this.pageIndex, this.pageSize)
       .subscribe(res => {
         console.log(res);
         this.loading = false;
@@ -93,8 +92,8 @@ export class GsgyqsComponent implements OnInit {
   onClick(ROWNO: number) {
     const data = this.listOfData.find(m => m.ROWNO === ROWNO);
     const modal = this.modalSvc.create({
-      nzTitle: '工伤供养亲属待遇信息',
-      nzContent: GsgyqsInfoComponent,
+      nzTitle: '养老金调整情况',
+      nzContent: YljtzqkInfoComponent,
       nzWidth: '90%',
       nzComponentParams: {
         data: data

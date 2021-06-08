@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app.routing.module';
@@ -16,11 +16,15 @@ import { LayoutComponent } from './routes/layout/layout.component';
 import { DefaultComponent } from './routes/default/default.component';
 import { RouteReuseStrategy } from '@angular/router';
 import { CustomReuseStrategy } from '@core/providers/custom-reuse-strategy';
+import zh from '@angular/common/locales/zh';
+import { registerLocaleData } from '@angular/common';
 
 const INTERCEPTOR_PROVIDES = [
   //{ provide: HTTP_INTERCEPTORS, useClass: SimpleInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true }
 ];
+
+registerLocaleData(zh);
 
 @NgModule({
   declarations: [
@@ -42,6 +46,7 @@ const INTERCEPTOR_PROVIDES = [
     NzModalService,
     AuthGuard,
     { provide: RouteReuseStrategy, useClass: CustomReuseStrategy },
+    { provide: LOCALE_ID, useValue: 'zh-Hans' },
     { provide: BASE_URL, useValue: environment.BASE_URL },
     { provide: AUTH_URL, useValue: environment.AUTH_URL },
     { provide: JYW_URL, useValue: environment.JYW_URL },
