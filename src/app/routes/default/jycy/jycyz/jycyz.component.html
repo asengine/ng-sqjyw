@@ -1,0 +1,25 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <nz-descriptions nzBordered nzColon [nzColumn]="3">
+            <nz-descriptions-item nzTitle="姓名">{{data.aac003}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="证件号码">{{data.aac002}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="就业创业证号">{{data.adc001}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="发证机构">{{data.aaf011}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="发证日期">{{data.aac187}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="发证类型">{{data.adc248Detail}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="是否打印发放">{{data.bcd234}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="经办人">{{data.aae011}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="经办日期">{{data.aae036}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="备注" nzSpan="3">{{data.aae013}}</nz-descriptions-item>
+        </nz-descriptions>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

@@ -16,6 +16,9 @@ import { Qiyelituixiu } from '@core/models/shehuidaiyu/qiyelituixiu';
 import { Yanglaojin } from '@core/models/shehuidaiyu/yanglaojin';
 import { Gongyangjiben } from '@core/models/shehuidaiyu/gongyangjiben';
 import { Bukoufa } from '@core/models/shehuidaiyu/bukoufa';
+import { Gerenfafang } from '@core/models/shehuidaiyu/gerenfafang';
+import { Daiyufafang } from '@core/models/shehuidaiyu/daiyufafang';
+import { Tuixiugongzi } from '@core/models/shehuidaiyu/tuixiugongzi';
 
 /**
  * 20210520省一体化接口文档——社会待遇
@@ -304,7 +307,7 @@ export class ShehuidaiyuService {
     ) {
         const url = `${this.baseUrl}${this.apiUrl}/getyanglaojin`;
         const result = this.http.get<JsonResult<PagedList<Yanglaojin>>>('../../assets/data/gongshangjiben.json');
-        // const result = this.http.post<JsonResult<PagedList<Qiyelituixiu>>>(url,
+        // const result = this.http.post<JsonResult<PagedList<Yanglaojin>>>(url,
         //     {
         //         "bac001": bac001,
         //         "pageNo": pageNo,
@@ -328,7 +331,7 @@ export class ShehuidaiyuService {
     ) {
         const url = `${this.baseUrl}${this.apiUrl}/getgongyangjiben`;
         const result = this.http.get<JsonResult<PagedList<Gongyangjiben>>>('../../assets/data/gongshangjiben.json');
-        // const result = this.http.post<JsonResult<PagedList<Qiyelituixiu>>>(url,
+        // const result = this.http.post<JsonResult<PagedList<Gongyangjiben>>>(url,
         //     {
         //         "bac001": bac001,
         //         "pageNo": pageNo,
@@ -356,11 +359,86 @@ export class ShehuidaiyuService {
     ) {
         const url = `${this.baseUrl}${this.apiUrl}/getbukoufa`;
         const result = this.http.get<JsonResult<PagedList<Bukoufa>>>('../../assets/data/gongshangjiben.json');
-        // const result = this.http.post<JsonResult<PagedList<Qiyelituixiu>>>(url,
+        // const result = this.http.post<JsonResult<PagedList<Bukoufa>>>(url,
         //     {
         //         "bac001": bac001,
         //         "bic215": bic215,
         //         "aae002": aae002,
+        //         "pageNo": pageNo,
+        //         "pageSize": pageSize
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.13	个人发放信息变更查询
+     * @param bac001 个人编号
+     * @param pageNo 
+     * @param pageSize 
+     * @returns 
+     */
+    public getGerenfafang(
+        bac001: string,
+        pageNo: number,
+        pageSize: number
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getgerenfafang`;
+        const result = this.http.get<JsonResult<PagedList<Gerenfafang>>>('../../assets/data/gongshangjiben.json');
+        // const result = this.http.post<JsonResult<PagedList<Gerenfafang>>>(url,
+        //     {
+        //         "bac001": bac001,
+        //         "pageNo": pageNo,
+        //         "pageSize": pageSize
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.14	待遇发放信息查询
+     * @param bac001 个人编号
+     * @param pageNo 
+     * @param pageSize 
+     * @returns 
+     */
+    public getDaiyufafang(
+        bac001: string,
+        pageNo: number,
+        pageSize: number
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getdaiyufafang`;
+        const result = this.http.get<JsonResult<PagedList<Daiyufafang>>>('../../assets/data/daiyufafang.json');
+        // const result = this.http.post<JsonResult<PagedList<Daiyufafang>>>(url,
+        //     {
+        //         "bac001": bac001,
+        //         "pageNo": pageNo,
+        //         "pageSize": pageSize
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.16	退休工资证明查询
+     * @param bac001 个人编号
+     * @param aae011 提交系统名称
+     * @param pageNo 
+     * @param pageSize 
+     * @returns 
+     */
+    public getTuiXiuGz(
+        bac001: string,
+        aae011: string,
+        pageNo: number,
+        pageSize: number
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getTuiXiuGz`;
+        const result = this.http.get<JsonResult<PagedList<Tuixiugongzi>>>('../../assets/data/tuixiugongzi.json');
+        // const result = this.http.post<JsonResult<PagedList<Tuixiugongzi>>>(url,
+        //     {
+        //         "bac001": bac001,
+        //         "aae011": aae011,
         //         "pageNo": pageNo,
         //         "pageSize": pageSize
         //     }

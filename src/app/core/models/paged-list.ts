@@ -4,6 +4,8 @@ export class PagedList<T> {
 
     totalPage: number = 0;
 
+    totalCount: number = 0;
+
     pageNumber: number = 1;
 
     pageSize: number = 0;

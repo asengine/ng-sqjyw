@@ -1,0 +1,27 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <nz-descriptions nzBordered nzColon [nzColumn]="3">
+            <nz-descriptions-item nzTitle="姓名">{{data.aac003}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="证件号码">{{data.aac147}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="合同类别">{{data.abc910Desc}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="合同开始时间">{{data.abc913}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="合同结束时间">{{data.abc914}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="合同解除日期">{{data.abc916}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="劳动合同解除原因">{{data.abc917}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="合同有效标志">{{data.aae100Desc}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="备案经办日期">{{data.aae036}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="备案经办人">{{data.aae011}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="终解操作时间">{{data.abca15}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="终解操作人员">{{data.abca16}}</nz-descriptions-item>
+        </nz-descriptions>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

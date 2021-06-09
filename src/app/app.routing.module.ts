@@ -96,13 +96,47 @@ const routes: Routes = [
         path: 'bkf', // 补扣发查询
         loadChildren: () => import('./routes/default/shbx/bkf/bkf.module').then(m => m.BkfModule)
       },
+      {
+        path: 'grffbg', // 3.13	个人发放信息变更查询
+        loadChildren: () => import('./routes/default/shbx/grffbg/grffbg.module').then(m => m.GrffbgModule)
+      },
+      {
+        path: 'dyff', // 3.14	待遇发放信息查询
+        loadChildren: () => import('./routes/default/shbx/dyff/dyff.module').then(m => m.DyffModule)
+      },
+      {
+        path: 'txgzzm', // 3.16	退休工资证明查询
+        loadChildren: () => import('./routes/default/shbx/txgzzm/txgzzm.module').then(m => m.TxgzzmModule)
+      },
       /** 社会保险 */
+
+
+      /** 就业创业 */
+      {
+        path: 'sydj', // 3.1	失业登记查询
+        loadChildren: () => import('./routes/default/jycy/sydj/sydj.module').then(m => m.SydjModule)
+      },
+      {
+        path: 'jyknry', // 3.2	就业困难人员查询
+        loadChildren: () => import('./routes/default/jycy/jyknry/jyknry.module').then(m => m.JyknryModule)
+      },
+      {
+        path: 'jycyz', // 3.3  就业创业正查询
+        loadChildren: () => import('./routes/default/jycy/jycyz/jycyz.module').then(m => m.JycyzModule)
+      },
+      {
+        path: 'dwjydj', // 3.4	单位就业登记查询
+        loadChildren: () => import('./routes/default/jycy/dwjydj/dwjydj.module').then(m => m.DwjydjModule)
+      },
+      /** 就业创业 */
 
       /**社会保障卡 */
       {
         path: 'sbkxx', // 社保卡信息查询
         loadChildren: () => import('./routes/default/shbzk/sbkxx/sbkxx.module').then(m => m.SbkxxModule)
       },
+
+      /**社会保障卡 */
     ]
   },
   {

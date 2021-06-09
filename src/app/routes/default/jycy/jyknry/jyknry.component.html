@@ -1,0 +1,36 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <nz-descriptions nzBordered nzColon [nzColumn]="3">
+            <nz-descriptions-item nzTitle="姓名">{{data.aac003}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="证件号码">{{data.aac147}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="就业困难流水号">{{data.add001}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="困难类型">{{data.adc310Desc}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="月均收入">{{data.bdc518}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="经办人">{{data.aae011}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="经办日期">{{data.aae036}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="备注">{{data.aae013}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="初审人">{{data.aae060}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="初审时间">{{data.aae061}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="初审机构">{{data.aae062}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="初审结果">{{data.aae063}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="初审不通过原因">{{data.aae064}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="终审人">{{data.aae070}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="终审时间">{{data.aae071}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="终审机构">{{data.aae072}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="终审结果">{{data.aae073}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="终审不通过原因">{{data.aae074}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="注销人">{{data.aae080}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="注销时间">{{data.aae081}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="注销机构">{{data.aae082}}</nz-descriptions-item>
+        </nz-descriptions>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

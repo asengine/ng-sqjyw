@@ -2,8 +2,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponseBase } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
-import { AUTH_URL, BASE_URL } from '@core/config/service.config';
-import { TokenObj } from '@core/models/token';
+import { BASE_URL } from '@core/config/service.config';
 import { AuthService } from '@core/services/auth.service';
 import { MacService } from '@core/services/mac.service';
 import { DA_SERVICE_TOKEN, ITokenService } from '@delon/auth';
@@ -44,7 +43,7 @@ export class DefaultInterceptor implements HttpInterceptor {
   constructor(private injector: Injector) {
     // 如果需要自动刷新Token取消注释以下行
     this.refreshTokenType = 're-request';
-    this.baseUrl = this.injector.get(AUTH_URL);
+    this.baseUrl = this.injector.get(BASE_URL);
     // if (this.refreshTokenType === 'auth-refresh') {
     //   this.buildAuthRefresh();
     // }
@@ -72,7 +71,8 @@ export class DefaultInterceptor implements HttpInterceptor {
     }
 
     const errortext = CODEMESSAGE[ev.status] || ev.statusText;
-    this.notification.error(`请求错误 ${ev.status}: ${ev.url}`, errortext);
+    //this.notification.error(`请求错误 ${ev.status}: ${ev.url}`, errortext);
+    console.log(`请求错误 ${ev.status}: ${ev.url}`, errortext);
   }
 
   /**
@@ -93,6 +93,7 @@ export class DefaultInterceptor implements HttpInterceptor {
         return throwError('设备未授权访问');
       })
     );
+    // 重新获取token
     // return this.http.post(`${this.baseUrl}/api/token`, request, null, { headers: { refresh_token: model?.refresh_token || '' } });
   }
 

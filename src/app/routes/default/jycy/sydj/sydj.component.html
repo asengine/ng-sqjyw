@@ -1,0 +1,22 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <nz-descriptions nzBordered nzColon [nzColumn]="3">
+            <nz-descriptions-item nzTitle="姓名">{{data.aac003}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="证件号码">{{data.aac147}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="失业登记状态">{{data.aae100Desc}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="择业愿望">{{data.acc711}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="失业登记日期">{{data.aae043}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="退工时间">{{data.abc916}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="退工原因" nzSpan="2">{{data.abc917}}</nz-descriptions-item>
+        </nz-descriptions>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>
