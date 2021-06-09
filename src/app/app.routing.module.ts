@@ -41,11 +41,11 @@ const routes: Routes = [
         loadChildren: () => import('./routes/default/shbx/ryjf/ryjf.module').then(m => m.RyjfModule)
       },
       {
-        path: 'ryyzh', // 人员基月账户信息查询
+        path: 'ryyzh', // 人员月账户信息查询
         loadChildren: () => import('./routes/default/shbx/ryyzh/ryyzh.module').then(m => m.RyyzhModule)
       },
       {
-        path: 'rynzh', // 人员基年账户信息查询
+        path: 'rynzh', // 人员年账户信息查询
         loadChildren: () => import('./routes/default/shbx/rynzh/rynzh.module').then(m => m.RynzhModule)
       },
       {
