@@ -6,6 +6,7 @@ import { Shiyedengji } from '@core/models/jiuguanzhongxin/shiyedengji';
 import { Jiuyekunnan } from '@core/models/jiuguanzhongxin/jiuyekunnan';
 import { Jiuyechuangyezheng } from '@core/models/jiuguanzhongxin/jiuyechuangyezheng';
 import { Danweijiuyedengji } from '@core/models/jiuguanzhongxin/danweijiuyedengji';
+import { Linghuojiuyedengji } from '@core/models/linghuojiuyedengji';
 
 /**
  * 20210520省一体化接口文档——就管中心
@@ -122,6 +123,33 @@ export class JiuguanzhongxinService {
         //     {
         //         "bac001": bac001,
         //         "aac003": aac003,
+        //         "aac147": aac147
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.5	灵活就业登记查询
+     * @param bac001 个人编号
+     * @param aac003
+     * @param aac058
+     * @param aac147
+     * @returns
+     */
+    public getLinghuojiuyedengji(
+        bac001: string,
+        aac003: string,
+        aac058: string,
+        aac147: string
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getflexemployregister`;
+        const result = this.http.get<JsonResult<Linghuojiuyedengji>>('../../assets/data/comemployregister.json');
+        // const result = this.http.post<JsonResult<Linghuojiuyedengji>>(url,
+        //     {
+        //         "bac001": bac001,
+        //         "aac003": aac003,
+        //         "aac058": aac058,
         //         "aac147": aac147
         //     }
         // );
