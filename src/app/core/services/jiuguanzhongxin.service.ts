@@ -7,6 +7,7 @@ import { Jiuyekunnan } from '@core/models/jiuguanzhongxin/jiuyekunnan';
 import { Jiuyechuangyezheng } from '@core/models/jiuguanzhongxin/jiuyechuangyezheng';
 import { Danweijiuyedengji } from '@core/models/jiuguanzhongxin/danweijiuyedengji';
 import { Linghuojiuyedengji } from '@core/models/linghuojiuyedengji';
+import { Shiyebaoxianwengangfanhuan } from '@core/models/shiyebaoxianwengangfanhuan';
 
 /**
  * 20210520省一体化接口文档——就管中心
@@ -151,6 +152,27 @@ export class JiuguanzhongxinService {
         //         "aac003": aac003,
         //         "aac058": aac058,
         //         "aac147": aac147
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.6	失业保险稳岗返还查询
+     * @param bac001 个人编号
+     * @param aae128 
+     * @returns 
+     */
+    public getShiyebaoxianwengangfanhuan(
+        bac001: string,
+        aae128: string
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getstablepost`;
+        const result = this.http.get<JsonResult<Shiyebaoxianwengangfanhuan>>('../../assets/data/comemployregister.json');
+        // const result = this.http.post<JsonResult<Shiyebaoxianwengangfanhuan>>(url,
+        //     {
+        //         "bac001": bac001,
+        //         "aae128": aae128
         //     }
         // );
         return result;

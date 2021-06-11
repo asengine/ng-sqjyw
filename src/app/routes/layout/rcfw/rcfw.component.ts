@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
 
 @Component({
@@ -19,7 +19,18 @@ export class RcfwComponent implements OnInit {
   };
   constructor(
     private router: Router
-  ) { }
+  ) {
+    this.router.events
+      .subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          this.config = {
+            format: `mm:ss`,
+            leftTime: 180,
+          };
+          console.log(this.config);
+        }
+      });
+  }
 
   ngOnInit(): void {
   }

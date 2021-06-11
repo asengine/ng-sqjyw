@@ -1,22 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Params, Router } from '@angular/router';
-import { Gongshangdaiyu } from '@core/models/shehuidaiyu/gongshangdaiyu';
+import { Jiuyekunnan } from '@core/models/jiuguanzhongxin/jiuyekunnan';
+import { Shiyebaoxianwengangfanhuan } from '@core/models/shiyebaoxianwengangfanhuan';
+import { JiuguanzhongxinService } from '@core/services/jiuguanzhongxin.service';
 import { ShebaokaService } from '@core/services/shebaoka.service';
-import { ShehuidaiyuService } from '@core/services/shehuidaiyu.service';
-import { NzModalService } from 'ng-zorro-antd/modal';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
-import { GsdyzfInfoComponent } from './gsdyzf-info/gsdyzf-info.component';
 
-/**
- * 工伤待遇支付明细
- */
+
 @Component({
-  selector: 'app-gsdyzf',
-  templateUrl: './gsdyzf.component.html',
-  styleUrls: ['./gsdyzf.component.less',
+  selector: 'app-sybxwgfh',
+  templateUrl: './sybxwgfh.component.html',
+  styleUrls: ['./sybxwgfh.component.less',
     '../../default.component.less']
 })
-export class GsdyzfComponent implements OnInit {
+export class SybxwgfhComponent implements OnInit {
 
   public config: CountdownConfig = {
     format: `mm:ss`,
@@ -25,12 +22,12 @@ export class GsdyzfComponent implements OnInit {
   public loading = true; //正在加载数据
   /**身份证号码 */
   public cardno = '';
-  public title = '工伤待遇支付明细';
+  public title = '失业保险稳岗返还';
   /// 分页参数
   public pageIndex = 1;
   public pageSize = 6;
   public total = 1;
-  public listOfData: Gongshangdaiyu[] = Array<Gongshangdaiyu>();
+  public data: Shiyebaoxianwengangfanhuan = new Shiyebaoxianwengangfanhuan();
   public sortKey = 'AAE036';
   public sortValue = 'desc';
   /**个人编号 */
@@ -39,9 +36,8 @@ export class GsdyzfComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private modalSvc: NzModalService,
     private shebaoka: ShebaokaService,
-    private shehuidaiyu: ShehuidaiyuService
+    private jiuguanzhongxin: JiuguanzhongxinService
   ) {
     //每次进入路由重置倒计时
     this.router.events
@@ -88,35 +84,13 @@ export class GsdyzfComponent implements OnInit {
     if (reset) {
       this.pageIndex = 1;
     }
-    this.shehuidaiyu.getGongshangdaiyu(this.personId, this.pageIndex, this.pageSize)
+    this.jiuguanzhongxin.getShiyebaoxianwengangfanhuan(this.personId, '')
       .subscribe(res => {
         console.log(res);
         this.loading = false;
-        this.total = res.data.totalPage;// * this.pageSize;
-        this.listOfData = res.data.data;
+        //this.total = res.data.totalCount;// * this.pageSize;
+        this.data = res.data;
       });
-  }
-
-
-  /**
-   * 
-   * @param ROWNO 行编号
-   */
-  onClick(ROWNO: number) {
-    const data = this.listOfData.find(m => m.ROWNO === ROWNO);
-    const modal = this.modalSvc.create({
-      nzTitle: '工伤待遇支付明细',
-      nzContent: GsdyzfInfoComponent,
-      nzWidth: '90%',
-      nzComponentParams: {
-        data: data
-      },
-      nzFooter: null
-    });
-    modal.afterClose.subscribe(() => {
-      // this.loadData();
-    });
-
   }
 
   /**倒计时事件 */
@@ -130,4 +104,5 @@ export class GsdyzfComponent implements OnInit {
   back() {
     history.back();
   }
+
 }

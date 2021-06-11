@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Params, Router } from '@angular/router';
 import { Danweijiuyedengji } from '@core/models/jiuguanzhongxin/danweijiuyedengji';
 import { JiuguanzhongxinService } from '@core/services/jiuguanzhongxin.service';
 import { ShebaokaService } from '@core/services/shebaoka.service';
@@ -37,7 +37,17 @@ export class DwjydjComponent implements OnInit {
     private shebaoka: ShebaokaService,
     private jiuguanzhongxin: JiuguanzhongxinService
   ) {
-
+    //每次进入路由重置倒计时
+    this.router.events
+      .subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          this.config = {
+            format: `mm:ss`,
+            leftTime: 180,
+          };
+          console.log(this.config);
+        }
+      });
   }
 
   ngOnInit(): void {

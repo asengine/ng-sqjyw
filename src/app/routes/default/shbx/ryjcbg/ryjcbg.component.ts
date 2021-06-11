@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Params, Router } from '@angular/router';
 import { Renyuanjichubiangeng } from '@core/models/shehuibaoxian/renyuanjichubiangeng';
 import { ShebaokaService } from '@core/services/shebaoka.service';
 import { ShehuibaoxianService } from '@core/services/shehuibaoxian.service';
@@ -42,7 +42,17 @@ export class RyjcbgComponent implements OnInit {
     private shebaoka: ShebaokaService,
     private shehuibaoxian: ShehuibaoxianService
   ) {
-
+    //每次进入路由重置倒计时
+    this.router.events
+      .subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          this.config = {
+            format: `mm:ss`,
+            leftTime: 180,
+          };
+          console.log(this.config);
+        }
+      });
   }
 
   ngOnInit(): void {

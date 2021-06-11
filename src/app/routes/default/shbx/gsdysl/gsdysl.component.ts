@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Params, Router } from '@angular/router';
 import { Gongshangdaiyushouli } from '@core/models/shehuidaiyu/gongshangdaiyushouli';
 import { Gongshangdingqidaiyu } from '@core/models/shehuidaiyu/gongshangdingqidaiyu';
 import { ShebaokaService } from '@core/services/shebaoka.service';
@@ -42,7 +42,17 @@ export class GsdyslComponent implements OnInit {
     private shebaoka: ShebaokaService,
     private shehuidaiyu: ShehuidaiyuService
   ) {
-
+    //每次进入路由重置倒计时
+    this.router.events
+      .subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          this.config = {
+            format: `mm:ss`,
+            leftTime: 180,
+          };
+          console.log(this.config);
+        }
+      });
   }
 
   ngOnInit(): void {

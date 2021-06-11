@@ -18,6 +18,9 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
     /** 表示对所有路由允许复用 如果你有路由不想利用可以在这加一些业务逻辑判断 */
     shouldDetach(route: ActivatedRouteSnapshot): boolean {
         // console.debug('shouldDetach======>', route);
+        if (!route.routeConfig || route.routeConfig.loadChildren) {
+            return false;
+        }
         return true;
     }
 
@@ -51,9 +54,14 @@ export class CustomReuseStrategy implements RouteReuseStrategy {
     }
 
     /** 使用route的path作为快照的key */
-    getRouteUrl(route: ActivatedRouteSnapshot) {
-        const path = route['_routerState'].url.replace(/\//g, '_');
-        return path;
-    }
+    // getRouteUrl(route: ActivatedRouteSnapshot) {
+    //     const path = route['_routerState'].url.replace(/\//g, '_');
+    //     return path;
+    // }
 
+    getRouteUrl(route: ActivatedRouteSnapshot) {
+        // return route['_routerState'].url.replace(/\//g, '_')
+        return route['_routerState'].url.replace(/\//g, '_')
+            + '_' + (route.routeConfig.loadChildren || route.routeConfig.component.toString().split('(')[0].split(' ')[1])
+    }
 }

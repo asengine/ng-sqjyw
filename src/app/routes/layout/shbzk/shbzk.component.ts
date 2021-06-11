@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
 
 @Component({
@@ -20,7 +20,19 @@ export class ShbzkComponent implements OnInit {
 
   constructor(
     private router: Router
-  ) { }
+  ) {
+    //每次进入路由重置倒计时
+    this.router.events
+      .subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          this.config = {
+            format: `mm:ss`,
+            leftTime: 180,
+          };
+          console.log(this.config);
+        }
+      });
+  }
 
   ngOnInit(): void {
 

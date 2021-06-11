@@ -128,6 +128,14 @@ const routes: Routes = [
         path: 'dwjydj', // 3.4	单位就业登记查询
         loadChildren: () => import('./routes/default/jycy/dwjydj/dwjydj.module').then(m => m.DwjydjModule)
       },
+      {
+        path: 'lhjydj', // 灵活就业登记查询
+        loadChildren: () => import('./routes/default/jycy/lhjydj/lhjydj.module').then(m => m.LhjydjModule)
+      },
+      {
+        path: 'sybxwgfh', // 灵活就业登记查询
+        loadChildren: () => import('./routes/default/jycy/sybxwgfh/sybxwgfh.module').then(m => m.SybxwgfhModule)
+      },
       /** 就业创业 */
 
       /**社会保障卡 */

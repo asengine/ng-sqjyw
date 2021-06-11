@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Params, Router } from '@angular/router';
 import { ReadCardService } from '@core/services/readcard.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
@@ -31,7 +31,19 @@ export class ReadCardComponent implements OnInit {
     private titleSvc: Title,
     private msgSvc: NzMessageService,
     private cardSvc: ReadCardService
-  ) { }
+  ) {
+    //每次进入路由重置倒计时
+    this.router.events
+      .subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          this.config = {
+            format: `mm:ss`,
+            leftTime: 180,
+          };
+          console.log(this.config);
+        }
+      });
+  }
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params: Params) => {

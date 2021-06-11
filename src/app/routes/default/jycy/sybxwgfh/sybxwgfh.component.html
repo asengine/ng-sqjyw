@@ -1,0 +1,24 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <nz-descriptions nzBordered nzColon [nzColumn]="3">
+            <nz-descriptions-item nzTitle="统筹区">{{data.aaa027}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="补贴申报年度">{{data.aae128}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="年初失业保险参保人数">{{data.acc507}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="年末失业保险参保人数">{{data.acc508}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="自然减员人数">{{data.acc509}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="年度平均参加失业保险人数">{{data.acc510}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="裁员率">{{data.acc511}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="补贴金额">{{data.adc451}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="经办日期">{{data.aae036}}</nz-descriptions-item>
+        </nz-descriptions>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

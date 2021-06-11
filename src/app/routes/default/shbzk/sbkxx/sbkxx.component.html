@@ -2,6 +2,10 @@
     <span class="t">您的位置：</span>
     <span class="location-name">{{title}}</span>
 </div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
 <nz-card>
     <nz-skeleton [nzActive]="true" [nzLoading]="loading" [nzAvatar]="{ size: 'large' }">
         <!-- <nz-card-meta [nzAvatar]="avatarTemplate" nzTitle="Card title" nzDescription="This is the description">
