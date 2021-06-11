@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Params, Router } from '@angular/router';
-import { Linghuojiuyedengji } from '@core/models/linghuojiuyedengji';
+import { Linghuojiuyedengji } from '@core/models/jiuguanzhongxin/linghuojiuyedengji';
 import { JiuguanzhongxinService } from '@core/services/jiuguanzhongxin.service';
 import { ShebaokaService } from '@core/services/shebaoka.service';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
@@ -29,7 +29,7 @@ export class LhjydjComponent implements OnInit {
   public sortKey = 'AAE036';
   public sortValue = 'desc';
   /**个人编号 */
-  personId: string = '';
+  public personId: string = '';
 
   constructor(
     private router: Router,

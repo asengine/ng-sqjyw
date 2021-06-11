@@ -29,7 +29,7 @@ export class JycyzComponent implements OnInit {
   public sortKey = 'AAE036';
   public sortValue = 'desc';
   /**个人编号 */
-  personId: string = '';
+  public personId: string = '';
 
   constructor(
     private router: Router,

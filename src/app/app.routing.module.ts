@@ -133,8 +133,28 @@ const routes: Routes = [
         loadChildren: () => import('./routes/default/jycy/lhjydj/lhjydj.module').then(m => m.LhjydjModule)
       },
       {
-        path: 'sybxwgfh', // 灵活就业登记查询
+        path: 'sybxwgfh', // 失业保险稳岗返还查询
         loadChildren: () => import('./routes/default/jycy/sybxwgfh/sybxwgfh.module').then(m => m.SybxwgfhModule)
+      },
+      {
+        path: 'xwqydbdk', // 小微企业担保贷款查询
+        loadChildren: () => import('./routes/default/jycy/xwqydbdk/xwqydbdk.module').then(m => m.XwqydbdkModule)
+      },
+      {
+        path: 'cyfhjd', // 创业孵化基地查询
+        loadChildren: () => import('./routes/default/jycy/cyfhjd/cyfhjd.module').then(m => m.CyfhjdModule)
+      },
+      {
+        path: 'jyyz', // 3.9	就业援助查询
+        loadChildren: () => import('./routes/default/jycy/jyyz/jyyz.module').then(m => m.JyyzModule)
+      },
+      {
+        path: 'lhjyrysbbt', // 3.10	灵活就业人员社保补贴查询
+        loadChildren: () => import('./routes/default/jycy/lhjyrysbbt/lhjyrysbbt.module').then(m => m.LhjyrysbbtModule)
+      },
+      {
+        path: 'dwxnjyknrysbbt', // 3.11	单位吸纳就业困难人员社保补贴查询
+        loadChildren: () => import('./routes/default/jycy/dwxnjyknrysbbt/dwxnjyknrysbbt.module').then(m => m.DwxnjyknrysbbtModule)
       },
       /** 就业创业 */
 
@@ -162,7 +182,7 @@ const routes: Routes = [
   { path: 'sybx', loadChildren: () => import('./routes/sybx/sybx.module').then(m => m.SybxModule) },
   { path: 'job', loadChildren: () => import('./routes/job/job.module').then(m => m.JobModule) },
   { path: 'recruit', loadChildren: () => import('./routes/recruit/recruit.module').then(m => m.RecruitModule) },
-  { path: 'jyyz', loadChildren: () => import('./routes/jyyz/jyyz.module').then(m => m.JyyzModule) },
+  //{ path: 'jyyz', loadChildren: () => import('./routes/jyyz/jyyz.module').then(m => m.JyyzModule) },
   { path: 'cyfw', loadChildren: () => import('./routes/cyfw/cyfw.module').then(m => m.CyfwModule) },
   { path: 'grxx', loadChildren: () => import('./routes/grxx/grxx.module').then(m => m.GrxxModule) },
   { path: 'employer', loadChildren: () => import('./routes/employer/employer.module').then(m => m.EmployerModule) },

@@ -1,36 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Params, Router } from '@angular/router';
-import { Shiyebaoxianwengangfanhuan } from '@core/models/jiuguanzhongxin/shiyebaoxianwengangfanhuan';
+import { Chuangyefuhuajidi } from '@core/models/jiuguanzhongxin/chuangyefuhuajidi';
 import { JiuguanzhongxinService } from '@core/services/jiuguanzhongxin.service';
 import { ShebaokaService } from '@core/services/shebaoka.service';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
 
-
 @Component({
-  selector: 'app-sybxwgfh',
-  templateUrl: './sybxwgfh.component.html',
-  styleUrls: ['./sybxwgfh.component.less',
+  selector: 'app-cyfhjd',
+  templateUrl: './cyfhjd.component.html',
+  styleUrls: ['./cyfhjd.component.less',
     '../../default.component.less']
 })
-export class SybxwgfhComponent implements OnInit {
+export class CyfhjdComponent implements OnInit {
 
   public config: CountdownConfig = {
     format: `mm:ss`,
     leftTime: 180,
   };
-  public loading = true; //正在加载数据
+  public loading = false; //正在加载数据
   /**身份证号码 */
   public cardno = '';
-  public title = '失业保险稳岗返还';
+  public title = '创业孵化基地';
   /// 分页参数
   public pageIndex = 1;
   public pageSize = 6;
   public total = 1;
-  public data: Shiyebaoxianwengangfanhuan = new Shiyebaoxianwengangfanhuan();
+  public data: Chuangyefuhuajidi = new Chuangyefuhuajidi();
   public sortKey = 'AAE036';
   public sortValue = 'desc';
   /**个人编号 */
   public personId: string = '';
+  /**单位编号 */
+  public aab004: string = '';
 
   constructor(
     private router: Router,
@@ -52,17 +53,7 @@ export class SybxwgfhComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((params: Params) => {
-      this.cardno = params.cardno;
 
-      /**获取个人编号 */
-      this.shebaoka.getPersonId('', this.cardno, '').subscribe(bac => {
-        this.personId = bac.data.bac001;
-        if (this.personId) {
-          this.searchData();
-        }
-      })
-    });
   }
 
   /**排序 */
@@ -79,11 +70,12 @@ export class SybxwgfhComponent implements OnInit {
   }
 
   /**检索数据 */
-  searchData(reset: boolean = false) {
+  searchData(reset?: boolean) {
+    this.loading = true;
     if (reset) {
       this.pageIndex = 1;
     }
-    this.jiuguanzhongxin.getShiyebaoxianwengangfanhuan(this.personId, '')
+    this.jiuguanzhongxin.getChuangyefuhuajidi(this.aab004)
       .subscribe(res => {
         console.log(res);
         this.loading = false;

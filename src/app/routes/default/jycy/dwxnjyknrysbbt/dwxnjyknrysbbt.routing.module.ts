@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { JyknryComponent } from './jyknry.component';
+import { DwxnjyknrysbbtComponent } from './dwxnjyknrysbbt.component';
+
 
 const routes: Routes = [
-    { path: '', component: JyknryComponent }
+    { path: '', component: DwxnjyknrysbbtComponent }
 ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class JyknryRoutingModule { }
+export class DwxnjyknrysbbtRoutingModule { }

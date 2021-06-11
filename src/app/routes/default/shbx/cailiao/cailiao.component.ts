@@ -71,6 +71,7 @@ export class CailiaoComponent implements OnInit {
 
   /**检索数据 */
   searchData(reset?: boolean) {
+    this.loading = true;
     console.log(reset);
     if (reset) {
       this.pageIndex = 1;
@@ -116,6 +117,4 @@ export class CailiaoComponent implements OnInit {
   back() {
     history.back();
   }
-
-
 }
