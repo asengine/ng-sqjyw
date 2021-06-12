@@ -50,7 +50,6 @@ export class GsdyslComponent implements OnInit {
             format: `mm:ss`,
             leftTime: 180,
           };
-          console.log(this.config);
         }
       });
   }

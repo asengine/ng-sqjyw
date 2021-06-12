@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-shbzk',
@@ -29,7 +30,6 @@ export class ShbzkComponent implements OnInit {
             format: `mm:ss`,
             leftTime: 180,
           };
-          console.log(this.config);
         }
       });
   }

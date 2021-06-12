@@ -48,7 +48,6 @@ export class GsjbComponent implements OnInit {
             format: `mm:ss`,
             leftTime: 180,
           };
-          console.log(this.config);
         }
       });
   }

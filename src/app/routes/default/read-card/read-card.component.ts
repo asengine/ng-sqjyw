@@ -40,7 +40,6 @@ export class ReadCardComponent implements OnInit {
             format: `mm:ss`,
             leftTime: 180,
           };
-          console.log(this.config);
         }
       });
   }

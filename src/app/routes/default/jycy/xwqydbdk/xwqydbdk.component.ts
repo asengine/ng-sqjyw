@@ -47,7 +47,6 @@ export class XwqydbdkComponent implements OnInit {
             format: `mm:ss`,
             leftTime: 180,
           };
-          console.log(this.config);
         }
       });
   }

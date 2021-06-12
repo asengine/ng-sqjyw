@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-jycy',
@@ -19,7 +20,8 @@ export class JycyComponent implements OnInit {
   };
 
   constructor(
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
     this.router.events
       .subscribe((event) => {
@@ -28,12 +30,17 @@ export class JycyComponent implements OnInit {
             format: `mm:ss`,
             leftTime: 180,
           };
-          console.log(this.config);
         }
       });
   }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      this.config = {
+        format: `mm:ss`,
+        leftTime: 180,
+      };
+    });
   }
 
   handleEvent(event: CountdownEvent) {
