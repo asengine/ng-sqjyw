@@ -17,6 +17,8 @@ import { DanWeiXiNaJiuYeKunNanRenYuanSheBaoBuTie } from '@core/models/jiuguanzho
 import { XiaoWeiQiYeXiNaGaoXiaoBiyeShengSheBaoBuTie } from '@core/models/jiuguanzhongxin/XiaoWeiQiYeXiNaGaoXiaoBiyeShengSheBaoBuTie';
 import { BuTieFaFang } from '@core/models/jiuguanzhongxin/BuTieFaFang';
 import { JiuYeYongGongTuiGongLiShi } from '@core/models/jiuguanzhongxin/JiuYeYongGongTuiGongLiShi';
+import { PeiXunKaoHe } from '@core/models/jiuguanzhongxin/PeiXunKaoHe';
+import { PeiXunXueYuan } from '@core/models/jiuguanzhongxin/PeiXunXueYuan';
 
 /**
  * 20210520省一体化接口文档——就管中心
@@ -402,6 +404,58 @@ export class JiuguanzhongxinService {
         //     {
         //         "bac001": bac001,
         //         "aac147": aac147
+        //         "pageNo": pageNo,
+        //         "pageSize": pageSize
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.14	培训考核查询
+     * @param bab001 单位唯一识别码
+     * @param pageNo 
+     * @param pageSize 
+     * @returns 
+     */
+    public getPeiXunKaoHe(
+        bab001: string,
+        acf023: string,
+        pageNo: number,
+        pageSize: number
+
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getexaminquery`;
+        const result = this.http.get<JsonResult<PagedList<PeiXunKaoHe>>>('../../assets/data/JiuYeYongGongTuiGongLiShi.json');
+        // const result = this.http.post<JsonResult<PagedList<PeiXunKaoHe>>>(url,
+        //     {
+        //         "bab001": bab001,
+        //         "acf023": acf023,
+        //         "pageNo": pageNo,
+        //         "pageSize": pageSize
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 培训学员综合查询
+     * @param bac001 
+     * @param pageNo 
+     * @param pageSize 
+     * @returns 
+     */
+    public getPeiXunXueYuan(
+        bac001: string,
+        pageNo: number,
+        pageSize: number
+
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getstudentquery`;
+        const result = this.http.get<JsonResult<PagedList<PeiXunXueYuan>>>('../../assets/data/JiuYeYongGongTuiGongLiShi.json');
+        // const result = this.http.post<JsonResult<PagedList<PeiXunXueYuan>>>(url,
+        //     {
+        //         "bac001": bac001,
         //         "pageNo": pageNo,
         //         "pageSize": pageSize
         //     }

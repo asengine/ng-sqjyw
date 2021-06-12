@@ -1,0 +1,42 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <div class="table">
+            <nz-table #ajaxTable [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
+                [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
+                (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)">
+                <thead (nzSortOrderChange)="sort($event)" nzSingleSort>
+                    <tr>
+                        <th nzShowSort nzSortKey="aac003">姓名</th>
+                        <th nzShowSort nzSortKey="acf015">培训班级名称</th>
+                        <th nzShowSort nzSortKey="aab004">培训单位名称</th>
+                        <th nzShowSort nzSortKey="aaa027Desc">统筹区</th>
+                        <th nzShowSort nzSortKey="bcc006Desc">人员类型</th>
+                        <th nzShowSort nzSortKey="aca112">培训工种名称</th>
+                        <th nzShowSort nzSortKey="aca112">培训等级</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listOfData">
+                        <td>{{item.aac003}}</td>
+                        <td>{{item.acf015}}</td>
+                        <td>{{item.aab004}}</td>
+                        <td>{{item.aaa027Desc}}</td>
+                        <td>{{item.bcc006Desc}}</td>
+                        <td>{{item.aca112}}</td>
+                        <td>{{item.bac015Desc}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+            <!-- <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template> -->
+        </div>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

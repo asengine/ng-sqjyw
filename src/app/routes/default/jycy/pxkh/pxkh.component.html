@@ -1,0 +1,62 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <div class="table">
+            <form nz-form nzLayout="inline" #formRef="ngForm" (ngSubmit)="!loading&&searchData(true)">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-group nzSearch nzSize="large">
+                            <input nz-input #bab001Ref="ngModel" [(ngModel)]="bab001" name="bab001" required
+                                placeholder="单位编号" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+                            <input nz-input #acf003Ref="ngModel" [(ngModel)]="acf003" name="acf003" required
+                                placeholder="班级编号" />
+                        </nz-input-group>
+                    </nz-form-control>
+                    <ng-template #suffixButton>
+                        <button nz-button type="submit" nzType="primary" nzSize="large"
+                            [disabled]="formRef.invalid||loading" nzSearch>查询</button>
+                    </ng-template>
+                </nz-form-item>
+            </form>
+            <nz-table #ajaxTable [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
+                [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
+                (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)">
+                <thead (nzSortOrderChange)="sort($event)" nzSingleSort>
+                    <tr>
+                        <th nzShowSort nzSortKey="acf003">班级编号</th>
+                        <th nzShowSort nzSortKey="acf015">班级名称</th>
+                        <th nzShowSort nzSortKey="aac003">姓名</th>
+                        <th nzShowSort nzSortKey="acc009">理论成绩</th>
+                        <th nzShowSort nzSortKey="acc010">实践成绩</th>
+                        <th nzShowSort nzSortKey="aab004">单位名称</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listOfData">
+                        <td><a (click)="onClick(item.acf003)">{{item.acf003}}</a></td>
+                        <td>{{item.acf015}}</td>
+                        <td>{{item.aac003}}</td>
+                        <td>{{item.acc009}}</td>
+                        <td>{{item.acc010}}</td>
+                        <td>{{item.aab004}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+            <!-- <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template> -->
+        </div>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

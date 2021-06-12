@@ -168,6 +168,14 @@ const routes: Routes = [
         path: 'jyygtgls', //	就业用工/退工历史信息查询
         loadChildren: () => import('./routes/default/jycy/jyygtgls/jyygtgls.module').then(m => m.JyygtglsModule)
       },
+      {
+        path: 'pxkh', //	3.14	培训考核查询
+        loadChildren: () => import('./routes/default/jycy/pxkh/pxkh.module').then(m => m.PxkhModule)
+      },
+      {
+        path: 'pxxy', //	3.15	培训学员综合查询
+        loadChildren: () => import('./routes/default/jycy/pxxy/pxxy.module').then(m => m.PxxyModule)
+      },
       /** 就业创业 */
 
       /**社会保障卡 */

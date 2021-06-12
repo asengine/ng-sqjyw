@@ -1,0 +1,19 @@
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <nz-descriptions nzBordered nzColon [nzColumn]="3">
+            <nz-descriptions-item nzTitle="单位名称">{{data.aab004}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="班级名称">{{data.acf015}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="姓名">{{data.aac003}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="理论考试开始时间">{{data.acf016}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="理论考试结束时间">{{data.acf017}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="实践考试开始时间">{{data.acf018}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="实践考试结束时间">{{data.acf019}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="是否补考">{{data.bcc007desc}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="课程类型">{{data.bdf013desc}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="理论成绩">{{data.acc009}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="实践成绩">{{data.acc010}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="理论考试地址" [nzSpan]="2">{{data.acf020}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="评定成绩" [nzSpan]="2">{{data.acc011}}</nz-descriptions-item>
+        </nz-descriptions>
+    </nz-skeleton>
+</nz-card>

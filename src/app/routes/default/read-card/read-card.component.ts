@@ -59,7 +59,7 @@ export class ReadCardComponent implements OnInit {
     //TEST
     this.router.navigate([`/default/${this.url}`], {
       queryParams: {
-        cardno: '321321198801087813'
+        cardno: new Date().toLocaleTimeString()
       }
     });
 
