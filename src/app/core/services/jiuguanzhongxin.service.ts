@@ -19,6 +19,9 @@ import { BuTieFaFang } from '@core/models/jiuguanzhongxin/BuTieFaFang';
 import { JiuYeYongGongTuiGongLiShi } from '@core/models/jiuguanzhongxin/JiuYeYongGongTuiGongLiShi';
 import { PeiXunKaoHe } from '@core/models/jiuguanzhongxin/PeiXunKaoHe';
 import { PeiXunXueYuan } from '@core/models/jiuguanzhongxin/PeiXunXueYuan';
+import { PeiXunDanwei } from '@core/models/jiuguanzhongxin/PeiXunDanwei';
+import { PeiXunBaoMing } from '@core/models/jiuguanzhongxin/PeiXunBaoMing';
+import { PeiXunZhengShu } from '@core/models/jiuguanzhongxin/PeiXunZhengShu';
 
 /**
  * 20210520省一体化接口文档——就管中心
@@ -454,6 +457,76 @@ export class JiuguanzhongxinService {
         const url = `${this.baseUrl}${this.apiUrl}/getstudentquery`;
         const result = this.http.get<JsonResult<PagedList<PeiXunXueYuan>>>('../../assets/data/JiuYeYongGongTuiGongLiShi.json');
         // const result = this.http.post<JsonResult<PagedList<PeiXunXueYuan>>>(url,
+        //     {
+        //         "bac001": bac001,
+        //         "pageNo": pageNo,
+        //         "pageSize": pageSize
+        //     }
+        // );
+        return result;
+    }
+
+
+    /**
+     * 3.16	培训单位信息查询
+     * @param bab001 单位编号
+     * @param aab004 
+     * @returns 
+     */
+    public getPeiXunDanwei(
+        bab001: string,
+        aab004: string
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/gettrainingagency`;
+        const result = this.http.get<JsonResult<PeiXunDanwei>>('../../assets/data/JiuYeYongGongTuiGongLiShi.json');
+        // const result = this.http.post<JsonResult<PeiXunXueYuan>>(url,
+        //     {
+        //         "bab001": bab001,
+        //         "aab004": aab004
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.17	培训报名查询
+     * @param bac001 
+     * @param pageNo 
+     * @param pageSize 
+     * @returns 
+     */
+    public getPeiXunBaoMing(
+        bac001: string,
+        pageNo: number,
+        pageSize: number
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/gettrainingsignup`;
+        const result = this.http.get<JsonResult<PagedList<PeiXunBaoMing>>>('../../assets/data/JiuYeYongGongTuiGongLiShi.json');
+        // const result = this.http.post<JsonResult<PagedList<PeiXunBaoMing>>>(url,
+        //     {
+        //         "bac001": bac001,
+        //         "pageNo": pageNo,
+        //         "pageSize": pageSize
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.18	培训证书查询
+     * @param bac001 
+     * @param pageNo 
+     * @param pageSize 
+     * @returns 
+     */
+    public getPeiXunZhengShu(
+        bac001: string,
+        pageNo: number,
+        pageSize: number
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getcertificatequery`;
+        const result = this.http.get<JsonResult<PagedList<PeiXunZhengShu>>>('../../assets/data/JiuYeYongGongTuiGongLiShi.json');
+        // const result = this.http.post<JsonResult<PagedList<PeiXunZhengShu>>>(url,
         //     {
         //         "bac001": bac001,
         //         "pageNo": pageNo,

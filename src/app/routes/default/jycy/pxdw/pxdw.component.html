@@ -1,0 +1,43 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <form nz-form #formRef="ngForm" (ngSubmit)="!loading&&searchData(true)">
+            <nz-form-item>
+                <nz-form-control>
+                    <nz-input-group nzSearch nzSize="large" [nzAddOnAfter]="suffixButton">
+                        <input nz-input #bab001Ref="ngModel" [(ngModel)]="bab001" name="bab001" required
+                            placeholder="单位编号" />
+                    </nz-input-group>
+                    <ng-template #suffixButton>
+                        <button nz-button type="submit" nzType="primary" nzSize="large"
+                            [disabled]="formRef.invalid||loading" nzSearch>查询</button>
+                    </ng-template>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+        <nz-descriptions nzBordered nzColon [nzColumn]="3">
+            <nz-descriptions-item nzTitle="单位名称">{{data.aab004}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="单位地址">{{data.aae271}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="统筹区">{{data.aaa027Desc}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="培训机构类型">{{data.acf002Desc}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="办学许可证号">{{data.acf001}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="法人代表姓名">{{data.aab013}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="法人联系电话">{{data.aab015}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="联系人">{{data.aae004}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="联系电话">{{data.aae005}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="理论教学面积">{{data.acc002}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="实践教学面积">{{data.acc003}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="总面积">{{data.acc001}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="设施设备总值">{{data.bcf003}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="培训单位简介">{{data.bdf153}}</nz-descriptions-item>
+        </nz-descriptions>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

@@ -1,0 +1,46 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <div class="table">
+            <nz-table #ajaxTable [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
+                [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
+                (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)">
+                <thead (nzSortOrderChange)="sort($event)" nzSingleSort>
+                    <tr>
+                        <th nzShowSort nzSortKey="aac003">姓名</th>
+                        <th nzShowSort nzSortKey="bcc012">证书号</th>
+                        <th nzShowSort nzSortKey="aca112">培训工种</th>
+                        <th nzShowSort nzSortKey="bac015Desc">培训等级</th>
+                        <th nzShowSort nzSortKey="bcc013">发证日期</th>
+                        <th nzShowSort nzSortKey="acc009">理论考试成绩</th>
+                        <th nzShowSort nzSortKey="acc010">实操考试成绩</th>
+                        <th nzShowSort nzSortKey="acc010">评定成绩</th>
+                        <th nzShowSort nzSortKey="bdf151Name">发证单位</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listOfData">
+                        <td>{{item.aac003}}</td>
+                        <td>{{item.bcc012}}</td>
+                        <td>{{item.aca112}}</td>
+                        <td>{{item.bac015Desc}}</td>
+                        <td>{{item.bcc013}}</td>
+                        <td>{{item.acc009}}</td>
+                        <td>{{item.acc010}}</td>
+                        <td>{{item.acc011}}</td>
+                        <td>{{item.bdf151Name}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+            <!-- <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template> -->
+        </div>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

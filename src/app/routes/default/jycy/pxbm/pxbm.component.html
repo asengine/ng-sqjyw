@@ -1,0 +1,42 @@
+<div class="location">
+    <span class="t">您的位置：</span>
+    <span class="location-name">{{title}}</span>
+</div>
+<div class="count-down-area">本页面将在
+    <countdown [config]="config" (event)="handleEvent($event)"></countdown>
+    秒后自动退出
+</div>
+<nz-card>
+    <nz-skeleton [nzActive]="true" [nzLoading]="loading">
+        <div class="table">
+            <nz-table #ajaxTable [nzFrontPagination]="false" [nzData]="listOfData" [nzLoading]="loading"
+                [nzTotal]="total" [(nzPageIndex)]="pageIndex" [(nzPageSize)]="pageSize"
+                (nzPageIndexChange)="searchData()" (nzPageSizeChange)="searchData(true)">
+                <thead (nzSortOrderChange)="sort($event)" nzSingleSort>
+                    <tr>
+                        <th nzShowSort nzSortKey="aac003">姓名</th>
+                        <th nzShowSort nzSortKey="acf005Desc">企业培训类型</th>
+                        <th nzShowSort nzSortKey="aca112">培训工种名称</th>
+                        <th nzShowSort nzSortKey="bac015Desc">培训等级</th>
+                        <th nzShowSort nzSortKey="bdc102Desc">补贴方式</th>
+                        <th nzShowSort nzSortKey="bdc024Desc">报名来源</th>
+                        <th nzShowSort nzSortKey="aab004">培训单位名称</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listOfData">
+                        <td><a (click)="onClick(item.ROWNO)">{{item.aac003}}</a></td>
+                        <td>{{item.acf005Desc}}</td>
+                        <td>{{item.aca112}}</td>
+                        <td>{{item.bac015Desc}}</td>
+                        <td>{{item.bdc102Desc}}</td>
+                        <td>{{item.bdc024Desc}}</td>
+                        <td>{{item.aab004}}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+            <!-- <ng-template #totalTemplate let-total> 总记录 {{ total }} </ng-template> -->
+        </div>
+    </nz-skeleton>
+</nz-card>
+<a (click)="back()" class="back-btn">返回</a>

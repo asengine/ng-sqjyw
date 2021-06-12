@@ -176,6 +176,18 @@ const routes: Routes = [
         path: 'pxxy', //	3.15	培训学员综合查询
         loadChildren: () => import('./routes/default/jycy/pxxy/pxxy.module').then(m => m.PxxyModule)
       },
+      {
+        path: 'pxdw', // 3.16	培训单位信息查询
+        loadChildren: () => import('./routes/default/jycy/pxdw/pxdw.module').then(m => m.PxdwModule)
+      },
+      {
+        path: 'pxbm', // 3.17	培训报名查询
+        loadChildren: () => import('./routes/default/jycy/pxbm/pxbm.module').then(m => m.PxbmModule)
+      },
+      {
+        path: 'pxzs', // 3.18	培训证书查询
+        loadChildren: () => import('./routes/default/jycy/pxzs/pxzs.module').then(m => m.PxzsModule)
+      },
       /** 就业创业 */
 
       /**社会保障卡 */
