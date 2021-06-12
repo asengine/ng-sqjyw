@@ -1,43 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Params, Router } from '@angular/router';
-import { DanWeiXiNaJiuYeKunNanRenYuanSheBaoBuTie } from '@core/models/jiuguanzhongxin/DanWeiXiNaJiuYeKunNanRenYuanSheBaoBuTie';
+import { BuTieFaFang } from '@core/models/jiuguanzhongxin/BuTieFaFang';
 import { JiuguanzhongxinService } from '@core/services/jiuguanzhongxin.service';
 import { ShebaokaService } from '@core/services/shebaoka.service';
-import { NzModalService } from 'ng-zorro-antd/modal';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
 
 @Component({
-  selector: 'app-dwxnjyknrysbbt',
-  templateUrl: './dwxnjyknrysbbt.component.html',
-  styleUrls: ['./dwxnjyknrysbbt.component.less',
+  selector: 'app-btff',
+  templateUrl: './btff.component.html',
+  styleUrls: ['./btff.component.less',
     '../../default.component.less']
 })
-export class DwxnjyknrysbbtComponent implements OnInit {
+export class BtffComponent implements OnInit {
 
   public config: CountdownConfig = {
     format: `mm:ss`,
     leftTime: 180,
   };
-  public loading = false; //正在加载数据
+  public loading = true; //正在加载数据
   /**身份证号码 */
   public cardno = '';
-  public title = '单位吸纳就业困难人员社保补贴';
+  public title = '就业援助';
   /// 分页参数
   public pageIndex = 1;
   public pageSize = 6;
   public total = 1;
-  public listOfData: DanWeiXiNaJiuYeKunNanRenYuanSheBaoBuTie[] = Array<DanWeiXiNaJiuYeKunNanRenYuanSheBaoBuTie>();
+  public listOfData: BuTieFaFang[] = new Array<BuTieFaFang>();
   public sortKey = 'AAE036';
   public sortValue = 'desc';
   /**个人编号 */
   public personId: string = '';
-  /**单位编码 */
-  public bab001: string = '';
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private modalSvc: NzModalService,
     private shebaoka: ShebaokaService,
     private jiuguanzhongxin: JiuguanzhongxinService
   ) {
@@ -58,9 +54,13 @@ export class DwxnjyknrysbbtComponent implements OnInit {
       this.cardno = params.cardno;
 
       /**获取个人编号 */
-      this.shebaoka.getPersonId('', this.cardno, '').subscribe(bac => {
-        this.personId = bac.data.bac001;
-      })
+      this.shebaoka.getPersonId('', this.cardno, '')
+        .subscribe(bac => {
+          this.personId = bac.data.bac001;
+          if (this.personId) {
+            this.searchData();
+          }
+        });
     });
   }
 
@@ -78,18 +78,16 @@ export class DwxnjyknrysbbtComponent implements OnInit {
   }
 
   /**检索数据 */
-  searchData(reset?: boolean) {
-    this.loading = true;
-    console.log(reset);
+  searchData(reset: boolean = false) {
     if (reset) {
       this.pageIndex = 1;
     }
-    this.jiuguanzhongxin.getDanWeiXiNaJiuYeKunNanRenYuanSheBaoBuTie(this.bab001, '', '', this.personId, '', '', this.pageIndex, this.pageSize)
+    this.jiuguanzhongxin.getBuTieFaFang(this.personId, '', '', '')
       .subscribe(res => {
         console.log(res);
         this.loading = false;
-        this.total = res.data.total;// * this.pageSize;
-        this.listOfData = res.data.data;
+        //this.total = res.data.totalPage;// * this.pageSize;
+        this.listOfData = res.data;
       });
   }
 
@@ -104,4 +102,5 @@ export class DwxnjyknrysbbtComponent implements OnInit {
   back() {
     history.back();
   }
+
 }

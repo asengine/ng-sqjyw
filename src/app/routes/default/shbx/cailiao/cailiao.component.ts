@@ -15,7 +15,6 @@ import { CailiaoInfoComponent } from './cailiao-info/cailiao-info.component';
 })
 export class CailiaoComponent implements OnInit {
 
-
   public config: CountdownConfig = {
     format: `mm:ss`,
     leftTime: 180,

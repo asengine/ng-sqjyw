@@ -156,6 +156,18 @@ const routes: Routes = [
         path: 'dwxnjyknrysbbt', // 3.11	单位吸纳就业困难人员社保补贴查询
         loadChildren: () => import('./routes/default/jycy/dwxnjyknrysbbt/dwxnjyknrysbbt.module').then(m => m.DwxnjyknrysbbtModule)
       },
+      {
+        path: 'xwqyxngxbyssbbt', // 3.12	小微企业吸纳高校毕业生社保补贴查询
+        loadChildren: () => import('./routes/default/jycy/xwqyxngxbyssbbt/xwqyxngxbyssbbt.module').then(m => m.XwqyxngxbyssbbtModule)
+      },
+      {
+        path: 'btff', //	3.13	补贴发放查询
+        loadChildren: () => import('./routes/default/jycy/btff/btff.module').then(m => m.BtffModule)
+      },
+      {
+        path: 'jyygtgls', //	就业用工/退工历史信息查询
+        loadChildren: () => import('./routes/default/jycy/jyygtgls/jyygtgls.module').then(m => m.JyygtglsModule)
+      },
       /** 就业创业 */
 
       /**社会保障卡 */

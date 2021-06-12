@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { CountdownConfig, CountdownEvent } from 'ngx-countdown';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-jycy',

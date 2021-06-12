@@ -13,7 +13,10 @@ import { Chuangyefuhuajidi } from '@core/models/jiuguanzhongxin/chuangyefuhuajid
 import { PagedList } from '@core/models/paged-list';
 import { Jiuyeyuanzhu } from '@core/models/jiuguanzhongxin/jiuyeyuanzhu';
 import { Linghuojiuyerenyuanshebaobutie } from '@core/models/jiuguanzhongxin/linghuojiuyerenyuanshebaobutie';
-import { DanWeiXiNaJiuYeKunNanRenYuanSheBaoBuTie } from '@core/models/jiuguanzhongxin/danweixinajiuyekunnanrenyuanshebaobutie';
+import { DanWeiXiNaJiuYeKunNanRenYuanSheBaoBuTie } from '@core/models/jiuguanzhongxin/DanWeiXiNaJiuYeKunNanRenYuanSheBaoBuTie';
+import { XiaoWeiQiYeXiNaGaoXiaoBiyeShengSheBaoBuTie } from '@core/models/jiuguanzhongxin/XiaoWeiQiYeXiNaGaoXiaoBiyeShengSheBaoBuTie';
+import { BuTieFaFang } from '@core/models/jiuguanzhongxin/BuTieFaFang';
+import { JiuYeYongGongTuiGongLiShi } from '@core/models/jiuguanzhongxin/JiuYeYongGongTuiGongLiShi';
 
 /**
  * 20210520省一体化接口文档——就管中心
@@ -325,6 +328,82 @@ export class JiuguanzhongxinService {
         //     {
         //         "bab001": bab001,
         //         "bac001": bac001
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.12	小微企业吸纳高校毕业生社保补贴查询
+     * @param bab001 单位编号
+     * @param aab004 
+     * @returns 
+     */
+    public getXiaoWeiQiYeXiNaGaoXiaoBiyeShengSheBaoBuTie(
+        bab001: string,
+        aab004: string
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getapplysubs`;
+        const result = this.http.get<JsonResult<XiaoWeiQiYeXiNaGaoXiaoBiyeShengSheBaoBuTie[]>>('../../assets/data/XiaoWeiQiYeXiNaGaoXiaoBiyeShengSheBaoBuTie.json');
+        // const result = this.http.post<JsonResult<XiaoWeiQiYeXiNaGaoXiaoBiyeShengSheBaoBuTie[]>>(url,
+        //     {
+        //         "bab001": bab001,
+        //         "bac001": bac001
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.13	补贴发放查询
+     * @param bac001 个人编号
+     * @param aac003 姓名
+     * @param add453 开始日期
+     * @param add456 结束日期
+     * @returns 
+     */
+    public getBuTieFaFang(
+        bac001: string,
+        aac003: string,
+        add453: string,
+        add456: string
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getsubsidypayment`;
+        const result = this.http.get<JsonResult<BuTieFaFang[]>>('../../assets/data/BuTieFaFang.json');
+        // const result = this.http.post<JsonResult<BuTieFaFang[]>>(url,
+        //     {
+        //         "bac001": bac001,
+        //         "aac003": aac003，
+        //         "add453": add453,
+        //         "add456": add456
+        //     }
+        // );
+        return result;
+    }
+
+    /**
+     * 3.20	就业用工/退工历史信息查询
+     * @param bac001 
+     * @param aac147 
+     * @param pageNo 
+     * @param pageSize 
+     * @returns 
+     */
+    public getJiuYeYongGongTuiGongLiShi(
+        bac001: string,
+        aac147: string,
+        pageNo: number,
+        pageSize: number
+
+    ) {
+        const url = `${this.baseUrl}${this.apiUrl}/getQueryLydjInfo`;
+        const result = this.http.get<JsonResult<PagedList<JiuYeYongGongTuiGongLiShi>>>('../../assets/data/JiuYeYongGongTuiGongLiShi.json');
+        // const result = this.http.post<JsonResult<PagedList<JiuYeYongGongTuiGongLiShi>>>(url,
+        //     {
+        //         "bac001": bac001,
+        //         "aac147": aac147
+        //         "pageNo": pageNo,
+        //         "pageSize": pageSize
         //     }
         // );
         return result;
