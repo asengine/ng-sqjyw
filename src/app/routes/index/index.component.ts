@@ -34,14 +34,5 @@ export class IndexComponent implements OnInit {
 
   onClick() {
     window.open("http://sq.jszwfw.gov.cn", "_blank", "width=1240,height=900,scrollbars=yes,resizable=1,modal=false,alwaysRaised=yes", false);
-    // const modal = this.modalSvc.create({
-    //   nzTitle: '政务不见面审批',
-    //   nzContent: JszwfwComponent,
-    //   nzWidth: '90%',
-    //   nzFooter: null
-    // });
-    // modal.afterClose.subscribe(() => {
-    //   // this.loadData();
-    // });
   }
 }
