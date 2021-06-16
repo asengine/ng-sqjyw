@@ -21,11 +21,11 @@ export class IndexComponent implements OnInit {
     private modalSvc: NzModalService,
     @Inject(DA_SERVICE_TOKEN) private tokenService: ITokenService
   ) {
-    this.authSvc.authCheck().subscribe(res => {
-      console.log(res);
-    }, (e) => {
-      console.log(e);
-    });
+    // this.authSvc.authCheck().subscribe(res => {
+    //   console.log(res);
+    // }, (e) => {
+    //   console.log(e);
+    // });
   }
 
   ngOnInit() {
