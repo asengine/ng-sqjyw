@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "AlibabaPuHuiTi-2-55-Regular";
+  src: url("AlibabaPuHuiTi-2-55-Regular.woff2") format("woff2"),
+       url("AlibabaPuHuiTi-2-55-Regular.woff") format("woff"),
+       url("AlibabaPuHuiTi-2-55-Regular.ttf") format("truetype"),
+       url("AlibabaPuHuiTi-2-55-Regular.eot") format("embedded-opentype"),
+       url("AlibabaPuHuiTi-2-55-Regular.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
